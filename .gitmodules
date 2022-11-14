@@ -1,6 +1,3 @@
 [submodule "minilibx-linux"]
 	path = minilibx-linux
 	url = https://github.com/42Paris/minilibx-linux.git
-[submodule "get_next_line"]
-	path = get_next_line
-	url = https://github.com/Lollith/get_next_line.git

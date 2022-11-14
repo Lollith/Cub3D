@@ -6,17 +6,19 @@
 #    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/14 11:48:14 by agouet           ###   ########.fr        #
+#    Updated: 2022/11/14 14:48:11 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Cub3D
+NAME		= cub3D
 
-MLX			= mlx_linux/libmlx_Linux.a
+S_MLX		= minilibx-linux
 
-SRCS		= $(addprefix sources/, \
-				main.c)
-				
+SRCS		= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
+				$(addprefix sources/, main.c) 
+
+MLX			= $(S_MLX)/libmlx_Linux.a
+
 OBJS		= $(SRCS:.c=.o)
 
 DEPS		= $(SRCS:.c=.d)
@@ -27,30 +29,31 @@ CFLAGS		= -MMD -Wall -Wextra -Werror -g -O3
 
 LDFLAGS		= -lmlx_Linux -lXext -lX11 -lm  -lz
 
-LIB			= -L ./mlx_linux -L /usr/lib
+LIB			= -L ./minilibx-linux -L /usr/lib
 
-INC			= -I ./includes  -I /usr/include  -I mlx_linux
+INC			= -I ./includes  -I /usr/include  -I minilibx-linux
 
 
-all:		$(NAME) 
+all:		$(NAME)
 
+$(MLX):
+			make -C $(S_MLX) 
+			
 $(NAME):	$(OBJS) $(MLX)
-			make -C ./mlx_linux
 			$(CC) $(CFLAGS) -o $(NAME) $(MLX) $(OBJS) $(LIB) $(LDFLAGS)
 
 %.o			:%.c
 			$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:	
-			make clean -C mlx_linux
+			make -C $(S_MLX) clean
 			rm -f $(OBJS) $(DEPS)
 
 fclean:		clean
-			make -C mlx_linux clean
 			rm -f $(NAME)
 
 re:			fclean
-			make
+			make -C .
 
 .PHONY:		all re clean fclean 
 

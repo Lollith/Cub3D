@@ -6,24 +6,25 @@
 #    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/14 14:48:11 by agouet           ###   ########.fr        #
+#    Updated: 2022/11/14 15:35:59 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3D
 
+CC			= cc
+
 S_MLX		= minilibx-linux
+
+MLX			= $(S_MLX)/libmlx_Linux.a
 
 SRCS		= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
 				$(addprefix sources/, main.c) 
-
-MLX			= $(S_MLX)/libmlx_Linux.a
 
 OBJS		= $(SRCS:.c=.o)
 
 DEPS		= $(SRCS:.c=.d)
 
-CC			= cc
 
 CFLAGS		= -MMD -Wall -Wextra -Werror -g -O3
 

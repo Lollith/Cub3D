@@ -6,7 +6,7 @@
 #    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/14 15:35:59 by agouet           ###   ########.fr        #
+#    Updated: 2022/11/14 17:22:16 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ S_MLX		= minilibx-linux
 MLX			= $(S_MLX)/libmlx_Linux.a
 
 SRCS		= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
-				$(addprefix sources/, main.c) 
+				$(addprefix sources/, main.c) \
+				$(addprefix sources/window/, window.c hook.c) 
 
 OBJS		= $(SRCS:.c=.o)
 

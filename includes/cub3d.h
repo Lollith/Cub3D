@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/15 16:42:43 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/15 17:08:52 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <X11/keysym.h>
+# include <fcntl.h>
+# include <limits.h>
+# include "get_next_line.h"
 
 # define W_WIDTH 1800
 # define W_HEIGHT 1200
+
+# ifndef FD_MAX
+# define FD_MAX 1024
+# endif
 
 typedef struct s_window{
 	void	*pt_mlx;
@@ -68,4 +75,6 @@ int		ft_atoi(const char *str);
 int		print_error_fd(char *s1, char *s2, int fd);
 /*----------------------------------------------------------------------------*/
 
+//to be deleted just to start work with raycasting
+int		init_square_map(char **av, t_map *map);
 #endif

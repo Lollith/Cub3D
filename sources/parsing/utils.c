@@ -6,16 +6,11 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:12:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/15 14:47:08 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:46:49 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*
-* DESCRIPTION
-*	Convert ASCII string to integer
-*/
 
 static	int	print_str(char *s, int fd)
 {
@@ -43,6 +38,10 @@ int	print_error_fd(char *s1, char *s2, int fd)
 	return (i);
 }
 
+/*
+* DESCRIPTION
+*	Convert ASCII string to integer
+*/
 int	ft_atoi(const char *str)
 {
 	int	i;

@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <X11/keysym.h>
 
-# define W_WIDTH 1800
-# define W_HEIGHT 1200
+# define W_WIDTH 800
+# define W_HEIGHT 800
 
 typedef struct s_window{
 	void	*pt_mlx;
@@ -27,8 +27,8 @@ typedef struct s_window{
 }t_window;
 
 /*----------------------------------WINDOW------------------------------------*/
-int		create_window(t_window *data);
-void	ft_key_loop_hook(t_window *data);
+int		create_window(t_window *win);
+void	ft_key_loop_hook(t_window *win);
 
 /*----------------------------------------------------------------------------*/
 

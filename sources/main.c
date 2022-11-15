@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/15 14:26:47 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/15 15:46:14 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,28 @@ int	main( void )
 	ft_key_loop_hook(&win);
 
 	// test
-	mlx_loop_hook(win.pt_mlx, &render, &win);
+	mlx_loop_hook(win.pt_mlx, &render, &win); //affiche pixel rouge
+	//tuto raycasting	
+	// double posX = 200;
+	// double posY = 200;
+	double dirX = -1;
+	double dirY = 0;
+	double planeX = 0;
+	double planeY = 0.66;
+	// double time = 0;
+	// double oldtime = 0;
+	int x = 0;
+	int lenght_plane =10; // w ds tuto valeur???
+	double ratioX; // cameraX
+	double raydirX;
+	double raydirY;
+	while (x < lenght_plane)
+	{
+		ratioX = 2 * x / (lenght_plane) -1;
+		raydirX = dirX + planeX * ratioX;
+		raydirY = dirY + planeY * ratioX;
+		x++;
+	}
 
 	// end
 	mlx_loop(win.pt_mlx);

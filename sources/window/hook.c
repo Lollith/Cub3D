@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/14 18:29:01 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/15 09:42:48 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	esc_hook(int keysym, t_window *wdata)
 {
 	if (keysym == XK_Escape)
-		mlx_loop_end(wdata->pt_mlx);
+		mlx_destroy_window(wdata->pt_mlx, wdata->pt_win);
 	return (0);
 }
 

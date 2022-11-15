@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/15 14:12:18 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/15 14:26:47 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	render(t_window *win)
 			j = 0;
 			while (j <= 20)
 			{
-				mlx_pixel_put(win->pt_mlx, wdata->pt_win, 200+i , 200+j, 0xFF0000);
+				mlx_pixel_put(win->pt_mlx, win->pt_win, 200+i , 200+j, 0xFF0000);
 				j++;
 			}
 			i++;

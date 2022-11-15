@@ -3,60 +3,88 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
+#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/14 17:22:16 by agouet           ###   ########.fr        #
+#    Updated: 2022/11/15 12:40:11 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3D
+NAME			= cub3D
 
-CC			= cc
+CC				= cc
 
-S_MLX		= minilibx-linux
+S_MLX			= minilibx-linux
 
-MLX			= $(S_MLX)/libmlx_Linux.a
+MLX				= $(S_MLX)/libmlx_Linux.a
 
-SRCS		= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
+WINDOW_SRCS		:= hook.c window.c
+	
+PARSING_SRCS	:=
+
+MAIN_SRCS		:= main.c
+
+SRCS			:= $(MAIN_SRCS)
+SRCS			+= $(addprefix window/, $(WINDOW_SRCS))
+SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
+
+#SRCS			= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
 				$(addprefix sources/, main.c) \
-				$(addprefix sources/window/, window.c hook.c) 
+				$(addprefix sources/window/, window.c hook.c)
 
-OBJS		= $(SRCS:.c=.o)
+OBJS			:= $(SRCS:.c=.o)
+DEPS			:= $(SRCS:.c=.d)
 
-DEPS		= $(SRCS:.c=.d)
+SRCS_PATH		:= sources/
+OBJS_PATH		:= objects/
+SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS))
+OBJS			:= $(addprefix $(OBJS_PATH), $(OBJS))
+DEPS			:= $(addprefix $(OBJS_PATH), $(DEPS)) # to check
 
+CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3 #g at place of -g 
 
-CFLAGS		= -MMD -Wall -Wextra -Werror -g -O3
+LDFLAGS			= -lmlx_Linux -lXext -lX11 -lm  -lz
 
-LDFLAGS		= -lmlx_Linux -lXext -lX11 -lm  -lz
+LIB				= -L ./minilibx-linux -L /usr/lib
 
-LIB			= -L ./minilibx-linux -L /usr/lib
+INC				= -I ./includes  -I /usr/include  -I minilibx-linux
 
-INC			= -I ./includes  -I /usr/include  -I minilibx-linux
+RM				= rm -rf
 
+#LIBFT			= libft/libft.a
 
-all:		$(NAME)
+all:			objects_dir $(NAME)
+
+objects_dir:
+				mkdir -p objects
+				mkdir -p objects/window
+				mkdir -p objects/parsing
+
+$(NAME):		$(OBJS) $(MLX)# $(LIBFT)#
+				$(CC) $(CFLAGS) -o $(NAME) $(MLX) $(OBJS) $(LIB) $(LDFLAGS)
 
 $(MLX):
-			make -C $(S_MLX) 
-			
-$(NAME):	$(OBJS) $(MLX)
-			$(CC) $(CFLAGS) -o $(NAME) $(MLX) $(OBJS) $(LIB) $(LDFLAGS)
+				make -C $(S_MLX)
 
-%.o			:%.c
-			$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+#(LIBFT):
+#				@make -C libft/
+
+#-p if directory exists(is no warning etc)
+$(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
+				$(CC) $(CFLAGS) $(INC) -c $< -o $@
+#%.o				:%.c
+#				$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:	
-			make -C $(S_MLX) clean
-			rm -f $(OBJS) $(DEPS)
+				make -C $(S_MLX) clean
+				$(RM) $(OBJS) $(DEPS)
 
-fclean:		clean
-			rm -f $(NAME)
+fclean:			clean
+				$(RM) $(NAME)
 
-re:			fclean
-			make -C .
-
-.PHONY:		all re clean fclean 
+re:				fclean
+				make -C .
 
 -include $(DEPS)
+
+.PHONY:			all re clean fclean

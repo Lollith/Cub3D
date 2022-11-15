@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:17:16 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/15 15:40:01 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:30:42 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,4 @@ int	check_args(int ac, char **av)
 	return (0);
 }
 
-//chek to open?
+//check to open?

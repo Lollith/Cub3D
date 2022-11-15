@@ -6,7 +6,7 @@
 #    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/15 16:50:18 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/11/15 18:21:55 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,19 +18,23 @@ S_MLX			= minilibx-linux
 
 MLX				= $(S_MLX)/libmlx_Linux.a
 
-WINDOW_SRCS		:= hook.c window.c
+WINDOW_SRCS		:= hook.c\
+					window.c
 	
-PARSING_SRCS	:= checks.c init.c map.c utils.c
+PARSING_SRCS	:= checks.c\
+					init.c\
+					map_square.c\
+					utils.c
+
+GNL_SRCS		:= get_next_line.c\
+					get_next_line_utils.c 
 
 MAIN_SRCS		:= main.c
 
 SRCS			:= $(MAIN_SRCS)
 SRCS			+= $(addprefix window/, $(WINDOW_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
-
-#SRCS			= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
-				$(addprefix sources/, main.c) \
-				$(addprefix sources/window/, window.c hook.c)
+SRCS			+= $(addprefix gnl/,$(GNL_SRCS))
 
 OBJS			:= $(SRCS:.c=.o)
 DEPS			:= $(SRCS:.c=.d)
@@ -39,7 +43,13 @@ SRCS_PATH		:= sources/
 OBJS_PATH		:= objects/
 SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS))
 OBJS			:= $(addprefix $(OBJS_PATH), $(OBJS))
-DEPS			:= $(addprefix $(OBJS_PATH), $(DEPS)) # to check
+DEPS			:= $(addprefix $(OBJS_PATH), $(DEPS))
+
+#SRCS			= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
+				$(addprefix sources/, main.c) \
+				$(addprefix sources/window/, window.c hook.c)
+
+
 
 CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3 #g at place of -g 
 
@@ -59,6 +69,7 @@ objects_dir:
 				mkdir -p objects
 				mkdir -p objects/window
 				mkdir -p objects/parsing
+				mkdir -p objects/gnl
 
 $(NAME):		$(OBJS) $(MLX)# $(LIBFT)#
 				$(CC) $(CFLAGS) -o $(NAME) $(MLX) $(OBJS) $(LIB) $(LDFLAGS)

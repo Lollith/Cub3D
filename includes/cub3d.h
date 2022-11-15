@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/15 17:08:52 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:46:52 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,19 @@ void	ft_key_loop_hook(t_window *data);
 
 /*----------------------------------------------------------------------------*/
 
+/*------------------------------------MAP-------------------------------------*/
+void	map_read(char **av, t_map *map);
+int		init_square_map(char **av, t_map *map);
+void	map_size(char **av, t_map *map);
+/*----------------------------------------------------------------------------*/
+
 /*-----------------------------------UTILS------------------------------------*/
 int		ft_atoi(const char *str);
+char	*ft_strjoin_no_free(char const *s1, char const *s2);
 int		print_error_fd(char *s1, char *s2, int fd);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+// size_t	ft_strlen(const char *s);//already in gnl folder
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 /*----------------------------------------------------------------------------*/
 
 //to be deleted just to start work with raycasting

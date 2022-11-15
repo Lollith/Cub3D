@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/14 18:04:29 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/15 16:04:38 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
-#include <X11/keysym.h>
+# include <X11/keysym.h>
 
 # define W_WIDTH 1800
 # define W_HEIGHT 1200
@@ -25,7 +25,6 @@ typedef struct s_window{
 	void	*pt_mlx;
 	void	*pt_win;
 }t_window;
-
 
 /*----------------------------------WINDOW------------------------------------*/
 int		create_window(t_window *data);

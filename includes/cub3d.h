@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/14 18:04:29 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/15 14:11:03 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 #include <X11/keysym.h>
 
-# define W_WIDTH 1800
-# define W_HEIGHT 1200
+# define W_WIDTH 800
+# define W_HEIGHT 800
 
 typedef struct s_window{
 	void	*pt_mlx;
@@ -28,8 +28,8 @@ typedef struct s_window{
 
 
 /*----------------------------------WINDOW------------------------------------*/
-int		create_window(t_window *data);
-void	ft_key_loop_hook(t_window *data);
+int		create_window(t_window *win);
+void	ft_key_loop_hook(t_window *win);
 
 /*----------------------------------------------------------------------------*/
 

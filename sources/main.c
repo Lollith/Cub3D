@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/15 15:46:14 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/15 18:07:34 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main( void )
 	double raydirY;
 	while (x < lenght_plane)
 	{
-		ratioX = 2 * x / (lenght_plane) -1;
+		ratioX = 2 * x / (lenght_plane) - 1;
 		raydirX = dirX + planeX * ratioX;
 		raydirY = dirY + planeY * ratioX;
 		x++;

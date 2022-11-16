@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:37 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/14 18:34:50 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/16 10:23:39 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	create_window(t_window *wdata)
+int	create_window(t_window *win)
 {
 	int	size_x;
 	int	size_y;
 
 	size_x = W_WIDTH;
 	size_y = W_HEIGHT;
-	wdata->pt_mlx = mlx_init();
-	if (wdata->pt_mlx == NULL)
+	win->pt_mlx = mlx_init();
+	if (win->pt_mlx == NULL)
 	{
-		free(wdata->pt_mlx);
+		free(win->pt_mlx);
 		return (1);
 	}
-	wdata->pt_win = mlx_new_window(wdata->pt_mlx, size_x, size_y, "cub3D");
-	if (wdata->pt_win == NULL)
+	win->pt_win = mlx_new_window(win->pt_mlx, size_x, size_y, "cub3D");
+	if (win->pt_win == NULL)
 	{
-		mlx_destroy_display(wdata->pt_mlx);
-		mlx_destroy_window(wdata->pt_mlx, wdata->pt_win);
-		free(wdata->pt_win);
-		free(wdata->pt_mlx);
+		mlx_destroy_display(win->pt_mlx);
+		mlx_destroy_window(win->pt_mlx, win->pt_win);
+		free(win->pt_win);
+		free(win->pt_mlx);
 		return (1);
 	}
 	return (0);

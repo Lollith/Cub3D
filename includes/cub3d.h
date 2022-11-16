@@ -23,8 +23,8 @@
 # include <limits.h>
 # include "get_next_line.h"
 
-# define W_WIDTH 1800
-# define W_HEIGHT 1200
+# define W_WIDTH 800
+# define W_HEIGHT 800
 
 # ifndef FD_MAX
 # define FD_MAX 1024
@@ -65,8 +65,8 @@ int		init_all(char **av, t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/
-int		create_window(t_window *data);
-void	ft_key_loop_hook(t_window *data);
+int		create_window(t_window *win);
+void	ft_key_loop_hook(t_window *win);
 
 /*----------------------------------------------------------------------------*/
 

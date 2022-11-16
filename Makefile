@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
 #    Updated: 2022/11/15 18:21:55 by esmirnov         ###   ########.fr        #
@@ -34,6 +34,7 @@ MAIN_SRCS		:= main.c
 SRCS			:= $(MAIN_SRCS)
 SRCS			+= $(addprefix window/, $(WINDOW_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
+
 SRCS			+= $(addprefix gnl/,$(GNL_SRCS))
 
 OBJS			:= $(SRCS:.c=.o)
@@ -83,8 +84,6 @@ $(MLX):
 #-p if directory exists(is no warning etc)
 $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
 				$(CC) $(CFLAGS) $(INC) -c $< -o $@
-#%.o				:%.c
-#				$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:	
 				make -C $(S_MLX) clean

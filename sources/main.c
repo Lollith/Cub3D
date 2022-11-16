@@ -14,19 +14,24 @@
 
 int	main(int ac, char **av)
 {
-	t_window	data;//to be updated to win
+    t_window	win;
 	// t_all		all;
 	t_map			map; // to be deleted later?
 	
 	if (check_args(ac, av) != 0) // to be upgraded: only ac == 2 checked
 		return (1);
+    
+  //-------------------------initialisation----------------------------------
+	create_window(&win);
 	init_square_map(av, &map);//to be deleted later?
-	//init_all //inside the all init window etc//
 	// get map will be all.map.map = get_map(av) struct map to be deleted in main after that
 	// init_all(av, &all);
 	// all.window = data; //to be deleted because this stage has to be done in all init
-	create_window(&data);
+  
+	//--------------------------fonctions utiles--------------------------------
 	ft_key_loop_hook(&data);
+  
+  //---------------------------end--------------------------------------------
 	mlx_loop(data.pt_mlx);
 	mlx_destroy_window(data.pt_mlx, data.pt_win);
 	mlx_destroy_display(data.pt_mlx);

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/16 19:48:51 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:07:36 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct s_window{
 }t_window;
 
 /*
-** p8x 1 p_y are for player position
+** p_x & p_y are for player position
+** x - nb of columns, y - nb of lines
+** all spaces on the map will be noted as 8
 */
 typedef struct s_map
 {

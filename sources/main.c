@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/16 10:48:29 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/16 21:18:50 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	// t_all		all;
 	t_map			map; // to be deleted later?
 
-	if (check_args(ac, av) != 0) // to be upgraded: only ac == 2 checked
+	if (check_args(ac, av) != 0)
 		return (1);
 	
 	//--------------------------------initialisation----------------------------

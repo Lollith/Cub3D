@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/16 16:54:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:48:51 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,16 @@ typedef struct s_window{
 	void	*pt_win;
 }t_window;
 
+/*
+** p8x 1 p_y are for player position
+*/
 typedef struct s_map
 {
 	char	*line;
 	int		x;
 	int		y;
+	int		p_x;
+	int		p_y;
 }t_map;
 
 // typedef struct s_texture

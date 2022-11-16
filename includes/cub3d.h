@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/16 10:30:26 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/16 16:54:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,17 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <limits.h>
 # include "get_next_line.h"
+
+# define UP 119
+# define DOWN 115
+# define LEFT 97
+# define RIGHT 100
+//# define ESC 65307
 
 # define W_WIDTH 1800
 # define W_HEIGHT 1200

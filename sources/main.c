@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/16 10:00:39 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/16 10:48:29 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@ int	render(t_window *win)
 
 int	main(int ac, char **av)
 {
-	t_window	data;//to be updated to win
+	t_window	win;
 	// t_all		all;
 	t_map			map; // to be deleted later?
-	
+
 	if (check_args(ac, av) != 0) // to be upgraded: only ac == 2 checked
 		return (1);
+	
+	//--------------------------------initialisation----------------------------
 	init_square_map(av, &map);//to be deleted later?
-	//init_all //inside the all init window etc//
 	// get map will be all.map.map = get_map(av) struct map to be deleted in main after that
 	// init_all(av, &all);
 	// all.window = data; //to be deleted because this stage has to be done in all init
@@ -83,5 +84,6 @@ int	main(int ac, char **av)
 	mlx_destroy_window(data.pt_mlx, data.pt_win);
 	mlx_destroy_display(data.pt_mlx);
 	free(data.pt_mlx);
+
 	return (0);
 }

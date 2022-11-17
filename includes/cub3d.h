@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/17 16:44:28 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:42:48 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@
 # define FD_MAX 1024
 # endif
 
+# define NONE 0xFF000000
+# define RED 0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
+
 typedef struct s_window{
 	void	*pt_mlx;
 	void	*pt_win;
@@ -47,37 +52,36 @@ typedef struct s_window{
 ** x - nb of columns, y - nb of lines
 ** all spaces on the map will be noted as 8
 */
-
-typedef struct s_pos
+typedef struct		s_pos
 {
-	double		x;
-	double		y;
-}				t_pos;
+	double			x;
+	double			y;
+}					t_pos;
 
-typedef struct s_map
+typedef struct		s_map
 {
-	char		*line;
-	int			x;
-	int			y;
-}				t_map;
+	char			*line;
+	int				x;
+	int				y;
+}					t_map;
 
-typedef struct s_texture
+typedef struct		s_texture
 {
-	int			*n; // p>e unsigned int?
-	int			*s; // p>e unsigned int?
-	int			*w; // p>e unsigned int?
-	int			*e; // p>e unsigned int?
-	int			c;
-	int			f;
-}				t_texture;
+	int				*n; // p>e unsigned int? attention init a MAJ
+	int				*s; // p>e unsigned int? attention init a MAJ
+	int				*w; // p>e unsigned int? attention init a MAJ
+	int				*e; // p>e unsigned int? attention init a MAJ
+	unsigned int	c;
+	unsigned int	f;
+}					t_texture;
 
-typedef struct s_all
+typedef struct		s_all
 {
-	t_window	*window;
-	t_map		*map;
-	t_texture	*tex;
-	t_pos		*pos;
-}				t_all;
+	t_window		*window;
+	t_map			*map;
+	t_texture		*tex;
+	t_pos			*pos;
+}					t_all;
 
 /*-----------------------------------ARGS------------------------------------*/
 int		check_args(int ac, char **av);

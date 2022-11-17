@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/15 18:21:55 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/11/17 15:38:55 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,11 +45,6 @@ SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS))
 OBJS			:= $(addprefix $(OBJS_PATH), $(OBJS))
 DEPS			:= $(addprefix $(OBJS_PATH), $(DEPS))
 
-#SRCS			= 	$(addprefix gnl/, get_next_line.c get_next_line_utils.c)\
-				$(addprefix sources/, main.c) \
-				$(addprefix sources/window/, window.c hook.c)
-
-
 
 CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3 #g at place of -g 
 
@@ -83,8 +78,6 @@ $(MLX):
 #-p if directory exists(is no warning etc)
 $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
 				$(CC) $(CFLAGS) $(INC) -c $< -o $@
-#%.o				:%.c
-#				$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:	
 				make -C $(S_MLX) clean

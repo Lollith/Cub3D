@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/17 18:12:47 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/17 18:57:30 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	main(int ac, char **av)
 	mlx_destroy_window(all.win.pt_mlx, all.win.pt_win);
 	mlx_destroy_display(all.win.pt_mlx);
 	free(all.win.pt_mlx);
+	free(all.win.pt_win);
 
 	return (0);
 }

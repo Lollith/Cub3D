@@ -6,25 +6,57 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/15 15:43:07 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:43:00 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int	init_all(char **av, t_all *all)
-// {
-// 	t_map	map;
+static void	init_pos(t_pos *pos)
+{
+	pos->x = 0;
+	pos->y = 0;
+}
 
-// 	map.line = get_map(av);
-// 	// all->map = map;
-// 	// all->maps->map = 
-// 	// all->window = init_window();
-// }
+static void	init_win(t_window *win)
+{
+	win->pt_mlx = NULL;
+	win->pt_win = NULL;
+}
 
-// char	**get_map(char **av)
-// {
-// 	char	**tab;
+static void	init_map(t_map *map)
+{
+	map->line = NULL;
+	map->x = 0;
+	map->y = 0;
+}
 
-// 	(void)tab;
-// }
+static void init_tex(t_texture *tex)
+{
+	tex->n = NULL;
+	tex->s = NULL;
+	tex->w = NULL;
+	tex->e = NULL;
+	tex->c = 0;
+	tex->f = 0;
+}
+
+int	ft_init(char *av)
+{
+	t_all		all;
+	t_window	win;
+	t_map		map;
+	t_texture	tex;
+	t_pos		p;
+
+	init_win(&win);
+	init_map(&map);
+	init_pos(&p);
+	init_tex(&tex);
+	all.window = &win;
+	all.map = &map;
+	all.tex = &tex;
+	all.pos = &p;
+	ft_parse(av, &all);
+	return (0);
+}

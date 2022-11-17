@@ -6,7 +6,7 @@
 #    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/17 11:48:30 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/11/17 16:45:54 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ MLX				= $(S_MLX)/libmlx_Linux.a
 
 WINDOW_SRCS		:= hook.c window.c
 	
-PARSING_SRCS	:= checks.c init.c map_square.c utils.c
+PARSING_SRCS	:= checks.c init.c parse.c utils.c map_square.c
 
-GNL_SRCS		:= get_next_line.c get_next_line_utils.c 
+GNL_SRCS		:= get_next_line.c get_next_line_utils.c
 
 MAIN_SRCS		:= main.c
 

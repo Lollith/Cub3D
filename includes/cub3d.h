@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/16 21:56:37 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:44:28 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,35 +47,45 @@ typedef struct s_window{
 ** x - nb of columns, y - nb of lines
 ** all spaces on the map will be noted as 8
 */
+
+typedef struct s_pos
+{
+	double		x;
+	double		y;
+}				t_pos;
+
 typedef struct s_map
 {
-	char	*line;
-	int		x;
-	int		y;
-	int		p_x;
-	int		p_y;
-}t_map;
+	char		*line;
+	int			x;
+	int			y;
+}				t_map;
 
-// typedef struct s_texture
-// {
-// 	int	*n;
-// 	int	*s;
-// 	int	*w;
-// 	int	*e;
-// 	int	c;
-// 	int	f;
-// }t_texture;
+typedef struct s_texture
+{
+	int			*n; // p>e unsigned int?
+	int			*s; // p>e unsigned int?
+	int			*w; // p>e unsigned int?
+	int			*e; // p>e unsigned int?
+	int			c;
+	int			f;
+}				t_texture;
 
 typedef struct s_all
 {
-	t_window	window;
-	t_map		map;
-	// t_texture	tex;
-}t_all;
+	t_window	*window;
+	t_map		*map;
+	t_texture	*tex;
+	t_pos		*pos;
+}				t_all;
 
 /*-----------------------------------ARGS------------------------------------*/
 int		check_args(int ac, char **av);
-int		init_all(char **av, t_all *all);
+int		ft_init(char *av);
+/*----------------------------------------------------------------------------*/
+
+/*-----------------------------------PARSE------------------------------------*/
+int		ft_parse(char *av, t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/

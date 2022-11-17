@@ -6,7 +6,7 @@
 #    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/17 15:38:55 by lollith          ###   ########.fr        #
+#    Updated: 2022/11/17 18:16:59 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ PARSING_SRCS	:= checks.c\
 					map_square.c\
 					utils.c
 
+RENDER_SRCS		:= draw.c
+
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 
 
@@ -33,6 +35,7 @@ MAIN_SRCS		:= main.c
 
 SRCS			:= $(MAIN_SRCS)
 SRCS			+= $(addprefix window/, $(WINDOW_SRCS))
+SRCS			+= $(addprefix render/, $(RENDER_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
 SRCS			+= $(addprefix gnl/,$(GNL_SRCS))
 
@@ -63,6 +66,7 @@ all:			objects_dir $(NAME)
 objects_dir:
 				mkdir -p objects
 				mkdir -p objects/window
+				mkdir -p objects/render
 				mkdir -p objects/parsing
 				mkdir -p objects/gnl
 

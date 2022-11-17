@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/16 16:54:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:15:07 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -24,17 +23,17 @@
 # include <limits.h>
 # include "get_next_line.h"
 
-# define UP 119
-# define DOWN 115
-# define LEFT 97
-# define RIGHT 100
+// # define UP 119
+// # define DOWN 115
+// # define LEFT 97
+// # define RIGHT 100
 //# define ESC 65307
 
-# define W_WIDTH 1800
-# define W_HEIGHT 1200
+# define W_WIDTH 800
+# define W_HEIGHT 300
 
 # ifndef FD_MAX
-# define FD_MAX 1024
+#  define FD_MAX 1024
 # endif
 
 typedef struct s_window{
@@ -49,6 +48,15 @@ typedef struct s_map
 	int		y;
 }t_map;
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}t_img;
+
 // typedef struct s_texture
 // {
 // 	int	*n;
@@ -61,8 +69,9 @@ typedef struct s_map
 
 typedef struct s_all
 {
-	t_window	window;
+	t_window	win;
 	t_map		map;
+	t_img		img;
 	// t_texture	tex;
 }t_all;
 
@@ -74,6 +83,11 @@ int		init_all(char **av, t_all *all);
 /*----------------------------------WINDOW------------------------------------*/
 int		create_window(t_window *data);
 void	ft_key_loop_hook(t_window *data);
+
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------RENDER------------------------------------*/
+int		render(t_all *all);
 
 /*----------------------------------------------------------------------------*/
 

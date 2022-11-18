@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/17 16:43:00 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/18 13:50:29 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	init_map(t_map *map)
 	map->y = 0;
 }
 
-static void init_tex(t_texture *tex)
+static void	init_tex(t_texture *tex)
 {
 	tex->n = NULL;
 	tex->s = NULL;
@@ -53,10 +53,11 @@ int	ft_init(char *av)
 	init_map(&map);
 	init_pos(&p);
 	init_tex(&tex);
-	all.window = &win;
-	all.map = &map;
-	all.tex = &tex;
-	all.pos = &p;
+	all.window = win;
+	all.map = map;
+	all.tex = tex;
+	all.pos = p;
+	all.err = 0;
 	ft_parse(av, &all);
 	return (0);
 }

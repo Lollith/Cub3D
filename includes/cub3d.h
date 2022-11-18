@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/17 17:42:48 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/18 13:49:50 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,11 @@ typedef struct		s_texture
 
 typedef struct		s_all
 {
-	t_window		*window;
-	t_map			*map;
-	t_texture		*tex;
-	t_pos			*pos;
+	t_window		window;
+	t_map			map;
+	t_texture		tex;
+	t_pos			pos;
+	int				err;
 }					t_all;
 
 /*-----------------------------------ARGS------------------------------------*/

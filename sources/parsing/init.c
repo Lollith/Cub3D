@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/18 14:37:33 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:45:11 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,14 @@ int	ft_init(char *av)
 	init_map(&map);
 	init_pos(&pos);
 	init_tex(&tex);
+	all.doc = NULL;
+	all.err = 0;
 	all.window = win;
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;
-	all.err = 0;
-	ft_parse(av, &all);
+
+	if (ft_parse(av, &all) == 1)
+		return (1);
 	return (0);
 }

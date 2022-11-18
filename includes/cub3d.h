@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/18 14:37:13 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:27:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 # define FD_MAX 1024
 # endif
 
+# define TRUE 1
+# define FALSE 0
+
 # define NONE 0xFF000000
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
@@ -58,14 +61,14 @@ typedef struct s_pos
 	double			p_y;
 }					t_pos;
 
-typedef struct		s_map
+typedef struct s_map
 {
 	char			*line;
 	int				x;
 	int				y;
 }					t_map;
 
-typedef struct		s_texture
+typedef struct s_texture
 {
 	int				*n; // p>e unsigned int? attention init a MAJ
 	int				*s; // p>e unsigned int? attention init a MAJ
@@ -75,13 +78,14 @@ typedef struct		s_texture
 	unsigned int	f;
 }					t_texture;
 
-typedef struct		s_all
+typedef struct s_all
 {
+	char			**doc;
+	int				err;
 	t_window		window;
 	t_map			map;
 	t_texture		tex;
 	t_pos			pos;
-	int				err;
 }					t_all;
 
 /*-----------------------------------ARGS------------------------------------*/
@@ -91,6 +95,7 @@ int		ft_init(char *av);
 
 /*-----------------------------------PARSE------------------------------------*/
 int		ft_parse(char *av, t_all *all);
+int		ft_file_read(char *av, t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/18 13:49:50 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/18 14:37:13 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ typedef struct s_window{
 ** x - nb of columns, y - nb of lines
 ** all spaces on the map will be noted as 8
 */
-typedef struct		s_pos
+typedef struct s_pos
 {
-	double			x;
-	double			y;
+	double			p_x;
+	double			p_y;
 }					t_pos;
 
 typedef struct		s_map

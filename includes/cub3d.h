@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/17 19:04:00 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:31:09 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 //# define ESC 65307
 
 # define W_WIDTH 800
-# define W_HEIGHT 300
+# define W_HEIGHT 500
 
 # ifndef FD_MAX
 #  define FD_MAX 1024

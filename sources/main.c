@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/18 18:30:49 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/20 20:31:15 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-//test
-
 
 int	main(int ac, char **av)
 {
@@ -24,32 +21,30 @@ int	main(int ac, char **av)
 		return (1);
 	
 	//----------------a mettre ds le fichier initialisation----------------------
+	all.img_minimap.addr = NULL;
+	all.img_minimap.bpp = 0;
+	all.img_minimap.endian = 0;
+	all.img_minimap.line_len = 0;
+	all.img_minimap.mlx_img = NULL;
+	
 	all.map.line = NULL;
-	
-	all.img.addr = NULL;
-	all.img.bpp = 0;
-	all.img.endian = 0;
-	all.img.line_len = 0;
-	all.img.mlx_img = NULL;
-	
-	
-
-
 	
 	//--------------------------------initialisation----------------------------
 	init_square_map(av, &all.map);//to be deleted later?
 	create_window(&all.win);
 	ft_key_loop_hook(&all.win);
+	// get map will be all.map.map = get_map(av) struct map to be deleted in main after that
+	// init_all(av, &all);
+	// all.window = data; //to be deleted because this stage has to be done in all init
 
 	//--------------------------------fonctions---------------------------------
-	// img_mlx  point rouge
-	all.img.mlx_img = mlx_new_image(all.win.pt_mlx, W_WIDTH, W_HEIGHT);
-	all.img.addr = mlx_get_data_addr(all.img.mlx_img, &all.img.bpp, 
-		&all.img.line_len, &all.img.endian);
-	
-	
+	// creation img minimap
+	all.img_minimap.mlx_img = mlx_new_image(all.win.pt_mlx, W_WIDTH, W_HEIGHT);
+	all.img_minimap.addr = mlx_get_data_addr(all.img_minimap.mlx_img, 
+		&all.img_minimap.bpp, &all.img_minimap.line_len, &all.img_minimap.endian);
+
 	//  render
-	mlx_loop_hook(all.win.pt_mlx, &render, &all); //affiche pixel rouge
+	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
 
 
 //tuto raycasting	
@@ -77,10 +72,6 @@ int	main(int ac, char **av)
 
 	//-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
-	// mlx_destroy_window(all.win.pt_mlx, all.win.pt_win);
-	// mlx_destroy_display(all.win.pt_mlx);
-	// free(all.win.pt_mlx);
-	// free(all.win.pt_win);
-
+	the_end(&all);
 	return (0);
 }

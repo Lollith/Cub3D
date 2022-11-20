@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/18 18:31:09 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/20 20:28:21 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 
 # define W_WIDTH 800
 # define W_HEIGHT 500
+# define MINI_SQUARE 20
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -71,7 +72,7 @@ typedef struct s_all
 {
 	t_window	win;
 	t_map		map;
-	t_img		img;
+	t_img		img_minimap;
 	// t_texture	tex;
 }t_all;
 
@@ -83,6 +84,7 @@ int		init_all(char **av, t_all *all);
 /*----------------------------------WINDOW------------------------------------*/
 int		create_window(t_window *data);
 void	ft_key_loop_hook(t_window *data);
+int 	the_end(t_all *all);
 
 /*----------------------------------------------------------------------------*/
 

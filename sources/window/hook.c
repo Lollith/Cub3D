@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/18 13:31:58 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/20 20:24:59 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// ATTENTION ESC a refaire comletement  LEAKS
 int	esc_hook(int keysym, t_window *win)
 {
 	if (keysym == XK_Escape)
 	{
-		mlx_destroy_window(win->pt_mlx, win->pt_win);
-		mlx_destroy_display(win->pt_mlx);
 		free(win->pt_mlx);
-		free(win->pt_win);
 		exit (0);
 	}
 	return (0);

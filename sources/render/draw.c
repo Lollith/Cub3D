@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 18:10:04 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/18 15:07:52agouet           ###   ########.fr       */
+/*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
+/*   Updated: 2022/11/20 20:28:36 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,32 @@ void	img_pix(t_img *img, int x, int y, int color)
 		i -= 8;
 	}
 }
+
 // creer une minimap
 int	wall_px(t_img *img, t_all *all)
 {
+	int	x;
+	int	y;
 	int	i;
-	int j;
-	int wall;
-	wall = 0;
 
-	while (all->map.line[wall])
+	i = 0;
+	while (all->map.line[i])
 	{
-			if ( all->map.line[wall] == '1')
+		if (all->map.line[i] == '1')
+		{
+			y = i / (all->map.x + 1) * MINI_SQUARE;
+			while (y < (i / (all->map.x + 1) + 1) * MINI_SQUARE)
 			{
-				i = wall /5 *20;
-			 	while (i < ((wall / 5) + 1)  * 20 )
-	 		 	{
-					j = wall % 5 * 20;
-					while (j < ((wall % 5 ) + 1) * 20)
-					{
-						img_pix(img, j , i, 0xFF0000);
-						j ++;
-					}
-					i++;
+				x = i % (all->map.x + 1) * MINI_SQUARE;
+				while (x < ((i % (all->map.x + 1)) + 1) * MINI_SQUARE)
+				{
+					img_pix(img, x, y, 0xFF0000);
+					x++;
 				}
+				y++;
 			}
-			wall++;
+		}
+		i++;
 	}
 	return (0);
 }
@@ -62,8 +63,8 @@ int	render(t_all *all)
 {
 	if (all->win.pt_win == NULL)
 		return (1);
-	wall_px(&all->img, all); // crrer une minimap
+	wall_px(&all->img_minimap, all); // creer une minimap
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
-			all->img.mlx_img, 0, 0);
+		all->img_minimap.mlx_img, 0, 0);// affiche l image
 	return (0);
 }

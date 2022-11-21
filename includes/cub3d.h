@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/20 20:28:21 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:37:13 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,43 @@
 #  define FD_MAX 1024
 # endif
 
+# define NONE 0xFF000000
+# define RED 0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
+
 typedef struct s_window{
 	void	*pt_mlx;
 	void	*pt_win;
 }t_window;
 
-typedef struct s_map
+/*
+** p_x & p_y are for player position
+** x - nb of columns, y - nb of lines
+** all spaces on the map will be noted as 8
+*/
+typedef struct s_pos
 {
-	char	*line;
-	int		x;
-	int		y;
-}t_map;
+	double			p_x;
+	double			p_y;
+}					t_pos;
+
+typedef struct		s_map
+{
+	char			*line;
+	int				x;
+	int				y;
+}					t_map;
+
+typedef struct		s_texture
+{
+	int				*n; // p>e unsigned int? attention init a MAJ
+	int				*s; // p>e unsigned int? attention init a MAJ
+	int				*w; // p>e unsigned int? attention init a MAJ
+	int				*e; // p>e unsigned int? attention init a MAJ
+	unsigned int	c;
+	unsigned int	f;
+}					t_texture;
 
 typedef struct s_img
 {
@@ -56,29 +82,26 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
-}t_img;
+}         t_img;
 
-// typedef struct s_texture
-// {
-// 	int	*n;
-// 	int	*s;
-// 	int	*w;
-// 	int	*e;
-// 	int	c;
-// 	int	f;
-// }t_texture;
-
-typedef struct s_all
+typedef struct		s_all
 {
-	t_window	win;
-	t_map		map;
+	t_window		win;
+	t_map			map;
+	t_texture		tex;
+	t_pos			pos;
 	t_img		img_minimap;
-	// t_texture	tex;
-}t_all;
+  int				err;
+}					t_all;
+
 
 /*-----------------------------------ARGS------------------------------------*/
 int		check_args(int ac, char **av);
-int		init_all(char **av, t_all *all);
+int		ft_init(char *av);
+/*----------------------------------------------------------------------------*/
+
+/*-----------------------------------PARSE------------------------------------*/
+int		ft_parse(char *av, t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/

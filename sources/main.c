@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/20 20:31:15 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/17 16:38:31 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int	main(int ac, char **av)
 {
-	t_all	all;
-	// t_map	map; // to be deleted later?
 
-	if (check_args(ac, av) != 0) // to be upgraded: only ac == 2 checked
+	if (check_args(ac, av) != 0)
 		return (1);
+	ft_init(av[1]);
+	//---------------------------below to be deleted later----------------------------
+	t_window	win;
+	t_map		map;
+	t_all	all;
 	
 	//----------------a mettre ds le fichier initialisation----------------------
 	all.img_minimap.addr = NULL;
@@ -29,14 +32,19 @@ int	main(int ac, char **av)
 	
 	all.map.line = NULL;
 	
+
 	//--------------------------------initialisation----------------------------
 	init_square_map(av, &all.map);//to be deleted later?
 	create_window(&all.win);
-	ft_key_loop_hook(&all.win);
+	
 	// get map will be all.map.map = get_map(av) struct map to be deleted in main after that
 	// init_all(av, &all);
 	// all.window = data; //to be deleted because this stage has to be done in all init
 
+	//-------------------------fonctions----------------------------------------
+	ft_key_loop_hook(&win);
+
+	
 	//--------------------------------fonctions---------------------------------
 	// creation img minimap
 	all.img_minimap.mlx_img = mlx_new_image(all.win.pt_mlx, W_WIDTH, W_HEIGHT);
@@ -73,5 +81,6 @@ int	main(int ac, char **av)
 	//-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
 	the_end(&all);
+
 	return (0);
 }

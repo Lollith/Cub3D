@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
 /*   Updated: 2022/11/18 14:37:13 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -24,17 +23,18 @@
 # include <limits.h>
 # include "get_next_line.h"
 
-# define UP 119
-# define DOWN 115
-# define LEFT 97
-# define RIGHT 100
+// # define UP 119
+// # define DOWN 115
+// # define LEFT 97
+// # define RIGHT 100
 //# define ESC 65307
 
-# define W_WIDTH 1800
-# define W_HEIGHT 1200
+# define W_WIDTH 800
+# define W_HEIGHT 500
+# define MINI_SQUARE 20
 
 # ifndef FD_MAX
-# define FD_MAX 1024
+#  define FD_MAX 1024
 # endif
 
 # define NONE 0xFF000000
@@ -75,14 +75,25 @@ typedef struct		s_texture
 	unsigned int	f;
 }					t_texture;
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}         t_img;
+
 typedef struct		s_all
 {
-	t_window		window;
+	t_window		win;
 	t_map			map;
 	t_texture		tex;
 	t_pos			pos;
-	int				err;
+	t_img		img_minimap;
+  int				err;
 }					t_all;
+
 
 /*-----------------------------------ARGS------------------------------------*/
 int		check_args(int ac, char **av);
@@ -96,6 +107,12 @@ int		ft_parse(char *av, t_all *all);
 /*----------------------------------WINDOW------------------------------------*/
 int		create_window(t_window *data);
 void	ft_key_loop_hook(t_window *data);
+int 	the_end(t_all *all);
+
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------RENDER------------------------------------*/
+int		render(t_all *all);
 
 /*----------------------------------------------------------------------------*/
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
+#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/18 14:40:08 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/11/21 11:49:29 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,21 +29,17 @@ GNL_SRCS		:= get_next_line.c\
 
 MAIN_SRCS		:= main.c
 
+SRCS_PATH		:= sources/
 SRCS			:= $(MAIN_SRCS)
 SRCS			+= $(addprefix window/, $(WINDOW_SRCS))
 SRCS			+= $(addprefix render/, $(RENDER_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
 SRCS			+= $(addprefix gnl/,$(GNL_SRCS))
-
-OBJS			:= $(SRCS:.c=.o)
-DEPS			:= $(SRCS:.c=.d)
-
-SRCS_PATH		:= sources/
-OBJS_PATH		:= objects/
 SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS))
-OBJS			:= $(addprefix $(OBJS_PATH), $(OBJS))
-DEPS			:= $(addprefix $(OBJS_PATH), $(DEPS))
 
+OBJS_PATH		:= objects/
+OBJS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.o)
+DEPS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.d)
 
 CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3 #g at place of -g 
 
@@ -71,14 +67,16 @@ $(MLX):
 #(LIBFT):
 #				@make -C libft/
 
-objects_dir:
-				$(MKDIR) objects
-				$(MKDIR) objects/window
-				$(MKDIR) objects/parsing
-				$(MKDIR) objects/gnl
+# objects_dir:
+# 				$(MKDIR) objects
+# 				$(MKDIR) objects/window
+# 				$(MKDIR) objects/parsing
+# 				$(MKDIR) objects/gnl
+# 				$(MKDIR) objects/render
 
 #-p if directory exists do not create new(no warning etc)
 $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
+				$(MKDIR) ${dir $@}
 				$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:	

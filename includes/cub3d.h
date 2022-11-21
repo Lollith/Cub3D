@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/18 16:27:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:25:09 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_all
 	int				err;
 	t_window		win;
 	t_map			map;
-  t_img		img_minimap;
+	t_img			img_minimap;
 	t_texture		tex;
 	t_pos			pos;
 }					t_all;
@@ -107,6 +107,7 @@ int		ft_init(char *av);
 /*-----------------------------------PARSE------------------------------------*/
 int		ft_parse(char *av, t_all *all);
 int		ft_file_read(char *av, t_all *all);
+char	*ft_find_map(char **doc);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/

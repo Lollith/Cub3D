@@ -64,10 +64,13 @@ int	ft_init(char *av)
 	init_tex(&tex);
 	init_minimap(&all);
 	all.win = win;
+	all.doc = NULL;
+	all.err = 0;
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;
-	all.err = 0;
-	ft_parse(av, &all);
+
+	if (ft_parse(av, &all) == 1)
+		return (1);
 	return (0);
 }

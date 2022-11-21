@@ -20,7 +20,7 @@ MLX				= $(S_MLX)/libmlx_Linux.a
 
 WINDOW_SRCS		:= hook.c window.c
 	
-PARSING_SRCS	:= checks.c init.c parse.c utils.c map_square.c
+PARSING_SRCS	:= checks.c init.c parse.c parse_get_doc.c utils.c map_square.c
 
 RENDER_SRCS		:= draw.c
 

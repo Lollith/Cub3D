@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/18 14:37:33 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/21 10:58:22 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ static void	init_tex(t_texture *tex)
 	tex->f = 0;
 }
 
+static void init_minimap(t_all *all)
+{
+	all->img_minimap.addr = NULL;
+	all->img_minimap.bpp = 0;
+	all->img_minimap.endian = 0;
+	all->img_minimap.line_len = 0;
+	all->img_minimap.mlx_img = NULL;
+}
+
 int	ft_init(char *av)
 {
 	t_all		all;
@@ -53,7 +62,8 @@ int	ft_init(char *av)
 	init_map(&map);
 	init_pos(&pos);
 	init_tex(&tex);
-	all.window = win;
+	init_minimap(&all);
+	all.win = win;
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;

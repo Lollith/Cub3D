@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/17 16:38:31 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:16:17 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,13 @@
 
 int	main(int ac, char **av)
 {
-
-	if (check_args(ac, av) != 0)
-		return (1);
-	ft_init(av[1]);
-	//---------------------------below to be deleted later----------------------------
-	t_window	win;
-	t_map		map;
 	t_all	all;
 	
-	//----------------a mettre ds le fichier initialisation----------------------
-	all.img_minimap.addr = NULL;
-	all.img_minimap.bpp = 0;
-	all.img_minimap.endian = 0;
-	all.img_minimap.line_len = 0;
-	all.img_minimap.mlx_img = NULL;
-	
-	all.map.line = NULL;
-	
+	if (check_args(ac, av) != 0)
+		return (1);
 
 	//--------------------------------initialisation----------------------------
+	ft_init(av[1]);
 	init_square_map(av, &all.map);//to be deleted later?
 	create_window(&all.win);
 	
@@ -41,11 +28,10 @@ int	main(int ac, char **av)
 	// init_all(av, &all);
 	// all.window = data; //to be deleted because this stage has to be done in all init
 
-	//-------------------------fonctions----------------------------------------
-	ft_key_loop_hook(&win);
 
-	
 	//--------------------------------fonctions---------------------------------
+	// commandes
+	ft_key_loop_hook(&all.win);
 	// creation img minimap
 	all.img_minimap.mlx_img = mlx_new_image(all.win.pt_mlx, W_WIDTH, W_HEIGHT);
 	all.img_minimap.addr = mlx_get_data_addr(all.img_minimap.mlx_img, 

@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
 #    Updated: 2022/11/18 14:40:08 by esmirnov         ###   ########.fr        #
@@ -22,12 +22,16 @@ WINDOW_SRCS		:= hook.c window.c
 	
 PARSING_SRCS	:= checks.c init.c parse.c utils.c map_square.c
 
-GNL_SRCS		:= get_next_line.c get_next_line_utils.c
+RENDER_SRCS		:= draw.c
+
+GNL_SRCS		:= get_next_line.c\
+					get_next_line_utils.c 
 
 MAIN_SRCS		:= main.c
 
 SRCS			:= $(MAIN_SRCS)
 SRCS			+= $(addprefix window/, $(WINDOW_SRCS))
+SRCS			+= $(addprefix render/, $(RENDER_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
 SRCS			+= $(addprefix gnl/,$(GNL_SRCS))
 
@@ -39,6 +43,7 @@ OBJS_PATH		:= objects/
 SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS))
 OBJS			:= $(addprefix $(OBJS_PATH), $(OBJS))
 DEPS			:= $(addprefix $(OBJS_PATH), $(DEPS))
+
 
 CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3 #g at place of -g 
 
@@ -53,6 +58,7 @@ RM				= rm -rf
 MKDIR			= mkdir -p
 
 #LIBFT			= libft/libft.a
+
 
 all:			$(NAME)
 
@@ -74,8 +80,6 @@ objects_dir:
 #-p if directory exists do not create new(no warning etc)
 $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
 				$(CC) $(CFLAGS) $(INC) -c $< -o $@
-#%.o				:%.c
-#				$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:	
 				make -C $(S_MLX) clean

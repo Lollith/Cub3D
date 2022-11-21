@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   map_square.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:49:00 by esmirnov          #+#    #+#             */
 /*   Updated: 2022/11/18 14:28:26 by esmirnov         ###   ########.fr       */

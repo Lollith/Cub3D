@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/22 16:58:21 by lollith          ###   ########.fr       */
+/*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
+/*   Updated: 2022/11/22 17:06:27 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static void	print_doc(t_all *all)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (all->doc[i] != NULL)
-// 	{
-// 		printf("%s", all->doc[i]);
-// 		i++;
-// 	}
-// }
-
-int	ft_parse(char *av, t_all *all)
+void img_creation(t_all *all)
 {
-	if (ft_file_read(av, all) == 1)
-		return (1);
-	// print_doc(all);
-	return (0);
+	// creation img minimap
+	all->img_minimap.mlx_img = mlx_new_image(all->win.pt_mlx, W_WIDTH, W_HEIGHT);
+	all->img_minimap.addr = mlx_get_data_addr(all->img_minimap.mlx_img, 
+		&all->img_minimap.bpp, &all->img_minimap.line_len, &all->img_minimap.endian);
+	// creation img personnage sur minimap
+
 }
-// ft_map_read_check(data);
-// think free doc

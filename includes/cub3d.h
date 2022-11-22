@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/18 16:27:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:08:16 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ typedef struct s_pos
 {
 	double			p_x;
 	double			p_y;
+	double			old_p_x;
+	double			old_p_y;
+	int				position_i; // position i sur ma *line
 }					t_pos;
 
 typedef struct s_map
@@ -110,14 +113,19 @@ int		ft_file_read(char *av, t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/
-int		create_window(t_window *data);
-void	ft_key_loop_hook(t_window *data);
+int		create_window(t_window *win);
+int		keypress(int keysym, t_all *all);
+void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);
 
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/
+void	read_pos_ini(t_all *all);
 int		render(t_all *all);
+void	move(double new_position, t_img *img,t_all *all);
+void	img_creation(t_all *all);
+
 
 /*----------------------------------------------------------------------------*/
 

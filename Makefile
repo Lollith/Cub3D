@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/21 11:49:29 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/11/22 16:42:02 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ WINDOW_SRCS		:= hook.c window.c
 	
 PARSING_SRCS	:= checks.c init.c parse.c parse_get_doc.c utils.c map_square.c
 
-RENDER_SRCS		:= draw.c
+RENDER_SRCS		:= draw.c move.c img.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/22 17:09:23 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:12:41 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 int	main(int ac, char **av)
 {
 	t_all	all;
-	
+
 	if (check_args(ac, av) != 0)
 		return (1);
-  if (ft_init(av[1]) == 1)
+	if (ft_init(av[1]) == 1)
 		return (1);
-
 //--------------------------------initialisation----------------------------
 	init_square_map(av, &all.map);//to be deleted later?
 	create_window(&all.win);

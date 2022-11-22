@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/22 16:38:18 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:21:39 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_key_loop_hook(t_all *all)
 int	keypress(int keysym, t_all *all)
 {
 	if (keysym == XK_w || keysym == XK_Up)
-		move(all->pos.p_y - 0.1, &all->img_minimap, all);
+		move(all->pos.p_y - 0.1, all);
 	// if (keysym == XK_s || keysym == XK_Down)
 	// 	move_down(all);
 	// if (keysym == XK_a || keysym == XK_Left)

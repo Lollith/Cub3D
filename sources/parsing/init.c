@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/22 16:30:41 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:14:39 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	ft_init(char *av)
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;
-
 	if (ft_parse(av, &all) == 1)
 		return (1);
 	return (0);

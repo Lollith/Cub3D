@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/22 18:08:18 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/23 20:00:27 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ void	draw_wall(int *pt_i, t_img *img, t_all *all, int color)
 	int	i;
 
 	i = *pt_i;
-	y = i / (all->map.x + 1) * MINI_CUB;
+	y = i / (all->map.x + 1) * MINI_CUB ;
 	while (y < (i / (all->map.x + 1) + 1) * MINI_CUB)
 	{
-		x = i % (all->map.x + 1) * MINI_CUB;
+		x = (i % (all->map.x + 1) * MINI_CUB) ;
 		while (x < (i % (all->map.x + 1) + 1) * MINI_CUB)
 		{
-			img_pix(img, x, y, color);
+			img_pix(img, x , y + W_HEIGHT - all->map.y * MINI_CUB, color);
 			x++;
 		}
 		y++;
 	}
-}
+}// y +... // met la minimap en bas
 
 // size of heroe on minimap = 0.2
 //pos.p_x et y se mette a jour a linitialisation puis en fct des mouvement
@@ -74,7 +74,7 @@ void	draw_heroe(t_img *img, t_all *all)
 		x = (int)all->pos.p_x * MINI_CUB;
 		while (x < ((all->pos.index % (all->map.x + 1) + 0.2) * MINI_CUB))
 		{
-			img_pix(img, x, y, 0xFFFF00);
+			img_pix(img, x, y + W_HEIGHT - all->map.y * MINI_CUB, 0xFFFF00);
 			x++;
 		}
 		y++;
@@ -95,7 +95,7 @@ void	clean_px(t_img *img, t_all *all)
 			w = (int)all->pos.old_p_x * MINI_CUB;
 			while (w < ((all->pos.index % (all->map.x + 1) + 0.2) * MINI_CUB))
 			{
-				img_pix(img, w, z, 0x000000);
+				img_pix(img, w, z + W_HEIGHT - all->map.y * MINI_CUB, 0x000000);
 				w++;
 			}
 			z++;

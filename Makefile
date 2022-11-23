@@ -6,7 +6,7 @@
 #    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/22 16:42:02 by lollith          ###   ########.fr        #
+#    Updated: 2022/11/23 16:30:51 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ OBJS_PATH		:= objects/
 OBJS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.o)
 DEPS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.d)
 
-CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3 #g at place of -g 
+CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3  #g at place of -g 
 
 LDFLAGS			= -lmlx_Linux -lXext -lX11 -lm -lz
 
@@ -57,6 +57,9 @@ MKDIR			= mkdir -p
 
 
 all:			$(NAME)
+
+debug:			CFLAGS := -Werror -Wno-unused-variable 
+debug:			$(NAME) # make debug
 
 $(NAME):		$(OBJS) $(MLX)# $(LIBFT)#
 				$(CC) $(CFLAGS) -o $(NAME) $(MLX) $(OBJS) $(LIB) $(LDFLAGS)

@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/22 18:07:36 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:55:36 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 # include "get_next_line.h"
 
 // # define UP 119
@@ -31,7 +32,7 @@
 
 # define W_WIDTH 800
 # define W_HEIGHT 500
-# define MINI_CUB 20
+# define MINI_CUB 7
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -121,6 +122,7 @@ int 	the_end(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/
+void	img_pix(t_img *img, int x, int y, int color);
 void	read_pos_ini(t_all *all);
 int		render(t_all *all);
 void	move(double new_position, t_all *all);

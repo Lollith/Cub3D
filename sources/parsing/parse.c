@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/23 15:51:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:48:44 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_parse(char *av, t_all *all)
 	if (ft_file_read(av, all) == 1)
 		return (1);
 	print_doc(all);//to be deleted
-	if (ft_texture(&all->tex, all->doc) == 1)
+	if (ft_texture(&all->tex, all->doc, all) == 1)
 		return (1);
-	all->map.line = ft_map(all->doc);//a voir pour return (1) ou non
+	// all->map.line = ft_map(all->doc);//a voir pour return (1) ou non
 	return (0);
 }
 

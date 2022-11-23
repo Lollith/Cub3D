@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:26:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/21 17:08:29 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:27:35 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	ft_fill_doc(int fd, int nb, t_all *all)
 		all->doc[i] = line;
 		i++;
 	}
-
-	all->doc[i] = NULL;
+	all->doc[i] = '\0';
 }
+//all->doc[i][0] = '\0'
 
 static int	ft_file_cpy(char *av, int nb, t_all *all)
 {
@@ -103,3 +103,4 @@ int	ft_file_read(char *av, t_all *all)
 		return (1);
 	return (0);
 }
+

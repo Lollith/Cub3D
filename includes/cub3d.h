@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/21 17:25:09 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:23:25 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@
 # define BLUE 0x000000FF
 
 typedef struct s_window{
-	void	*pt_mlx;
-	void	*pt_win;
-}t_window;
+	void			*pt_mlx;
+	void			*pt_win;
+}					t_window;
 
 /*
 ** p_x & p_y are for player position
@@ -80,17 +80,17 @@ typedef struct s_texture
 
 typedef struct s_img
 {
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}         t_img;
+	void			*mlx_img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+}					t_img;
 
 typedef struct s_all
 {
 	char			**doc;
-	int				err;
+	int				flag;
 	t_window		win;
 	t_map			map;
 	t_img			img_minimap;
@@ -107,19 +107,21 @@ int		ft_init(char *av);
 /*-----------------------------------PARSE------------------------------------*/
 int		ft_parse(char *av, t_all *all);
 int		ft_file_read(char *av, t_all *all);
+int		ft_texture(t_texture *tex, char **doc, t_all *all);
 char	*ft_find_map(char **doc);
+int		ft_skip(char *line, int *i);
+char 	*ft_map(char **doc);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/
 int		create_window(t_window *data);
 void	ft_key_loop_hook(t_window *data);
 int 	the_end(t_all *all);
-
+int		ft_find_map_begin(char **doc);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/
 int		render(t_all *all);
-
 /*----------------------------------------------------------------------------*/
 
 /*------------------------------------MAP-------------------------------------*/

@@ -6,13 +6,11 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/21 17:21:15 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:51:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 static void	print_doc(t_all *all)
 {
@@ -31,7 +29,9 @@ int	ft_parse(char *av, t_all *all)
 	if (ft_file_read(av, all) == 1)
 		return (1);
 	print_doc(all);//to be deleted
-	all->map.line = ft_find_map(all->doc);
+	if (ft_texture(&all->tex, all->doc) == 1)
+		return (1);
+	all->map.line = ft_map(all->doc);//a voir pour return (1) ou non
 	return (0);
 }
 

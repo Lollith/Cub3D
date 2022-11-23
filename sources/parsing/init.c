@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/21 10:58:22 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/23 15:44:40 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_init(char *av)
 	init_minimap(&all);
 	all.win = win;
 	all.doc = NULL;
-	all.err = 0;
+	all.flag = 0;
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;

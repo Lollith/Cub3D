@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_get_map.c                                    :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 17:21:49 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/23 18:24:01 by esmirnov         ###   ########.fr       */
+/*   Created: 2022/11/23 15:48:40 by esmirnov          #+#    #+#             */
+/*   Updated: 2022/11/23 15:55:20 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int	ft_find_map_begin(char **doc)
-// {
-// 	int	i;
-// 	int	j;
+char	*ft_strdup(char *src)
+{
+	int		index;
+	char	*dest;
 
-// 	i = 0;
-// 	while (doc[i])
-// 	{
-// 		j = 0;
-// 		ft_skip(doc[i], &j);
-// 		if (doc[i][j] == '1' || doc[i][j] == '0' || doc[i][j] == 'N'
-// 			|| doc[i][j] == 'S' || doc[i][j] == 'E' || doc[i][j] == 'W')
-// 			return (i);
-// 	}
-// 	return (0);
-// }
-
-// char *ft_map(char **doc)
-// {
-// 	int	n;
-
-// 	n = ft_find_map_begin(doc);
-// 	return NULL;
-// }
+	index = 0;
+	dest = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (dest == NULL)
+	{
+		print_error_fd("ft_strdup: malloc failed", NULL, 2);
+		return (NULL);
+	}
+	while (src[index])
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	dest[index] = '\0';
+	return (dest);
+}

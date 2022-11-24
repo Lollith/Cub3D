@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/24 14:08:47 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:39:08 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void draw_ray(t_img *img, t_all *all)
 	y = all->pos.p_y * MINI_CUB;
 	x = all->pos.p_x * MINI_CUB;
 
-	while ( y < (all->pos.p_y + all->ray.rayDirY * 5) * MINI_CUB )//&& x < (all->pos.p_x + all->ray.rayDirX)*MINI_CUB) 
+	while ( y < (all->pos.p_y + all->ray.rayDirY * 3 ) * MINI_CUB )// x < (all->pos.p_x + all->ray.rayDirX)  )
 	{
-		img_pix(img, x, y + all->map.mini_pos, 0xFFFF00);
+		img_pix(img, x, y + all->map.mini_pos + MINI_P, 0xFFFF00);
 		x++;
 		y++;
 	}

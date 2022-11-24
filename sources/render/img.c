@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/23 20:00:27 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/24 14:08:47 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,48 @@ void	draw_wall(int *pt_i, t_img *img, t_all *all, int color)
 		x = (i % (all->map.x + 1) * MINI_CUB) ;
 		while (x < (i % (all->map.x + 1) + 1) * MINI_CUB)
 		{
-			img_pix(img, x , y + W_HEIGHT - all->map.y * MINI_CUB, color);
+			img_pix(img, x , y + all->map.mini_pos, color);
 			x++;
 		}
 		y++;
 	}
 }// y +... // met la minimap en bas
 
-// size of heroe on minimap = 0.2
+// size of heroe on minimap = MINI_P
 //pos.p_x et y se mette a jour a linitialisation puis en fct des mouvement
 // la boucle de render permet de faire avancer le personnage
 void	draw_heroe(t_img *img, t_all *all)
 {
-	int	y;
-	int	x;
+	double	y;
+	double	x;
 
 	y = all->pos.p_y * MINI_CUB;
-	while ((y < (all->pos.index / (all->map.x + 1) + 0.2) * MINI_CUB))
+	while ((y < (all->pos.index / (all->map.x + 1) + MINI_P) * MINI_CUB))
 	{
-		x = (int)all->pos.p_x * MINI_CUB;
-		while (x < ((all->pos.index % (all->map.x + 1) + 0.2) * MINI_CUB))
+		x = all->pos.p_x * MINI_CUB;
+		while (x < ((all->pos.index % (all->map.x + 1) + MINI_P) * MINI_CUB))
 		{
-			img_pix(img, x, y + W_HEIGHT - all->map.y * MINI_CUB, 0xFFFF00);
+			img_pix(img, x, y + all->map.mini_pos, 0xFFFF00);
 			x++;
 		}
 		y++;
 	}
+}
+
+void draw_ray(t_img *img, t_all *all)
+{
+	double	x;
+	double	y;
+	y = all->pos.p_y * MINI_CUB;
+	x = all->pos.p_x * MINI_CUB;
+
+	while ( y < (all->pos.p_y + all->ray.rayDirY * 5) * MINI_CUB )//&& x < (all->pos.p_x + all->ray.rayDirX)*MINI_CUB) 
+	{
+		img_pix(img, x, y + all->map.mini_pos, 0xFFFF00);
+		x++;
+		y++;
+	}
+
 }
 
 //nettoie les pixels laisser par le heroe=> en noir
@@ -89,13 +105,13 @@ void	clean_px(t_img *img, t_all *all)
 
 	if ((int)all->pos.old_p_x != 0 && (int) all->pos.old_p_y != 0)
 	{
-		z = all->pos.old_p_y * MINI_CUB;
-		while ((z < (all->pos.index / (all->map.x + 1) + 0.2) * MINI_CUB))
+		z = all->pos.old_p_y * MINI_CUB-MINI_P;
+		while ((z < (all->pos.index / (all->map.x + 1) + MINI_P) * MINI_CUB))
 		{
-			w = (int)all->pos.old_p_x * MINI_CUB;
-			while (w < ((all->pos.index % (all->map.x + 1) + 0.2) * MINI_CUB))
+			w = (int)all->pos.old_p_x * MINI_CUB + MINI_P;
+			while (w < ((all->pos.index % (all->map.x + 1) + MINI_P) * MINI_CUB))
 			{
-				img_pix(img, w, z + W_HEIGHT - all->map.y * MINI_CUB, 0x000000);
+				img_pix(img, w, z + all->map.mini_pos, 0x000000);
 				w++;
 			}
 			z++;

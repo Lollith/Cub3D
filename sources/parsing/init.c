@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/22 17:14:39 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/24 13:16:51 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ static void init_minimap(t_all *all)
 	all->img_minimap.mlx_img = NULL;
 }
 
+static void init_ray(t_all *all)
+{
+	all->ray.rayDirX = 0;
+	all->ray.rayDirY = 0;
+	all->ray.rayDirX = 0;
+	all->ray.rayDirY = 0;
+
+}
 int	ft_init(char *av)
 {
 	t_all		all;
@@ -65,6 +73,7 @@ int	ft_init(char *av)
 	init_pos(&pos);
 	init_tex(&tex);
 	init_minimap(&all);
+	init_ray(&all);
 	all.win = win;
 	all.doc = NULL;
 	all.err = 0;

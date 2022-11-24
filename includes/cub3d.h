@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/23 19:55:36 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/24 13:16:07 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@
 
 # define W_WIDTH 800
 # define W_HEIGHT 500
-# define MINI_CUB 7
+
+# define MINI_CUB 10
+# define MINI_P 0.5
+# define MINI_MOV 0.2 // deplacement sur minicarte
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -70,6 +73,7 @@ typedef struct s_map
 	char			*line;
 	int				x;
 	int				y;
+	int				mini_pos;
 }					t_map;
 
 typedef struct s_texture
@@ -91,6 +95,13 @@ typedef struct s_img
 	int		endian;
 }         t_img;
 
+typedef struct s_ray
+{
+	double	rayDirX;//a supprimer
+	double	rayDirY;// a suprimer
+	double sideDistX;
+	double sideDistY;
+}		t_ray;
 typedef struct s_all
 {
 	char			**doc;
@@ -100,6 +111,7 @@ typedef struct s_all
   t_img		img_minimap;
 	t_texture		tex;
 	t_pos			pos;
+	t_ray			ray;
 }					t_all;
 
 
@@ -129,7 +141,10 @@ void	move(double new_position, t_all *all);
 void	img_creation(t_all *all);
 void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
+void	draw_ray(t_img *img, t_all *all);
 void	clean_px(t_img *img, t_all *all);
+void	raycasting(t_all *all);
+
 /*----------------------------------------------------------------------------*/
 
 /*------------------------------------MAP-------------------------------------*/

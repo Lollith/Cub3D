@@ -6,7 +6,7 @@
 #    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/23 16:30:51 by lollith          ###   ########.fr        #
+#    Updated: 2022/11/24 11:45:56 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ WINDOW_SRCS		:= hook.c window.c
 	
 PARSING_SRCS	:= checks.c init.c parse.c parse_get_doc.c utils.c map_square.c
 
-RENDER_SRCS		:= draw.c move.c img.c
+RENDER_SRCS		:= draw.c move.c img.c raycasting.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

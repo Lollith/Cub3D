@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/24 19:32:19 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/24 20:26:35 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int		ft_init(char *av);
 int		ft_parse(char *av, t_all *all);
 int		ft_get_info(char *av, t_all *all);
 int		ft_skip(char *line, int *i);
+int		ft_skip_char(char *line, int *i, char c);
 int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
 int		ft_get_img_path(char *line, char *path, int *flag);
 int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);

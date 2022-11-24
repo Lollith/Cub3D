@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:21:49 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/23 20:53:18 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:26:10 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_skip(char *line, int *i)
 {
 	while (line[*i] == ' ' || line[*i] == '\t' || line[*i] == '\n'
-		|| line[*i] == '\v' || line[*i] == '\f' || line[*i] == '\r')
+		|| line[*i] == '\v' || line[*i] == '\f' || line[*i] == '\r') // a confirmer
 		(*i)++;
 	return (0);
 }

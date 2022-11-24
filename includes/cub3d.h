@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/23 21:11:35 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:32:19 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ typedef struct s_map
 
 typedef struct s_texture
 {
-	int				*n; // p>e unsigned int? attention init a MAJ
-	int				*s; // p>e unsigned int? attention init a MAJ
-	int				*w; // p>e unsigned int? attention init a MAJ
-	int				*e; // p>e unsigned int? attention init a MAJ
+	char			*n; // p>e unsigned int? attention init a MAJ
+	char			*s; // p>e unsigned int? attention init a MAJ
+	char			*w; // p>e unsigned int? attention init a MAJ
+	char			*e; // p>e unsigned int? attention init a MAJ
 	unsigned int	c;
 	unsigned int	f;
 }					t_texture;
@@ -98,7 +98,6 @@ typedef struct s_all
 	t_pos			pos;
 }					t_all;
 
-
 /*-----------------------------------ARGS------------------------------------*/
 int		check_args(int ac, char **av);
 int		ft_init(char *av);
@@ -106,13 +105,18 @@ int		ft_init(char *av);
 
 /*-----------------------------------PARSE------------------------------------*/
 int		ft_parse(char *av, t_all *all);
-int		ft_file_read(char *av, t_all *all);
-int		ft_texture(t_texture *tex, char **doc, t_all *all);
-char	*ft_find_map(char **doc);
+int		ft_get_info(char *av, t_all *all);
 int		ft_skip(char *line, int *i);
-char	*ft_map(char **doc);
-int		ft_put_color(unsigned int *color, char *line, int *flag);
-int		ft_put_tex(t_texture *tex, char *line, char *path, int *flag);
+int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
+int		ft_get_img_path(char *line, char *path, int *flag);
+int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);
+// int		ft_file_read(char *av, t_all *all);
+// int		ft_texture(t_texture *tex, char **doc, t_all *all);
+// char	*ft_find_map(char **doc);
+// int		ft_skip(char *line, int *i);
+// char	*ft_map(char **doc);
+// int		ft_put_color(unsigned int *color, char *line, int *flag);
+// int		ft_put_tex(t_texture *tex, char *line, char *path, int *flag);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/
@@ -139,6 +143,7 @@ int		print_error_fd(char *s1, char *s2, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 // size_t	ft_strlen(const char *s);//already in gnl folder
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+char	*ft_strdup(char *src);
 /*----------------------------------------------------------------------------*/
 
 //to be deleted just to start work with raycasting

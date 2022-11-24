@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:30:34 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/23 21:12:47 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/24 16:44:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,41 +58,41 @@ int	ft_put_tex(t_texture *tex, char *line, int *path, int *flag)
 	return (0);
 }
 
-int	ft_texture_images(t_texture *tex, char **doc, t_all *all)
-{
-	int	i;
-	int	j;
+// int	ft_texture_images(t_texture *tex, char **doc, t_all *all)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	while (doc[i])
-	{
-		j = 0;
-		ft_skip(doc[i], &j);
-		if (doc[i][j] == 'N' && doc[i][j + 1] == 'O')
-			ft_put_tex(tex, &doc[i][j + 2], tex->n, &all->flag);
-		else if (doc[i][j] == 'S' && doc[i][j + 1] == 'O')
-			ft_put_tex(tex, &doc[i][j + 2], tex->s, &all->flag);
-		else if (doc[i][j] == 'W' && doc[i][j + 1] == 'E')
-			ft_put_tex(tex, &doc[i][j + 2], tex->w, &all->flag);
-		else if (doc[i][j] == 'E' && doc[i][j + 1] == 'A')
-			ft_put_tex(tex, &doc[i][j + 2], tex->e, &all->flag);
-		else if (doc[i][j] == '1' && all->flag < 6)
-		{
-			print_error_fd("ft_texture_images: map before elements", NULL, 2);
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (doc[i])
+// 	{
+// 		j = 0;
+// 		ft_skip(doc[i], &j);
+// 		if (doc[i][j] == 'N' && doc[i][j + 1] == 'O')
+// 			ft_put_tex(tex, &doc[i][j + 2], tex->n, &all->flag);
+// 		else if (doc[i][j] == 'S' && doc[i][j + 1] == 'O')
+// 			ft_put_tex(tex, &doc[i][j + 2], tex->s, &all->flag);
+// 		else if (doc[i][j] == 'W' && doc[i][j + 1] == 'E')
+// 			ft_put_tex(tex, &doc[i][j + 2], tex->w, &all->flag);
+// 		else if (doc[i][j] == 'E' && doc[i][j + 1] == 'A')
+// 			ft_put_tex(tex, &doc[i][j + 2], tex->e, &all->flag);
+// 		else if (doc[i][j] == '1' && all->flag < 6)
+// 		{
+// 			print_error_fd("ft_texture_images: map before elements", NULL, 2);
+// 			return (1);
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
-int	ft_texture(t_texture *tex, char **doc, t_all *all)
-{
-	if (ft_texture_images(tex, doc, all) == 1)
-		return (1);
-	// if (check_texture_image == 1)
-	// 	return (1);
-	if (ft_texture_color(tex, doc, all) == 1)
-		return (1);
-	return (0);
-}
+// int	ft_texture(t_texture *tex, char **doc, t_all *all)
+// {
+// 	if (ft_texture_images(tex, doc, all) == 1)
+// 		return (1);
+// 	// if (check_texture_image == 1)
+// 	// 	return (1);
+// 	if (ft_texture_color(tex, doc, all) == 1)
+// 		return (1);
+// 	return (0);
+// }

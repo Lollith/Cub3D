@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 14:49:48 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:34:19 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_char_int(char *line,int *i)
 	return (ret);
 }
 
-int	ft_get_color(unsigned int *color, char *line, int *flag)
+static int	ft_get_color(unsigned int *color, char *line, int *flag)
 {
 	int				r;
 	int				g;
@@ -67,4 +67,17 @@ int	ft_get_color(unsigned int *color, char *line, int *flag)
 	*color = ft_create_rgb(r, g, b);
 	(*flag)++;
 	return (0);
+}
+
+int	ft_get_tex_color(t_texture *tex, char *line, t_all *all)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	if (line[i] == 'F')
+		ret = ft_get_color(&tex->f, &line[i + 1], &all->flag);
+	else
+		ret = ft_get_color(&tex->c, &line[i + 1], &all->flag);
+	return (ret);
 }

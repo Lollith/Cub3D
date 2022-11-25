@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:17:16 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 15:27:50 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:08:29 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,9 @@ static int	check_file_name(char *name, char *base)
 	i = ft_strlen(name) - 1;
 	j = ft_strlen(base) - 1;
 	if ( i <= j || name[i - j - 1] == '/')
-	{
-		printf("i %d, j %d\n", i, j);
 		return (1);
-	}
 	while (j >= 0)
 	{
-		printf("i %d, j %d\n", i, j);
 		if (name[i] != base[j])
 			return (1);
 		i--;

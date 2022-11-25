@@ -6,7 +6,7 @@
 #    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/24 20:19:41 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/11/25 17:50:28 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,10 @@ MKDIR			= mkdir -p
 # ---------------------------------------------------------------------------- #
 WINDOW_SRCS		:= hook.c window.c
 	
-PARSING_SRCS	:= checks.c init.c parse.c parse_get_color.c utils_1.c utils_2.c\
-					map_square.c parse_tools.c\
-					parse_get_info.c
+PARSING_SRCS	:= checks.c init.c parse.c parse_get_img.c parse_get_color.c\
+					parse_get_map.c parse_tools.c utils_1.c utils_2.c free.c\
+					map_square.c\
+					
 
 RENDER_SRCS		:= draw.c
 

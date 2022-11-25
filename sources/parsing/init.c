@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/23 15:44:40 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:56:11 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_pos(t_pos *pos)
 {
 	pos->p_x = 0;
 	pos->p_y = 0;
+	pos->p = 'P';
 }
 
 static void	init_win(t_window *win)
@@ -69,8 +70,11 @@ int	ft_init(char *av)
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;
-
 	if (ft_parse(av, &all) == 1)
+	{
+		free_all(&all);
 		return (1);
+	}
+	free_all(&all);
 	return (0);
 }

@@ -6,16 +6,73 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/24 18:47:32 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:05:11 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static int	ft_get_tex_map(char *line, t_all *all)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	ret = 0;
+	ft_skip(&line[i], &i);
+	if (all->flag < 6)
+	{
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
+			|| line[i] == 'E')
+			ret = ft_get_tex_img(&all->tex, &line[i], all);
+		else if (line[i] == 'F' || line[i] == 'C')
+			ret = ft_get_tex_color(&all->tex, &line[i], all);
+	}
+	else if (line[i] == '\0')
+		return (0);
+	else if (line[i] == '1' && all->flag >= 6)
+		ret = ft_get_map(line, &all->map);
+	else
+	{
+		print_error_fd("ft_get_tex_map: invalide file", NULL, 2);
+		return (1);
+	}
+	return (ret);
+}
+
+int	ft_get_info(char *av, t_all *all)
+{
+	char	*line;
+	int		fd;
+
+	fd = open(av, O_RDONLY);
+	if (fd < 0 || fd == 2 || fd > FD_MAX)
+	{
+		print_error_fd("ft_get_tex_map: invalid fd", NULL, 2);
+		return (1);
+	}
+	line = NULL;
+	while (TRUE)
+	{
+		line = get_next_line(fd);
+		if (line == NULL) // a confirmer avec Adeline EOF => NULL et erreur NULL pe check structure vide ou pas et en fonction reagit EOF ou pb de lecture
+			break ;
+		free (line);
+		if (ft_get_tex_map(line, all) == 1)
+		{
+			close (fd);
+			return (1);
+		}
+	}
+	close (fd);
+	return (0);
+}
+
 int	ft_parse(char *av, t_all *all)
 {
 	if (ft_get_info(av, all) == 1)
 		return (1);
+	// printf("path.n%s\n%s\n",all->tex.n, all->map.line);//to be deleted
 	return (0);
 }
 

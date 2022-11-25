@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_tools.c                                      :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 17:21:49 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 17:36:18 by esmirnov         ###   ########.fr       */
+/*   Created: 2022/11/25 17:50:33 by esmirnov          #+#    #+#             */
+/*   Updated: 2022/11/25 17:55:11 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_skip(char *line, int *i)
+int	free_all(t_all *all)
 {
-	while (line[*i] == ' ' || line[*i] == '\n') //|| line[*i] == '\t' || line[*i] == '\v' || line[*i] == '\f' || line[*i] == '\r') // a confirmer
-		(*i)++;
-	return (0);
-}
-
-int	ft_skip_char(char *line, int *i, char c)
-{
-	int	j;
-
-	j = 0;
-	while (line[*i] != c)
+	if (all != NULL)
 	{
-		j++;
-		(*i)++;
+		if (all->tex.n != NULL)
+			free(all->tex.n);
+		if (all->tex.s != NULL)
+			free(all->tex.s);
+		if (all->tex.w != NULL)
+			free(all->tex.w);
+		if (all->tex.e != NULL)
+			free(all->tex.e);
+		if (all->map.line != NULL)
+			free(all->map.line);
 	}
-	return (j);
+	return (0);
 }

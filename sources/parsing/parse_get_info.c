@@ -6,13 +6,11 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/24 20:19:13 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 09:53:41 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 int	ft_get_tex_color(t_texture *tex, char *line, t_all *all)
 {
@@ -84,7 +82,7 @@ static int	ft_get_tex_map(char *line, t_all *all)
 		else if (line[i] == 'F' || line[i] == 'C')
 			ret = ft_get_tex_color(&all->tex, &line[i], all);
 	}
-	else if (line[i] == '\n' && all->flag < 6)
+	else if (line[i] == '\n' && all->flag < 6)//pe rien avec skip fin NULL
 		return (0);
 	// else if (line[i] == '1' && all->flag >= 6)
 	// 	ret = ft_get_map();

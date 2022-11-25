@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 11:59:29 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:13:44 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ static int	ft_char_int(char *line,int *i)
 	
 	j = 0;
 	ret = 0;
-	while(line[j] != ',' && j < 3)
+	while(line[j] != '\n' && line[j] != ',' && j < 3)
 	{
+		printf("line[%d] = %c, len is %lu\n", j, line[j], strlen(&line[j]));//to be deleted
 		if (line [j] < '0' || line[j] > '9')
 		{
 			print_error_fd("ft_char_int: invalide color number", NULL, 2);
@@ -60,23 +61,23 @@ static int	ft_char_int(char *line,int *i)
 		j++;
 		(*i)++;
 	}
-	if (line[j] != ',')
+	printf("ret = %d\n", ret);//to be deleted
+	if (line[j] != ',' && line[j] != '\n')
 	{
 		print_error_fd("ft_char_int: invalide color description", NULL, 2);
 		return (-1);
 	}
 	else
 		(*i)++;
-	return (0);
+	return (ret);
 }
 
-static unsigned int	ft_get_rgb(unsigned int *color, char *line, int *flag)
+int	ft_get_color(unsigned int *color, char *line, int *flag)
 {
 	int				r;
 	int				g;
 	int				b;
 	int				i;
-	unsigned int	ret;
 
 	i = 0;
 	ft_skip(line, &i);
@@ -85,16 +86,16 @@ static unsigned int	ft_get_rgb(unsigned int *color, char *line, int *flag)
 		print_error_fd("ft_put_color: invalide color description", NULL, 2);
 		return (1);
 	}
+	printf("R\n");
 	r = ft_char_int(&line[i], &i);
+	printf("G\n");
 	g = ft_char_int(&line[i], &i);
+	printf("B\n");
 	b = ft_char_int(&line[i], &i);
 	if (r == -1 || g == -1 || b == -1)
 		return (1);
-	ret = ft_create_rgb(r, g, b);
-	return (ret);
-}
-
-int	ft_get_color(int *color, char *line, int *flag)
-{
-	
+	*color = ft_create_rgb(r, g, b);
+	(*flag)++;
+	printf("ret %u\n", *color);
+	return (0);
 }

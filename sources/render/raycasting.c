@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/25 17:48:57 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:17:46 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,39 +130,39 @@ void raycasting(t_all *all)
 	  all->ray.sideDistY = sideDistY;
     all->ray.step_x = stepX;
     all->ray.step_y = stepY;
-// //Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
-//       if(side == 0) perpWallDist = (sideDistX - deltaDistX);
-//       else          perpWallDist = (sideDistY - deltaDistY);
+//Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
+      if(side == 0) perpWallDist = (sideDistX - deltaDistX);
+      else          perpWallDist = (sideDistY - deltaDistY);
 
-// 	int lineHeight;
-// 	int h = 500; // taille ecran
-// 	  //Calculate height of line to draw on screen
-//       	lineHeight = (int)(h / perpWallDist);
+	int lineHeight;
+	int h = 500; // taille ecran
+	  //Calculate height of line to draw on screen
+      	lineHeight = (int)(h / perpWallDist);
 
-//       //calculate lowest and highest pixel to fill in current stripe
-//       int draw_start = -lineHeight / 2 + h / 2;
-//       if(draw_start < 0)draw_start = 0;
-//       int draw_end = lineHeight / 2 + h/ 2;
-//       if(draw_end >= h)draw_end = h - 1;
+      //calculate lowest and highest pixel to fill in current stripe
+      int draw_start = -lineHeight / 2 + h / 2;
+      if(draw_start < 0)draw_start = 0;
+      int draw_end = lineHeight / 2 + h/ 2;
+      if(draw_end >= h)draw_end = h - 1;
 	
-// 	//  printf("%d\n", x);
+	//  printf("%d\n", x);
 
-// 	  //choose wall color
-//       int color = 0xFF0000;
-//     //   switch(all.map.line[index])
-//     //   {
-//     //     // case 1:  color = 0X00FF00;  break; //red
-//     //     // case 2:  color = 0xFFFF00;  break; //green
-//     //     // case 3:  color = 0xFF00FF;   break; //blue
-//     //     // case 4:  color = 0xFFFFFF;  break; //white
-//     //     default: color = 0xFF0000; break; //yellow
-//     //   }
+	  //choose wall color
+      int color = 0xFF0000;
+    //   switch(all.map.line[index])
+    //   {
+    //     // case 1:  color = 0X00FF00;  break; //red
+    //     // case 2:  color = 0xFFFF00;  break; //green
+    //     // case 3:  color = 0xFF00FF;   break; //blue
+    //     // case 4:  color = 0xFFFFFF;  break; //white
+    //     default: color = 0xFF0000; break; //yellow
+    //   }
 
-//       //give x and y sides different brightness
-//       if (side == 1) {color = color / 2;}
+      //give x and y sides different brightness
+      if (side == 1) {color = color / 2;}
 
-//       //draw the pixels of the stripe as a vertical line
-//       verLine(&all->img_minimap, x, draw_start, draw_end, color);
+      //draw the pixels of the stripe as a vertical line
+      verLine(&all->img_minimap, x, draw_start, draw_end, color);
 		x++;
 	}
 	}

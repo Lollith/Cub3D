@@ -82,27 +82,38 @@ void draw_heroe(t_img *img, t_all *all)
 }
 
 // ne calcul pas la bonne taile du rayon=> l arretr moi meme au mur
+// affichage dun rayon ds la bonne direction
+// affichage de multi rayon ds la meme dir , a faire lautre moitiee
 void draw_ray(t_img *img, t_all *all)
 {
 	double	x;
 	double	y;
-	// if (all->ray.sideDistX > all->map.x * MINI_CUB)
-	// 	all->ray.sideDistX = all->map.x +5 ; // fire plus joli
-	// if (all->ray.sideDistY > all->map.x * MINI_CUB)
-	// 	all->ray.sideDistY = all->map.y + 5; // normale;emt pas besoin doit calculer la bonne taille du mur , pb si ray dir = 0 = prend la valeur infinie
+	double	l;
+	l = 0;
+	
+	while (l < (all->map.x - all->pos.p_x)* MINI_CUB ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
+	{
+	if (all->ray.sideDistX > all->map.x * MINI_CUB)
+		all->ray.sideDistX = all->map.x +5 ; // fire plus joli
+	if (all->ray.sideDistY > all->map.x * MINI_CUB)
+		all->ray.sideDistY = all->map.y + 5; // normale;emt pas besoin doit calculer la bonne taille du mur , pb si ray dir = 0 = prend la valeur infinie
 	y = all->ray.step_y *(all->pos.p_y + MINI_P/2)* MINI_CUB;
 	x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 )* MINI_CUB;
-	 img_pix(img, all->ray.step_x* (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
+	img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
 	while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB+ all->ray.sideDistX))
 	{
-		// img_pix(img, x, y, 0xFFFFFF00);
-		
-		img_pix(img,  all->ray.step_x * (x + MINI_P), all->ray.step_y * (y + MINI_P) + all->map.mini_pos, 0xFFFFFF00);
+		// img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P)  + all->map.mini_pos, 0xFFFFFF00);
+		img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P+l)  + all->map.mini_pos, 0xFFFF00FF);
 		x++;
 		y++;
 	}
-
+	l++;
 }
+}
+
+
+
+
 
 // draw avec ray dir ++ arreter le rayon  a la main// marche pas 
 // void draw_ray(t_img *img, t_all *all)

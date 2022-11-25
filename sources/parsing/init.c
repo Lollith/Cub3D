@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/24 13:16:51 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/25 13:13:26 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ static void init_minimap(t_all *all)
 
 static void init_ray(t_all *all)
 {
-	all->ray.rayDirX = 0;
-	all->ray.rayDirY = 0;
-	all->ray.rayDirX = 0;
-	all->ray.rayDirY = 0;
+	all->ray.r_dir_x = 0;
+	all->ray.r_dir_y = 0;
 
 }
 int	ft_init(char *av)

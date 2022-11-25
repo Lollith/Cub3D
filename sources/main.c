@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/24 11:50:22 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/25 14:12:11 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int main(int ac, char **av)
 		return (1);
 	//--------------------------------initialisation----------------------------
 	init_square_map(av, &all.map); // to be deleted later?
-	create_window(&all.win);
+	if(create_window(&all.win) == 1) // a essayer sur WSL segfault?
+		return 0;
 
 	// get map will be all.map.map = get_map(av) struct map to be deleted in main after that
 	// init_all(av, &all);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/24 13:16:07 by lollith          ###   ########.fr       */
+/*   Updated: 2022/11/25 16:13:42 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,12 @@ typedef struct s_img
 
 typedef struct s_ray
 {
-	double	rayDirX;//a supprimer
-	double	rayDirY;// a suprimer
-	double sideDistX;
-	double sideDistY;
+	double	r_dir_x;
+	double	r_dir_y;
+	double	sideDistX;
+	double	sideDistY;
+	int		step_x;
+	int		step_y;
 }		t_ray;
 typedef struct s_all
 {

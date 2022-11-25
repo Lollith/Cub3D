@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_doc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:26:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/18 16:32:13 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 09:41:52 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	ft_fill_doc(int fd, int nb, t_all *all)
 		all->doc[i] = line;
 		i++;
 	}
-	all->doc[i] = '\0';
+	all->doc[i] = NULL;
 }
 
 static int	ft_file_cpy(char *av, int nb, t_all *all)
@@ -79,7 +79,7 @@ static int	ft_file_cpy(char *av, int nb, t_all *all)
 		print_error_fd("ft_file_cpy: invalid fd", NULL, 2);
 		return (1);
 	}
-	all->doc = (char **)malloc(sizeof(char *) * (nb));
+	all->doc = (char **)malloc(sizeof(char *) * (nb + 1));
 	if (!all->doc)
 	{
 		print_error_fd("ft_file_cpy: malloc failed", NULL, 2);

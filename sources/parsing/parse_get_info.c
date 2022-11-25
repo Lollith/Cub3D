@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 14:14:32 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:49:02 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_get_img_path(char *line, char *path, int *flag)
 	if (path == NULL)
 		return (1);
 	(*flag)++;
-	// printf("path is %s, flag is %d\n", path, *flag);
 	return (0);
 }
 
@@ -82,13 +81,15 @@ static int	ft_get_tex_map(char *line, t_all *all)
 		else if (line[i] == 'F' || line[i] == 'C')
 			ret = ft_get_tex_color(&all->tex, &line[i], all);
 	}
-	else if (line[i] == '\n' && all->flag < 6)//pe rien avec skip fin NULL
+	else if (line[i] == '\0')
 		return (0);
-	// else if (line[i] == '1' && all->flag >= 6)
-	// 	ret = ft_get_map();
+	else if (line[i] == '1' && all->flag >= 6)
+	{
+		// ret = ft_get_map();
+	}
 	else
 	{
-		print_error_fd("ft_pget_tex_map: invalide file", NULL, 2);
+		print_error_fd("ft_get_tex_map: invalide file", NULL, 2);
 		return (1);
 	}
 	return (ret);

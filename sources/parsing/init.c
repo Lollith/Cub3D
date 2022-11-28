@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 16:34:00 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:42:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_init(char *av)
 	t_texture	tex;
 	t_pos		pos;
 
-printf("ft_init IN\n");//to be deleted
+// printf("ft_init IN\n");//to be deleted
 	init_win(&win);
 	init_map(&map);
 	init_pos(&pos);
@@ -78,6 +78,19 @@ printf("ft_init IN\n");//to be deleted
 		free_all(&all);
 		return (1);
 	}
+	printf("%s", all.map.line);
+	create_window(&all.win);
+//--------------------------------fonctions---------------------------------
+	// creation img minimap
+	img_creation(&all);
+	read_pos_ini(&all);
+	// commandes
+	ft_key_loop_hook(&all);
+	//  render
+	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
+//  //-------------------------------ends---------------------------------------
+	mlx_loop(all.win.pt_mlx);
+	the_end(&all);
 	free_all(&all);
 	return (0);
 }

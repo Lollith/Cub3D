@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:12:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/15 18:46:38 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/25 15:02:37 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,31 @@ char	*ft_strjoin_no_free(char const *s1, char const *s2)
 * DESCRIPTION
 *	Convert ASCII string to integer
 */
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	int	result;
+// int	ft_atoi(const char *str)
+// {
+// 	int	i;
+// 	int	sign;
+// 	int	result;
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str [i] == '+')
-	{
-		if (str[i] == '-')
-			sign = sign * (-1);
-		i++;
-	}
-	while (str[i] >= '0' && str [i] <= '9')
-	{
-		result = result * 10 + str[i] - '0';
-		i++;
-	}
-	return (result * sign);
-}
+// 	i = 0;
+// 	sign = 1;
+// 	result = 0;
+// 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+// 		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+// 		i++;
+// 	if (str[i] == '-' || str [i] == '+')
+// 	{
+// 		if (str[i] == '-')
+// 			sign = sign * (-1);
+// 		i++;
+// 	}
+// 	while (str[i] >= '0' && str [i] <= '9')
+// 	{
+// 		result = result * 10 + str[i] - '0';
+// 		i++;
+// 	}
+// 	return (result * sign);
+// }
 
 /*
 * DESCRIPTION
@@ -114,18 +114,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		*destcpy++ = *srccpy++;
 	return (dest);
 }
-
-// size_t	ft_strlen(const char *s)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		i++;
-// 	}
-// 	return (i);
-// }
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -146,3 +134,15 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[dstlen + i] = '\0';
 	return (dstlen + srclen);
 }
+
+// size_t	ft_strlen(const char *s) already in gnl
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (s[i])
+// 	{
+// 		i++;
+// 	}
+// 	return (i);
+// }

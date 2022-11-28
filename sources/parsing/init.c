@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 13:13:26 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:04:59 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_pos(t_pos *pos)
 {
 	pos->p_x = 0;
 	pos->p_y = 0;
+	pos->p = 'P';
 	pos->old_p_x = 0;
 	pos->old_p_y = 0;
 }
@@ -66,6 +67,7 @@ int	ft_init(char *av)
 	t_texture	tex;
 	t_pos		pos;
 
+// printf("ft_init IN\n");//to be deleted
 	init_win(&win);
 	init_map(&map);
 	init_pos(&pos);
@@ -74,11 +76,28 @@ int	ft_init(char *av)
 	init_ray(&all);
 	all.win = win;
 	all.doc = NULL;
-	all.err = 0;
+	all.flag = 0;
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;
 	if (ft_parse(av, &all) == 1)
+	{
+		free_all(&all);
 		return (1);
+	}
+	printf("%s", all.map.line);
+	create_window(&all.win);
+//--------------------------------fonctions---------------------------------
+	// creation img minimap
+	img_creation(&all);
+	read_pos_ini(&all);
+	// commandes
+	ft_key_loop_hook(&all);
+	//  render
+	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
+//  //-------------------------------ends---------------------------------------
+	mlx_loop(all.win.pt_mlx);
+	the_end(&all);
+	free_all(&all);
 	return (0);
 }

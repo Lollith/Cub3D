@@ -6,13 +6,13 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:17:16 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/16 22:02:24 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:15:56 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	check_file_path(char *pathname)
+int	check_file_path(char *pathname)
 {
 	int	fd;
 
@@ -39,13 +39,22 @@ static int	check_file_path(char *pathname)
 static int	check_file_name(char *name, char *base)
 {
 	int	i;
+	int	j;
 
-	i = 0;
-	while (name[i] != '\0')
-		i++;
-	if (i <= 4 || name[i - 1] != base[3] || name[i - 2] != base[2]
-		|| name[i - 3] != base[1] || name[i - 4] != base[0])
+	i = ft_strlen(name) - 1;
+	j = ft_strlen(base) - 1;
+	if ( i <= j || name[i - j - 1] == '/')
 		return (1);
+	while (j >= 0)
+	{
+		if (name[i] != base[j])
+			return (1);
+		i--;
+		j--;
+	}
+	// if (i <= 4 || name[i - 1] != base[3] || name[i - 2] != base[2]
+	// 	|| name[i - 3] != base[1] || name[i - 4] != base[0] || name[i - 5] == '/')
+	// 	return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 17:05:08 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:23:24 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void draw_wall(int *pt_i, t_img *img, t_all *all, int color)
 	int i;
 
 	i = *pt_i;
-	y = i / (all->map.x + 1) * MINI_CUB;
-	while (y < (i / (all->map.x + 1) + 1) * MINI_CUB)
+	y = i / (all->map.x) * MINI_CUB;
+	while (y < (i / (all->map.x) + 1) * MINI_CUB)
 	{
-		x = (i % (all->map.x + 1) * MINI_CUB);
-		while (x < (i % (all->map.x + 1) + 1) * MINI_CUB)
+		x = (i % (all->map.x) * MINI_CUB);
+		while (x < (i % (all->map.x) + 1) * MINI_CUB)
 		{
 			img_pix(img, x, y  + all->map.mini_pos, color);
 			x++;

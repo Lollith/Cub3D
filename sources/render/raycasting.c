@@ -6,23 +6,22 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/25 18:17:46 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:49:36 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void verLine(t_img *img, int ray, int draw_start, int draw_end, int color){
+void verLine(t_img *img, int ray, int draw_start, int draw_end, int color)
+{
 	int x = ray;
 	int y = draw_start;
-	// while (x < ray)
 	{
 		while (y < draw_end)
 		{
 			img_pix(img, x, y, color);
 			y++;
 		}
-		x++;
 	}
 }
 
@@ -32,11 +31,21 @@ void raycasting(t_all *all)
 //--------------//tuto raycasting	
 	double posX = all->pos.p_x + 0.2; // avance un peu mon perso sur la case
 	double posY = all->pos.p_y + 0.2;
-	double dirX = 0; //pour N  a gauche// les coordonne sont selon un tableau ->x et y vers le bas
-	// double dirX = 0; //pour N  en haut// les coordonne sont selon un tableau ->x et y vers le bas
+// tuto:	
+  // double dirX =-1; //pour N  a gauche// les coordonne sont selon un tableau ->x et y vers le bas
+	// double dirY = 0 ;
+	// double planeX = 0.00;
+	// double planeY = 0.60;//pour N // tuto = 0.66
+
+  
+	
+  
+  double dirX = 0; //pour N  en haut// les coordonne sont selon un tableau ->x et y vers le bas
 	double dirY = -1 ;
-	double planeX = 0.00;
-	double planeY = 0.60;//pour N // tuto = 0.66
+	double planeX = 0.60;
+	double planeY = 0.00;//pour N // tuto = 0.66
+
+  
 	int x = 0;
 	int lenght_plane = 600; // w ds tuto , car  fov = 60, tan(60/2) = oppose/adj
 	double ratioX; // cameraX
@@ -69,6 +78,8 @@ void raycasting(t_all *all)
 	else
 		deltaDistX = fabs (1 / all->ray.r_dir_x);
 		
+  // printf("x: %f \n", deltaDistX);
+  // printf("%f\n", deltaDistY);
 	if (all->ray.r_dir_y == 0) 
 		deltaDistY = 1e30;
 	else

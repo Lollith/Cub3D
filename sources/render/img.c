@@ -16,10 +16,10 @@
 void img_creation(t_all *all)
 {
 	all->img_minimap.mlx_img = mlx_new_image(all->win.pt_mlx,
-											 W_WIDTH, W_HEIGHT);
+		W_WIDTH, W_HEIGHT);
 	all->img_minimap.addr = mlx_get_data_addr(all->img_minimap.mlx_img,
-											  &all->img_minimap.bpp, &all->img_minimap.line_len,
-											  &all->img_minimap.endian);
+		&all->img_minimap.bpp, &all->img_minimap.line_len, 
+		&all->img_minimap.endian);
 }
 
 // point de pixels rouge
@@ -91,24 +91,39 @@ void draw_ray(t_img *img, t_all *all)
 	double	l;
 	l = 0;
 	
-	while (l < (all->map.x - all->pos.p_x)* MINI_CUB ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
+	while (l < 10 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
 	{
 	if (all->ray.sideDistX > all->map.x * MINI_CUB)
 		all->ray.sideDistX = all->map.x +5 ; // fire plus joli
-	if (all->ray.sideDistY > all->map.x * MINI_CUB)
+	if (all->ray.sideDistY > all->map.y * MINI_CUB)
 		all->ray.sideDistY = all->map.y + 5; // normale;emt pas besoin doit calculer la bonne taille du mur , pb si ray dir = 0 = prend la valeur infinie
+	
 	y = all->ray.step_y *(all->pos.p_y + MINI_P/2)* MINI_CUB;
 	x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 )* MINI_CUB;
-	img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
-	while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB+ all->ray.sideDistX))
+	// img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
+	while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB + all->ray.sideDistX))
 	{
-		// img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P)  + all->map.mini_pos, 0xFFFFFF00);
-		img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P+l)  + all->map.mini_pos, 0xFFFF00FF);
+		img_pix(img, all->ray.step_x * (x + MINI_P ), all->ray.step_y * (y + MINI_P) + all->map.mini_pos, 0xFFFFFF00);
+		// img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P+ l)  + all->map.mini_pos, 0xFFFF00FF);
 		x++;
 		y++;
 	}
 	l++;
-}
+	}
+	// rayon dans lautre sens pour cone FOV
+	// l = 0;
+	// while (l < 10 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
+	// {
+	// y = all->ray.step_y *(all->pos.p_y + MINI_P/2)* MINI_CUB;
+	// x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 )* MINI_CUB;
+	// while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB + all->ray.sideDistX))
+	// {
+	// 	img_pix(img,  all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P /*+ l*/)  + all->map.mini_pos, 0xFFFF00FF);
+	// 	x--;
+	// 	y++;
+	// }
+	// l++;
+// }
 }
 
 

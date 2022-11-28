@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/25 16:25:09 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:53:23 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	render(t_all *all)
 	put_minimap(&all->img_minimap, all); // creer une minimap
 	draw_heroe(&all->img_minimap, all);
 	clean_px(&all->img_minimap, all);
-	raycasting(all);
+	// raycasting(all);
 	draw_ray(&all->img_minimap, all);
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
 							all->img_minimap.mlx_img, 0, 0); // affiche l image

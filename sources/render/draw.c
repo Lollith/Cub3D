@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 17:28:57 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 18:09:44 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 void	read_pos_ini(t_all *all)
 {	
 	int	i;
-
+	//map.x ne plus mettre +1
 	i = 0;
 	while (all->map.line[i])
 	{
 		if (all->map.line[i] == 'P')
 		{
-			all->pos.p_x = i % (all->map.x + 1);
-			all->pos.p_y = i / (all->map.x + 1);
+			all->pos.p_x = i % (all->map.x);
+			all->pos.p_y = i / (all->map.x);
 			all->pos.index = i;
 		}
 		i++;
@@ -41,9 +41,9 @@ void	put_minimap(t_img *img, t_all *all)
 	while (all->map.line[i])
 	{
 		if (all->map.line[i] == '1')
-			draw_wall(&i, img, all, 0x009E9E9E);
+			draw_wall(&i, img, all, GREY);
 		 if (all->map.line[i] != '1' && all->map.line[i] != '\n')
-			draw_wall(&i, img, all, GREEN); // rempli entierement ma minimap , meme la ou P
+			draw_wall(&i, img, all, BLACK); // rempli entierement ma minimap , meme la ou P
 		i++;
 	}
 }
@@ -52,10 +52,10 @@ int	render(t_all *all)
 {
 	if (all->win.pt_win == NULL)
 		return (1);
+	raycasting(all);
 	put_minimap(&all->img_minimap, all); // creer une minimap
 	draw_heroe(&all->img_minimap, all);
 	clean_px(&all->img_minimap, all);
-	// raycasting(all);
 	draw_ray(&all->img_minimap, all);
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
 							all->img_minimap.mlx_img, 0, 0); // affiche l image

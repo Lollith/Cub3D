@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 17:23:24 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 18:06:23 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void draw_heroe(t_img *img, t_all *all)
 		x = all->pos.p_x * MINI_CUB;
 		while (x < ((all->pos.p_x + MINI_P) * MINI_CUB))
 		{
-			img_pix(img, x, y + all->map.mini_pos, 0xFFFFFF00);
+			img_pix(img, x, y + all->map.mini_pos, YELLOW);
 			x++;
 		}
 		y++;
@@ -91,19 +91,19 @@ void draw_ray(t_img *img, t_all *all)
 	double	l;
 	l = 0;
 	
-	while (l < 10 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
+	while (l < 20 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
 	{
-	if (all->ray.sideDistX > all->map.x * MINI_CUB)
-		all->ray.sideDistX = all->map.x +5 ; // fire plus joli
-	if (all->ray.sideDistY > all->map.y * MINI_CUB)
-		all->ray.sideDistY = all->map.y + 5; // normale;emt pas besoin doit calculer la bonne taille du mur , pb si ray dir = 0 = prend la valeur infinie
+	// if (all->ray.sideDistX > all->map.x * MINI_CUB)
+	// 	all->ray.sideDistX = all->map.x +5 ; // fire plus joli
+	// if (all->ray.sideDistY > all->map.y * MINI_CUB)
+	// 	all->ray.sideDistY = all->map.y + 5; // normale;emt pas besoin doit calculer la bonne taille du mur , pb si ray dir = 0 = prend la valeur infinie
 	
-	y = all->ray.step_y *(all->pos.p_y + MINI_P/2)* MINI_CUB;
-	x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 )* MINI_CUB;
+	y = all->ray.step_y * (all->pos.p_y + MINI_P/2) * MINI_CUB;
+	x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 ) * MINI_CUB;
 	// img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
-	while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB + all->ray.sideDistX))
+	while ( y < ((all->pos.p_y + MINI_P/2) * MINI_CUB + all->ray.sideDistY * MINI_CUB ) && x < ((all->pos.p_x + MINI_P/2)* MINI_CUB + all->ray.sideDistX * MINI_CUB))
 	{
-		img_pix(img, all->ray.step_x * (x + MINI_P ), all->ray.step_y * (y + MINI_P) + all->map.mini_pos, 0xFFFFFF00);
+		img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y + MINI_P) + all->map.mini_pos, RED);
 		// img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P+ l)  + all->map.mini_pos, 0xFFFF00FF);
 		x++;
 		y++;
@@ -111,19 +111,19 @@ void draw_ray(t_img *img, t_all *all)
 	l++;
 	}
 	// rayon dans lautre sens pour cone FOV
-	// l = 0;
-	// while (l < 10 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
-	// {
-	// y = all->ray.step_y *(all->pos.p_y + MINI_P/2)* MINI_CUB;
-	// x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 )* MINI_CUB;
-	// while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB + all->ray.sideDistX))
-	// {
-	// 	img_pix(img,  all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P /*+ l*/)  + all->map.mini_pos, 0xFFFF00FF);
-	// 	x--;
-	// 	y++;
-	// }
-	// l++;
-// }
+	l = 0;
+	while (l < 10 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
+	{
+	y = all->ray.step_y *(all->pos.p_y + MINI_P/2)* MINI_CUB;
+	x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 )* MINI_CUB;
+	while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB + all->ray.sideDistX))
+	{
+		img_pix(img,  all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P /*+ l*/)  + all->map.mini_pos, 0xFFFF00FF);
+		x--;
+		y++;
+	}
+	l++;
+}
 }
 
 
@@ -158,12 +158,12 @@ void clean_px(t_img *img, t_all *all)
 	if ((int)all->pos.old_p_x != 0 && (int)all->pos.old_p_y != 0)
 	{
 		z = all->pos.old_p_y * MINI_CUB - MINI_P;
-		while ((z < (all->pos.index / (all->map.x + 1) + MINI_P) * MINI_CUB))
+		while ((z < (all->pos.index / (all->map.x) + MINI_P) * MINI_CUB))
 		{
 			w = (int)all->pos.old_p_x * MINI_CUB + MINI_P;
-			while (w < ((all->pos.index % (all->map.x + 1) + MINI_P) * MINI_CUB))
+			while (w < ((all->pos.index % (all->map.x) + MINI_P) * MINI_CUB))
 			{
-				img_pix(img, w, z + all->map.mini_pos, 0x00000000); //+ mini po pour redescendre la carte en bas
+				img_pix(img, w, z + all->map.mini_pos, BLACK); //+ mini po pour redescendre la carte en bas
 				w++;
 			}
 			z++;

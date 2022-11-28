@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:37 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/28 17:09:28 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:11:58 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,5 @@ int	create_window(t_window *win)
 		free(win->pt_mlx);
 		return (1);
 	}
-	return (0);
-}
-
-int	the_end(t_all *all)
-{
-	mlx_destroy_window(all->win.pt_mlx, all->win.pt_win);
-	mlx_destroy_image(all->win.pt_mlx, all->img_minimap.mlx_img);
-	mlx_destroy_display(all->win.pt_mlx);
-	// free(all->map.line);
-	free(all->win.pt_mlx);
 	return (0);
 }

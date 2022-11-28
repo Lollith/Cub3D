@@ -6,13 +6,13 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:17:16 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 16:08:29 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:15:56 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	check_file_path(char *pathname)
+int	check_file_path(char *pathname)
 {
 	int	fd;
 

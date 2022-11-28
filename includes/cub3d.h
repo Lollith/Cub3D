@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/25 17:55:36 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:58:39 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef struct s_all
 
 /*-----------------------------------ARGS------------------------------------*/
 int		check_args(int ac, char **av);
+int		check_file_path(char *pathname);
 int		ft_init(char *av);
 /*----------------------------------------------------------------------------*/
 
@@ -149,6 +150,7 @@ int		print_error_fd(char *s1, char *s2, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(char *src);
+char	*ft_strdup_path(char *src);
 /*----------------------------------------------------------------------------*/
 
 //to be deleted just to start work with raycasting

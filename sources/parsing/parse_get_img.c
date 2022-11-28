@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 14:33:01 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:25:28 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 	int	i;
 
 	i = 0;
-	ft_skip(line, &i);
+	ft_skip(&line[i], &i);
 	if (line == NULL || line[i] == '\0')
 	{
-		print_error_fd("ft_put_tex_img: invalide file", NULL, 2);
+		print_error_fd("ft_get_img_path: invalide file", NULL, 2);
 		return (1);
 	}
-	*path = ft_strdup(&line[i]);
+	*path = ft_strdup_path(&line[i]);
 	if (path == NULL)
+	{
+		print_error_fd("ft_get_img_path: strdup failed", NULL, 2);
+		return (1);
+	}
+	if (check_file_path(*path) == 1)
 		return (1);
 	(*flag)++;
 	return (0);

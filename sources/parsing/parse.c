@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 18:05:11 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:14:46 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static int	ft_get_tex_map(char *line, t_all *all)
 
 	i = 0;
 	ret = 0;
+	printf(" before skip line[%d] is %c\n", i, line[i]);
 	ft_skip(&line[i], &i);
+	printf(" line[%d] is %c\n", i, line[i]);
 	if (all->flag < 6)
 	{
 		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
@@ -57,12 +59,13 @@ int	ft_get_info(char *av, t_all *all)
 		line = get_next_line(fd);
 		if (line == NULL) // a confirmer avec Adeline EOF => NULL et erreur NULL pe check structure vide ou pas et en fonction reagit EOF ou pb de lecture
 			break ;
-		free (line);
 		if (ft_get_tex_map(line, all) == 1)
 		{
+			free (line);
 			close (fd);
 			return (1);
 		}
+		free (line);
 	}
 	close (fd);
 	return (0);

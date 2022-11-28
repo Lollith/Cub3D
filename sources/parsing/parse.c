@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 14:14:46 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:40:11 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,25 @@ static int	ft_get_tex_map(char *line, t_all *all)
 
 	i = 0;
 	ret = 0;
-	printf(" before skip line[%d] is %c\n", i, line[i]);
-	ft_skip(&line[i], &i);
-	printf(" line[%d] is %c\n", i, line[i]);
+
 	if (all->flag < 6)
 	{
+		ft_skip(&line[i], &i);
 		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
 			|| line[i] == 'E')
 			ret = ft_get_tex_img(&all->tex, &line[i], all);
 		else if (line[i] == 'F' || line[i] == 'C')
 			ret = ft_get_tex_color(&all->tex, &line[i], all);
+		else if (line[i] == '\0')
+			return (0);
+		else
+		{
+			print_error_fd("ft_get_tex_map: invalide file", NULL, 2);
+			return (1);
+		}
 	}
-	else if (line[i] == '\0')
-		return (0);
-	else if (line[i] == '1' && all->flag >= 6)
-		ret = ft_get_map(line, &all->map);
 	else
-	{
-		print_error_fd("ft_get_tex_map: invalide file", NULL, 2);
-		return (1);
-	}
+		ret = ft_get_map(line, &all->map);
 	return (ret);
 }
 
@@ -75,7 +74,6 @@ int	ft_parse(char *av, t_all *all)
 {
 	if (ft_get_info(av, all) == 1)
 		return (1);
-	// printf("path.n%s\n%s\n",all->tex.n, all->map.line);//to be deleted
 	return (0);
 }
 

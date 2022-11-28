@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
 /*   Updated: 2022/11/28 16:17:43 by esmirnov         ###   ########.fr       */
+=======
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
+/*   Updated: 2022/11/22 17:14:39 by lollith          ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +24,8 @@ static void	init_pos(t_pos *pos)
 	pos->p_x = 0;
 	pos->p_y = 0;
 	pos->p = 'P';
+	pos->old_p_x = 0;
+	pos->old_p_y = 0;
 }
 
 static void	init_win(t_window *win)

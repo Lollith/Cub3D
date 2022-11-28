@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:26:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/23 15:27:35 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:28:48 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,8 @@ static int	ft_nb_lines(char *av)
 		print_error_fd("ft_nb_lines: open: invalid fd", NULL, 2);
 		return (1);
 	}
-	nb = ft_get_nb(fd);
-	close (fd);
-	if (nb < 9)
+	all->doc = (char **)malloc(sizeof(char *) * (nb + 1));
+	if (!all->doc)
 	{
 		print_error_fd("ft_nb_lines: incorrect file or gnl failed", NULL, 2);
 		return (1);

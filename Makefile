@@ -6,7 +6,7 @@
 #    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/25 17:50:28 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/11/28 16:31:17 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ PARSING_SRCS	:= checks.c init.c parse.c parse_get_img.c parse_get_color.c\
 					map_square.c\
 					
 
-RENDER_SRCS		:= draw.c
+RENDER_SRCS		:= draw.c move.c img.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

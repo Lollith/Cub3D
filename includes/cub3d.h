@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/28 14:58:39 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:28:09 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 # define W_WIDTH 800
 # define W_HEIGHT 500
-# define MINI_SQUARE 20
+# define MINI_CUB 20
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -60,6 +60,9 @@ typedef struct s_pos
 	double			p_x;
 	double			p_y;
 	char			p;
+	double			old_p_x;
+	double			old_p_y;
+	int				index; // position i sur ma *line
 }					t_pos;
 
 typedef struct s_map
@@ -126,14 +129,21 @@ int		free_all(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------WINDOW------------------------------------*/
-int		create_window(t_window *data);
-void	ft_key_loop_hook(t_window *data);
+int		create_window(t_window *win);
+int		keypress(int keysym, t_all *all);
+void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);
 int		ft_find_map_begin(char **doc);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/
+void	read_pos_ini(t_all *all);
 int		render(t_all *all);
+void	move(double new_position, t_all *all);
+void	img_creation(t_all *all);
+void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
+void	draw_heroe(t_img *img, t_all *all);
+void	clean_px(t_img *img, t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*------------------------------------MAP-------------------------------------*/

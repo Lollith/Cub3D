@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 15:25:28 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:09:54 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 		print_error_fd("ft_get_img_path: strdup failed", NULL, 2);
 		return (1);
 	}
-	if (check_file_path(*path) == 1)
-		return (1);
+	// if (check_file_path(*path) == 1)//to reactivate for the textures
+	// 	return (1);
 	(*flag)++;
 	return (0);
 }

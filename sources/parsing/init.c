@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 17:56:11 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:17:43 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ft_init(char *av)
 	t_texture	tex;
 	t_pos		pos;
 
+printf("ft_init IN\n");//to be deleted
 	init_win(&win);
 	init_map(&map);
 	init_pos(&pos);

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:50:48 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/25 17:51:21 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:12:20 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	main(int ac, char **av)
 {
-	// t_all	all;
+	t_all	all;
 	
 	if (check_args(ac, av) != 0)
 		return (1);
 	if (ft_init(av[1]) == 1)
 		return (1);
 // //--------------------------------initialisation----------------------------
-// 	init_square_map(av, &all.map);//to be deleted later?
+	init_square_map(av, &all.map);//to be deleted later?
 // 	create_window(&all.win);
 	
 // 	// get map will be all.map.map = get_map(av) struct map to be deleted in main after that

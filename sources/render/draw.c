@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 17:27:25 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:28:57 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	put_minimap(t_img *img, t_all *all)
 	{
 		if (all->map.line[i] == '1')
 			draw_wall(&i, img, all, 0x009E9E9E);
-		//  if (all->map.line[i] != '1' && all->map.line[i] != '\n')
-		// 	draw_wall(&i, img, all, 0x000000); // rempli entierement ma minimap , meme la ou P
+		 if (all->map.line[i] != '1' && all->map.line[i] != '\n')
+			draw_wall(&i, img, all, GREEN); // rempli entierement ma minimap , meme la ou P
 		i++;
 	}
 }

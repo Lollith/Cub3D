@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 16:49:36 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 18:07:31 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ void raycasting(t_all *all)
 	// double planeX = 0.00;
 	// double planeY = 0.60;//pour N // tuto = 0.66
 
-  
-	
-  
   double dirX = 0; //pour N  en haut// les coordonne sont selon un tableau ->x et y vers le bas
 	double dirY = -1 ;
 	double planeX = 0.60;

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/28 17:04:51 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/28 18:18:10 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
+# define GREY 0x009E9E9E
+# define YELLOW 0xFFFFFF00
+# define BLACK 0x00000000
 
 typedef struct s_window{
 	void			*pt_mlx;

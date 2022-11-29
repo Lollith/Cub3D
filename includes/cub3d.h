@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/29 13:36:56 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:02:49 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 # define MINI_CUB 10
 # define MINI_P 0.5
-# define MINI_MOV 0.2 // deplacement sur minicarte
+# define MINI_MOV 0.1 // deplacement sur minicarte
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -158,7 +158,7 @@ int		ft_find_map_begin(char **doc);
 void	img_pix(t_img *img, int x, int y, int color);
 void	read_pos_ini(t_all *all);
 int		render(t_all *all);
-void	move(double new_pos_x, double new_pos_y, t_all *all);
+void	move(double new_pos_x, double new_pos_y, double sign, t_all *all);
 void	img_creation(t_all *all);
 void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);

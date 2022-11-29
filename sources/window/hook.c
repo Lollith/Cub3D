@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/28 18:17:58 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:38:31 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	ft_key_loop_hook(t_all *all)
 int	keypress(int keysym, t_all *all)
 {
 	if (keysym == XK_w || keysym == XK_Up)
-		move(all->pos.p_y - MINI_MOV, all);
-	// if (keysym == XK_s || keysym == XK_Down)
-	// 	move_down(all);
-	// if (keysym == XK_a || keysym == XK_Left)
-	// 	move_left(all);
-	// if (keysym == XK_d || keysym == XK_Right)
-	// 	move_right(all);
+		move(all->pos.p_x, all->pos.p_y - MINI_MOV, all);
+	if (keysym == XK_s || keysym == XK_Down)
+		move(all->pos.p_x, all->pos.p_y + MINI_MOV, all);
+	if (keysym == XK_a || keysym == XK_Left)
+		move(all->pos.p_x - MINI_MOV, all->pos.p_y, all);
+	if (keysym == XK_d || keysym == XK_Right)
+		move(all->pos.p_x + MINI_MOV, all->pos.p_y, all);
 	return (0);
 }

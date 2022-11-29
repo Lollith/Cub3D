@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/28 18:18:10 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:36:56 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ int		ft_find_map_begin(char **doc);
 void	img_pix(t_img *img, int x, int y, int color);
 void	read_pos_ini(t_all *all);
 int		render(t_all *all);
-void	move(double new_position, t_all *all);
+void	move(double new_pos_x, double new_pos_y, t_all *all);
 void	img_creation(t_all *all);
 void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);

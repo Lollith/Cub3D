@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 18:09:44 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:02:32 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	read_pos_ini(t_all *all)
 	int	i;
 	//map.x ne plus mettre +1
 	i = 0;
+
 	while (all->map.line[i])
 	{
 		if (all->map.line[i] == 'P')

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 18:07:31 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:17:16 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void raycasting(t_all *all)
           side = 1;
         }
         //Check if ray has hit a wall
-		  index = mapX * (all->map.x + 1) + mapY;
+		  index = mapX * (all->map.x ) + mapY;
 		  if (all->map.line [index] == '1') 
 			  hit = 1;
       } 

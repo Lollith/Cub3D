@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/28 18:06:23 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:05:52 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void draw_wall(int *pt_i, t_img *img, t_all *all, int color)
 
 	i = *pt_i;
 	y = i / (all->map.x) * MINI_CUB;
-	while (y < (i / (all->map.x) + 1) * MINI_CUB)
+	while (y < (i / (all->map.x) + 1) * MINI_CUB) // tant que na pas fait 1 carre
 	{
 		x = (i % (all->map.x) * MINI_CUB);
 		while (x < (i % (all->map.x) + 1) * MINI_CUB)
@@ -68,11 +68,11 @@ void draw_heroe(t_img *img, t_all *all)
 	double y;
 	double x;
 
-	y = all->pos.p_y * MINI_CUB;
-	while ((y < (all->pos.p_y + MINI_P) * MINI_CUB))
+	y = (all->pos.p_y + 0.2)* MINI_CUB ;
+	while ((y < (all->pos.p_y + MINI_P + 0.2) * MINI_CUB))
 	{
-		x = all->pos.p_x * MINI_CUB;
-		while (x < ((all->pos.p_x + MINI_P) * MINI_CUB))
+		x = (all->pos.p_x + 0.2)* MINI_CUB;
+		while (x < ((all->pos.p_x + MINI_P + 0.2) * MINI_CUB))
 		{
 			img_pix(img, x, y + all->map.mini_pos, YELLOW);
 			x++;
@@ -157,10 +157,10 @@ void clean_px(t_img *img, t_all *all)
 
 	if ((int)all->pos.old_p_x != 0 && (int)all->pos.old_p_y != 0)
 	{
-		z = all->pos.old_p_y * MINI_CUB - MINI_P;
+		z = (all->pos.old_p_y - MINI_P + 0.2) * MINI_CUB;
 		while ((z < (all->pos.index / (all->map.x) + MINI_P) * MINI_CUB))
 		{
-			w = (int)all->pos.old_p_x * MINI_CUB + MINI_P;
+			w = ((int)all->pos.old_p_x + MINI_P + 0.2)* MINI_CUB;
 			while (w < ((all->pos.index % (all->map.x) + MINI_P) * MINI_CUB))
 			{
 				img_pix(img, w, z + all->map.mini_pos, BLACK); //+ mini po pour redescendre la carte en bas

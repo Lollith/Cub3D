@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 17:04:59 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:27:12 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	ft_init(char *av)
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
-	img_creation(&all);
 	read_pos_ini(&all);
 	// commandes
 	ft_key_loop_hook(&all);

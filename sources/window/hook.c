@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/29 15:03:24 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:27:32 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	keypress(int keysym, t_all *all)
 		move(all->pos.p_x - MINI_MOV, all->pos.p_y, - 1.1, all);
 	if (keysym == XK_d || keysym == XK_Right)
 		move(all->pos.p_x + MINI_MOV, all->pos.p_y,1, all);
+
 	return (0);
 }

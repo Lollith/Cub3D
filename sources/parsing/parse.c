@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 16:29:56 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/29 09:54:19 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	ft_get_tex_map(char *line, t_all *all)
 
 	i = 0;
 	ret = 0;
-
 	if (all->flag < 6)
 	{
 		ft_skip(&line[i], &i);
@@ -37,7 +36,7 @@ static int	ft_get_tex_map(char *line, t_all *all)
 		}
 	}
 	else
-		ret = ft_get_map(line, &all->map);
+		ret = ft_get_map(line, &all->map, all);
 	return (ret);
 }
 

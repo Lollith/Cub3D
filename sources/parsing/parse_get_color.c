@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/25 16:34:19 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/29 09:50:57 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static int	ft_char_int(char *line,int *i)
 {
 	int	j;
 	int	ret;
-	
+
 	j = 0;
 	ret = 0;
-	while(line[j] != '\n' && line[j] != ',' && j < 3)
+	while (line[j] != '\n' && line[j] != ',' && j < 3)
 	{
 		if (line [j] < '0' || line[j] > '9')
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/28 18:18:10 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 09:54:31 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int		ft_skip(char *line, int *i);
 int		ft_skip_char(char *line, int *i, char c);
 int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
 int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);
-int		ft_get_map(char *line, t_map *map);
+int		ft_get_map(char *line, t_map *map, t_all *all);
 int		free_all(t_all *all);
 // int		ft_get_color(unsigned int *color, char *line, int *flag); static
 // int		ft_get_img_path(char *line, char *path, int *flag); static

@@ -6,27 +6,28 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/29 15:19:11 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 16:56:47 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 // creation img minimap
-void img_creation(t_all *all)
+void	img_creation(t_all *all)
 {
 	all->img_minimap.mlx_img = mlx_new_image(all->win.pt_mlx,
-		W_WIDTH, W_HEIGHT);
+			W_WIDTH, W_HEIGHT);
 	all->img_minimap.addr = mlx_get_data_addr(all->img_minimap.mlx_img,
-		&all->img_minimap.bpp, &all->img_minimap.line_len, 
-		&all->img_minimap.endian);
+			&all->img_minimap.bpp, &all->img_minimap.line_len,
+			&all->img_minimap.endian);
 }
 
 // point de pixels rouge
-void img_pix(t_img *img, int x, int y, int color)
+// creer une string de pixel
+void	img_pix(t_img *img, int x, int y, int color)
 {
-	char *pixel;
-	int i;
+	char	*pixel;
+	int		i;
 
 	i = img->bpp - 8;
 	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
@@ -40,38 +41,40 @@ void img_pix(t_img *img, int x, int y, int color)
 	}
 }
 
-void draw_wall(int *pt_i, t_img *img, t_all *all, int color)
+//boucle : map+1 rempli du debut et jusquq 1 caree de Mini_cub
+//y + mini_pos = place la minimap en bas de lecran
+void	draw_wall(int *pt_i, t_img *img, t_all *all, int color)
 {
-	int x;
-	int y;
-	int i;
+	int	x;
+	int	y;
+	int	i;
 
 	i = *pt_i;
 	y = i / (all->map.x) * MINI_CUB;
-	while (y < (i / (all->map.x) + 1) * MINI_CUB) // tant que na pas fait 1 carre
+	while (y < (i / all->map.x + 1) * MINI_CUB)
 	{
 		x = (i % (all->map.x) * MINI_CUB);
-		while (x < (i % (all->map.x) + 1) * MINI_CUB)
+		while (x < (i % all->map.x + 1) * MINI_CUB)
 		{
-			img_pix(img, x, y  + all->map.mini_pos, color);
+			img_pix(img, x, y + all->map.mini_pos, color);
 			x++;
 		}
 		y++;
 	}
-} // y +... // met la minimap en bas
+}
 
 // size of heroe on minimap = MINI_P
 // pos.p_x et y se mette a jour a linitialisation puis en fct des mouvement
 // la boucle de render permet de faire avancer le personnage
-void draw_heroe(t_img *img, t_all *all)
+void	draw_heroe(t_img *img, t_all *all)
 {
-	double y;
-	double x;
+	double	y;
+	double	x;
 
-	y = (all->pos.p_y + 0.2)* MINI_CUB ;
+	y = (all->pos.p_y + 0.2) * MINI_CUB;
 	while ((y < (all->pos.p_y + MINI_P + 0.2) * MINI_CUB))
 	{
-		x = (all->pos.p_x + 0.2)* MINI_CUB;
+		x = (all->pos.p_x + 0.2) * MINI_CUB;
 		while (x < ((all->pos.p_x + MINI_P + 0.2) * MINI_CUB))
 		{
 			img_pix(img, x, y + all->map.mini_pos, YELLOW);
@@ -83,52 +86,44 @@ void draw_heroe(t_img *img, t_all *all)
 
 // ne calcul pas la bonne taile du rayon=> l arretr moi meme au mur
 // affichage dun rayon ds la bonne direction
-// affichage de multi rayon ds la meme dir , a faire lautre moitiee
-void draw_ray(t_img *img, t_all *all)
+void	draw_ray(t_img *img, t_all *all)
 {
 	double	x;
 	double	y;
 	double	l;
+
 	l = 0;
-	
-	while (l < 20 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
+	while (l < 20) // l doit etre inf a taille de la map * minicub - pos du perso, x?
 	{
-	// if (all->ray.sideDistX > all->map.x * MINI_CUB)
-	// 	all->ray.sideDistX = all->map.x +5 ; // fire plus joli
-	// if (all->ray.sideDistY > all->map.y * MINI_CUB)
-	// 	all->ray.sideDistY = all->map.y + 5; // normale;emt pas besoin doit calculer la bonne taille du mur , pb si ray dir = 0 = prend la valeur infinie
-	
-	y = all->ray.step_y * (all->pos.p_y + MINI_P/2) * MINI_CUB;
-	x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 ) * MINI_CUB;
-	// img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
-	while ( y < ((all->pos.p_y + MINI_P/2) * MINI_CUB + all->ray.sideDistY * MINI_CUB ) && x < ((all->pos.p_x + MINI_P/2)* MINI_CUB + all->ray.sideDistX * MINI_CUB))
-	{
-		img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y + MINI_P) + all->map.mini_pos, RED);
-		// img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P+ l)  + all->map.mini_pos, 0xFFFF00FF);
-		x++;
-		y++;
-	}
-	l++;
+		y = all->ray.step_y * (all->pos.p_y + MINI_P / 2) * MINI_CUB;
+		x = all->ray.step_x * (all->pos.p_x + MINI_P / 2) * MINI_CUB;
+		// img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
+		while (y < ((all->pos.p_y + MINI_P / 2 + all->ray.sideDistY) * MINI_CUB)
+			&& x < ((all->pos.p_x + MINI_P / 2 + all->ray.sideDistX) * MINI_CUB))
+		{
+			img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y + MINI_P) + all->map.mini_pos, RED);
+			// img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P+ l)  + all->map.mini_pos, 0xFFFF00FF);
+			x++;
+			y++;
+		}
+		l++;
 	}
 	// rayon dans lautre sens pour cone FOV
 	l = 0;
-	while (l < 10 ) // l doit etre inf a taille de la map * minicub - pos du perso, x?
+	while (l < 10) // l doit etre inf a taille de la map * minicub - pos du perso, x?
 	{
-	y = all->ray.step_y *(all->pos.p_y + MINI_P/2)* MINI_CUB;
-	x = all->ray.step_x * (all->pos.p_x +  MINI_P/2 )* MINI_CUB;
-	while ( y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY) && x < (all->pos.p_x * MINI_CUB + all->ray.sideDistX))
-	{
-		img_pix(img,  all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P /*+ l*/)  + all->map.mini_pos, 0xFFFF00FF);
-		x--;
-		y++;
+		y = all->ray.step_y * (all->pos.p_y + MINI_P / 2) * MINI_CUB;
+		x = all->ray.step_x * (all->pos.p_x + MINI_P / 2 ) * MINI_CUB;
+		while (y < (all->pos.p_y * MINI_CUB + all->ray.sideDistY)
+			&& x < (all->pos.p_x * MINI_CUB + all->ray.sideDistX))
+		{
+			img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y + MINI_P /*+ l*/) + all->map.mini_pos, 0xFFFF00FF);
+			x--;
+			y++;
+		}
+		l++;
 	}
-	l++;
 }
-}
-
-
-
-
 
 // draw avec ray dir ++ arreter le rayon  a la main// marche pas 
 // void draw_ray(t_img *img, t_all *all)
@@ -146,27 +141,5 @@ void draw_ray(t_img *img, t_all *all)
 // 		img_pix(img,  all->ray.step_x * (x + MINI_P), all->ray.step_y * (y + MINI_P) , 0xFFFFFF00);
 // 		x++;
 // 		y++;
-// 	}
-// }
-
-// nettoie les pixels laisser par le heroe=> en noir
-// void clean_px(t_img *img, t_all *all)
-// {
-// 	int z;
-// 	int w;
-
-// 	if ((int)all->pos.old_p_x != 0 && (int)all->pos.old_p_y != 0)
-// 	{
-// 		z = (all->pos.old_p_y - MINI_P + 0.2) * MINI_CUB;
-// 		while ((z < (all->pos.index / (all->map.x) + MINI_P) * MINI_CUB))
-// 		{
-// 			w = ((int)all->pos.old_p_x + MINI_P + 0.2)* MINI_CUB;
-// 			while (w < ((all->pos.index % (all->map.x) + MINI_P) * MINI_CUB))
-// 			{
-// 				img_pix(img, w, z + all->map.mini_pos, BLACK); //+ mini po pour redescendre la carte en bas
-// 				w++;
-// 			}
-// 			z++;
-// 		}
 // 	}
 // }

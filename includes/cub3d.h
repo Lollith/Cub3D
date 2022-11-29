@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/29 15:02:49 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:14:38 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define GREY 0x009E9E9E
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
+// # define T_BLACK 0x1A000000
 
 typedef struct s_window{
 	void			*pt_mlx;
@@ -101,13 +102,18 @@ typedef struct s_img
 
 typedef struct s_ray
 {
+	double	orient_x;
+	double	orient_y;
+	double	plane_x;
+	double	plane_y;
 	double	r_dir_x;
 	double	r_dir_y;
-	double	sideDistX;
-	double	sideDistY;
+	double	sideDistX;// a  normer
+	double	sideDistY;// a normer
 	int		step_x;
 	int		step_y;
 }		t_ray;
+
 typedef struct s_all
 {
 	char			**doc;

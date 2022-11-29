@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 17:04:59 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:12:29 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	init_tex(t_texture *tex)
 	tex->f = 0;
 }
 
-static void init_minimap(t_all *all)
+static void	init_minimap(t_all *all)
 {
 	all->img_minimap.addr = NULL;
 	all->img_minimap.bpp = 0;
@@ -53,12 +53,58 @@ static void init_minimap(t_all *all)
 	all->img_minimap.mlx_img = NULL;
 }
 
-static void init_ray(t_all *all)
+static void	init_ray(t_all *all)
 {
 	all->ray.r_dir_x = 0;
 	all->ray.r_dir_y = 0;
-
+	all->ray.orient_x = 0;
+	all->ray.orient_y = 0;
+	all->ray.plane_x = 0.00;
+	all->ray.plane_y = 0.00;
 }
+
+// position initiale de perso
+void	read_pos_ini(t_all *all)
+{	
+	int	i;
+
+	i = 0;
+	while (all->map.line[i])
+	{
+		if (all->map.line[i] == 'P') // || N || S...
+		{
+			all->pos.p_x = i % (all->map.x);
+			all->pos.p_y = i / (all->map.x);
+			all->pos.index = i;
+		}
+		i++;
+	}
+}
+
+void	orientation_P(t_all *all)
+{
+	if (all->pos.p == 'P') // a remplacer par  N 
+	{
+		all->ray.orient_y = -1;
+		all->ray.plane_x = 0.60;
+	}
+	if (all->pos.p == 'S')
+	{
+		all->ray.orient_y = 1;
+		all->ray.plane_x = 0.60;
+	}
+	if (all->pos.p == 'E')
+	{
+		all->ray.orient_x = 1;
+		all->ray.plane_y = 0.60;
+	}
+	if (all->pos.p == 'W')
+	{
+		all->ray.orient_x = -1;
+		all->ray.plane_y = 0.60;
+	}
+}
+
 int	ft_init(char *av)
 {
 	t_all		all;
@@ -89,8 +135,8 @@ int	ft_init(char *av)
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
-	img_creation(&all);
 	read_pos_ini(&all);
+	orientation_P(&all);
 	// commandes
 	ft_key_loop_hook(&all);
 	//  render

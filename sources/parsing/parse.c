@@ -6,11 +6,47 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 15:28:26 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:29:31 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_parse_map(t_map *map)
+{
+	char	*tmp_line;
+	int		i;
+	int		j;
+
+	printf(" parse map \n");//TBD
+	tmp_line = malloc(map->x * map->y + 1); // pe faire fonction update_line etc
+	if (tmp_line == NULL)
+	{
+		print_error_fd("ft_parse_map: ", " _tmp_line malloc failed", 2);
+		return (1);
+	}
+	ft_memset(tmp_line, ' ', ft_strlen(tmp_line));
+	// i = 0; // make a fonc for this
+	// while (tmp_line[i] != '\0')
+	// {
+	// 	tmp_line[i] = ' ';
+	// 	i++;
+	// }//
+	printf("%s\n\n\n", tmp_line);
+	i = 0;
+	while (map->line[i] != '\0')
+	{
+		j = 0;
+		while (map->line[i + j] != '\n' && map->line[i] != '\0')
+		{
+			printf("%c", map->line[i + j]);
+			j++;
+		}
+		printf("%c", map->line[i + j]);
+		i = i + j + 1;
+	}
+	return (0);
+}
 
 static int	ft_get_tex_map(char *line, t_all *all)
 {
@@ -72,6 +108,8 @@ int	ft_get_info(char *av, t_all *all)
 int	ft_parse(char *av, t_all *all)
 {
 	if (ft_get_info(av, all) == 1)
+		return (1);
+	if (ft_parse_map(all->map) == 1)
 		return (1);
 	return (0);
 }

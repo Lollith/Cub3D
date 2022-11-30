@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 15:24:47 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:21:27 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,8 @@ int	ft_init(char *av)
 		free_all(&all);
 		return (1);
 	}
-	printf("line is %s\n", all.map.line);//to be deleted
 	// printf("%s", all.map.line);
-	create_window(&all.win);
+	create_window(&all.win);//to be deleted
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
 	read_pos_ini(&all);
@@ -144,7 +143,7 @@ int	ft_init(char *av)
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
 //  //-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
-	// the_end(&all);
+	the_end(&all);
 	free_all(&all);
 	return (0);
 }

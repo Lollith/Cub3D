@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/30 15:05:14 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:24:28 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_strdup_path(char *src);
+void	*ft_memset(void *str, int c, size_t n);
 /*----------------------------------------------------------------------------*/
 
 //to be deleted just to start work with raycasting

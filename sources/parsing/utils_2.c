@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:48:40 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 15:17:06 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:24:14 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,23 @@ char	*ft_strdup(char *src)
 	dest[index] = '\0';
 	return (dest);
 }
+
+void	*ft_memset(void *str, int c, size_t n)
+{
+	char	*s;
+	size_t	i;
+
+	s = str;
+	i = 0;
+	while (i < n)
+	{
+		s[i] = c;
+		i++;
+	}
+	return (s);
+}
+
+/*
+* DESCRIPTION
+*	Fill a byte string with a byte value
+*/

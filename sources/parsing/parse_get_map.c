@@ -6,23 +6,13 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:24:02 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 15:41:24 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:27:52 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int	ft_parse_map(t_map *map)
-// {
-// 	char	**tab_tmp;
-// 	int		len;
-
-	
-	
-// 	return (0);
-// }
-
-static int	ft_create_map(char *line, t_map *map)
+static int	ft_fill_map_line(char *line, t_map *map)
 {
 	char	*tmp;
 
@@ -46,8 +36,8 @@ static int	ft_create_map(char *line, t_map *map)
 			return (1);
 		}
 	}
-	// return (ft_parse_map(map));
-	return (0);
+	return (0);//create rec_map and after to do the map_parsing
+	// return (0);
 }
 
 static int	ft_map_x_max(char *line, int *x)
@@ -55,8 +45,10 @@ static int	ft_map_x_max(char *line, int *x)
 	int	tmp;
 
 	tmp = ft_strlen(line);
+	printf("x is %d, tmp is %d\n", *x, tmp);
 	if (tmp > *x)
 		*x = tmp;//a verifier si marche comme je veux
+
 	return (0);
 }
 
@@ -80,5 +72,5 @@ int	ft_get_map(char *line, t_map *map, t_all *all)
 	}
 	map->y++;
 	ft_map_x_max(line, &map->x);
-	return (ft_create_map(line, map));
+	return (ft_fill_map_line(line, map));
 }

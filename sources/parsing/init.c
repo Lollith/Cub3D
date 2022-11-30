@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 17:04:59 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/30 15:03:04 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int	ft_init(char *av)
 		free_all(&all);
 		return (1);
 	}
-	printf("%s", all.map.line);
+	printf("parse out\n"); // to be deleted
+	// printf("%s", all.map.line);
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
@@ -96,8 +97,11 @@ int	ft_init(char *av)
 	//  render
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
 //  //-------------------------------ends---------------------------------------
+	printf("before loop\n"); // to be deleted
 	mlx_loop(all.win.pt_mlx);
-	the_end(&all);
+	printf("the end done\n"); // to be deleted
+	// the_end(&all);
+	printf("the end done\n"); // to be deleted
 	free_all(&all);
 	return (0);
 }

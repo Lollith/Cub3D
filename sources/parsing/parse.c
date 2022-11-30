@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/29 09:54:19 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:01:32 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	ft_get_tex_map(char *line, t_all *all)
 	}
 	else
 		ret = ft_get_map(line, &all->map, all);
+	printf("get map out\n"); // to be deleted
 	return (ret);
 }
 
@@ -48,7 +49,7 @@ int	ft_get_info(char *av, t_all *all)
 	fd = open(av, O_RDONLY);
 	if (fd < 0 || fd == 2 || fd > FD_MAX)
 	{
-		print_error_fd("ft_get_tex_map: invalid fd", NULL, 2);
+		print_error_fd("ft_get_info: invalid fd", NULL, 2);
 		return (1);
 	}
 	line = NULL;
@@ -63,9 +64,12 @@ int	ft_get_info(char *av, t_all *all)
 			close (fd);
 			return (1);
 		}
+		printf("before free line\n"); // to be deleted
 		free (line);
+		printf("after free line\n"); // to be deleted
 	}
 	close (fd);
+	printf("close fd\n"); // to be deleted
 	return (0);
 }
 
@@ -73,6 +77,7 @@ int	ft_parse(char *av, t_all *all)
 {
 	if (ft_get_info(av, all) == 1)
 		return (1);
+	printf("parse ok\n"); // to be deleted
 	return (0);
 }
 

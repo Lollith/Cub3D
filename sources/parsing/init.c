@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/29 18:12:29 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/30 18:37:09 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	init_pos(t_pos *pos)
 {
-	pos->p_x = 0;
-	pos->p_y = 0;
+	pos->p_x = 0.2;// au lieu de 0 marche sur minimap?
+	pos->p_y = 0.2;
 	pos->p = 'P';
 	pos->old_p_x = 0;
 	pos->old_p_y = 0;
@@ -61,6 +61,10 @@ static void	init_ray(t_all *all)
 	all->ray.orient_y = 0;
 	all->ray.plane_x = 0.00;
 	all->ray.plane_y = 0.00;
+	all->ray.dist_x = 0;
+	all->ray.dist_y = 0;
+	all->ray.delta_dist_x = 0;
+	all->ray.delta_dist_y = 0;
 }
 
 // position initiale de perso

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/29 18:14:38 by agouet           ###   ########.fr       */
+/*   Updated: 2022/11/30 17:12:57 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,13 @@ typedef struct s_ray
 	double	plane_y;
 	double	r_dir_x;
 	double	r_dir_y;
-	double	sideDistX;// a  normer
-	double	sideDistY;// a normer
+	double	dist_x;
+	double	dist_y;
 	int		step_x;
 	int		step_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	
 }		t_ray;
 
 typedef struct s_all

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 15:04:49 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:24:47 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	ft_init(char *av)
 		free_all(&all);
 		return (1);
 	}
-	printf("parse out\n"); // to be deleted
+	printf("line is %s\n", all.map.line);//to be deleted
 	// printf("%s", all.map.line);
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
@@ -143,11 +143,8 @@ int	ft_init(char *av)
 	//  render
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
 //  //-------------------------------ends---------------------------------------
-	printf("before loop\n"); // to be deleted
 	mlx_loop(all.win.pt_mlx);
-	printf("the end done\n"); // to be deleted
 	// the_end(&all);
-	printf("the end done\n"); // to be deleted
 	free_all(&all);
 	return (0);
 }

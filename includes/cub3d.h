@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/29 09:54:31 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:05:14 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 # define MINI_CUB 10
 # define MINI_P 0.5
-# define MINI_MOV 0.2 // deplacement sur minicarte
+# define MINI_MOV 0.1 // deplacement sur minicarte
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -51,6 +51,7 @@
 # define GREY 0x009E9E9E
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
+// # define T_BLACK 0x1A000000
 
 typedef struct s_window{
 	void			*pt_mlx;
@@ -101,13 +102,18 @@ typedef struct s_img
 
 typedef struct s_ray
 {
+	double	orient_x;
+	double	orient_y;
+	double	plane_x;
+	double	plane_y;
 	double	r_dir_x;
 	double	r_dir_y;
-	double	sideDistX;
-	double	sideDistY;
+	double	sideDistX;// a  normer
+	double	sideDistY;// a normer
 	int		step_x;
 	int		step_y;
 }		t_ray;
+
 typedef struct s_all
 {
 	char			**doc;
@@ -158,7 +164,7 @@ int		ft_find_map_begin(char **doc);
 void	img_pix(t_img *img, int x, int y, int color);
 void	read_pos_ini(t_all *all);
 int		render(t_all *all);
-void	move(double new_position, t_all *all);
+void	move(double new_pos_x, double new_pos_y, double sign, t_all *all);
 void	img_creation(t_all *all);
 void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);

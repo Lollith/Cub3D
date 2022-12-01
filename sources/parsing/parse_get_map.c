@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:24:02 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 18:27:52 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:21:47 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ static int	ft_fill_map_line(char *line, t_map *map)
 			return (1);
 		}
 	}
-	return (0);//create rec_map and after to do the map_parsing
-	// return (0);
+	return (0);
 }
 
 static int	ft_map_x_max(char *line, int *x)
@@ -48,7 +47,6 @@ static int	ft_map_x_max(char *line, int *x)
 	printf("x is %d, tmp is %d\n", *x, tmp);
 	if (tmp > *x)
 		*x = tmp;//a verifier si marche comme je veux
-
 	return (0);
 }
 

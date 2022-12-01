@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/30 15:11:04 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/01 17:35:56 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	render(t_all *all)
 	raycasting(all);
 	put_minimap(&all->img_minimap, all);
 	draw_heroe(&all->img_minimap, all);
-	draw_ray(&all->img_minimap, all);
+	// draw_ray(&all->img_minimap, all);
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
 		all->img_minimap.mlx_img, 0, 0);
 	mlx_destroy_image(all->win.pt_mlx, all->img_minimap.mlx_img);

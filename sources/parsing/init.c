@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 18:37:09 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/01 17:10:24 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ static void	init_ray(t_all *all)
 	all->ray.dist_y = 0;
 	all->ray.delta_dist_x = 0;
 	all->ray.delta_dist_y = 0;
+	all->ray.draw_start = 0;
+	all->ray.draw_end = 0;
+
 }
 
 // position initiale de perso
@@ -136,6 +139,8 @@ int	ft_init(char *av)
 		return (1);
 	}
 	printf("%s", all.map.line);
+	if(all.map.line == NULL)
+		return (1);
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap

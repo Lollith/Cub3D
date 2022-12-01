@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/29 16:55:35 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/01 19:12:30 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	move(double new_pos_X, double new_pos_Y, double sign, t_all *all)
 	int	map_x;
 	int	map_y;
 
-	map_x = (int)(new_pos_Y + MINI_P + sign * 0.2);
-	map_y = (int)(new_pos_X + MINI_P + sign * 0.2);
-	next_index = map_x * all->map.x + map_y;
+	map_x = (int)(new_pos_X + MINI_P/2 + sign *0.2 );
+	map_y = (int)(new_pos_Y + MINI_P/2 + sign * 0.2);
+	next_index = map_y * all->map.x + map_x;
 	if (all->map.line[next_index] != '1')
 	{
 		all->pos.old_p_y = all->pos.p_y + MINI_P;

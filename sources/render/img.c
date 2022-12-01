@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/11/30 18:14:48 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/01 17:45:47 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ void	draw_heroe(t_img *img, t_all *all)
 	double	y;
 	double	x;
 
-	y = (all->pos.p_y + 0.2) * MINI_CUB;
-	while ((y < (all->pos.p_y + MINI_P + 0.2) * MINI_CUB))
+	y = (all->pos.p_y) * MINI_CUB;
+	while ((y < (all->pos.p_y + MINI_P) * MINI_CUB))
 	{
-		x = (all->pos.p_x + 0.2) * MINI_CUB;
-		while (x < ((all->pos.p_x + MINI_P + 0.2) * MINI_CUB))
+		x = (all->pos.p_x) * MINI_CUB;
+		while (x < ((all->pos.p_x + MINI_P) * MINI_CUB))
 		{
 			img_pix(img, x, y + all->map.mini_pos, YELLOW);
 			x++;

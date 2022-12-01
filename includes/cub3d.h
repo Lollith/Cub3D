@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/11/30 17:12:57 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/01 19:12:49 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define W_HEIGHT 500
 
 # define MINI_CUB 10
-# define MINI_P 0.5
+# define MINI_P 0.4
 # define MINI_MOV 0.1 // deplacement sur minicarte
 
 # ifndef FD_MAX
@@ -114,6 +114,8 @@ typedef struct s_ray
 	int		step_y;
 	double	delta_dist_x;
 	double	delta_dist_y;
+	int		draw_start;
+	int		draw_end;
 	
 }		t_ray;
 
@@ -173,6 +175,11 @@ void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
 void	draw_ray(t_img *img, t_all *all);
 void	clean_px(t_img *img, t_all *all);
+void	ray_direction(t_all *all, int *pt_x);
+void	ray_size_in_square(t_all *all);
+void	digital_differential_analysis(t_all *a, int *mapx, int *mapy, int *s);
+void	dda_init(t_all *all, int *map_x, int *map_y);
+void	calcul_view(t_all *all, int *side);
 void	raycasting(t_all *all);
 
 /*----------------------------------------------------------------------------*/

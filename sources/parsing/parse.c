@@ -6,18 +6,11 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 16:33:46 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 17:37:07 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	ft_parse_map(t_map *map)
-{
-	if (ft_create_rect_map(map) == 1)
-		return (1);
-	return (0);
-}
 
 static int	ft_get_tex_map(char *line, t_all *all)
 {
@@ -80,7 +73,7 @@ int	ft_parse(char *av, t_all *all)
 {
 	if (ft_get_info(av, all) == 1)
 		return (1);
-	if (ft_parse_map(&all->map) == 1)
+	if (ft_map_check(&all->map) == 1)
 		return (1);
 	return (0);
 }

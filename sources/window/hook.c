@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/01 18:47:04 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/02 08:46:37 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_key_loop_hook(t_all *all)
 int	keypress(int keysym, t_all *all)
 {
 	if (keysym == XK_w || keysym == XK_Up)
-		move(all->pos.p_x, all->pos.p_y - MINI_MOV, -1, all);
+		move(all->pos.p_x, all->pos.p_y - MINI_MOV, -1.1, all);
 	if (keysym == XK_s || keysym == XK_Down)
 		move(all->pos.p_x, all->pos.p_y + MINI_MOV, 1, all);
 	if (keysym == XK_a || keysym == XK_Left)

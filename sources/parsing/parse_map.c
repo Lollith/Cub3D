@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:39:38 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 14:05:31 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 16:40:01 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_create_rect_map(t_map *map)
 	i = 1;
 	while (i <= map->y)
 	{
-		tmp_line[map->x * i] = '\n';
+		tmp_line[map->x * i - 1] = '\n';
 		i++;
 	}
 	ft_map_line_cpy(tmp_line, map);

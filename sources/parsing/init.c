@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 13:22:46 by esmirnov         ###   ########.fr       */
-=======
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 14:15:02 by agouet           ###   ########.fr       */
->>>>>>> acc45417ac62c506b9dfadf24e765d3660a86337
+/*   Updated: 2022/12/02 17:03:51 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,9 +148,10 @@ int	ft_init(char *av)
 		free_all(&all);
 		return (1);
 	}
-	printf("%s", all.map.line);
 	if(all.map.line == NULL)
 		return (1);
+	printf("x = %d, y = %d, x *y = %d, len = %zu\n", all.map.x, all.map.y, all.map.x * all.map.y, ft_strlen(all.map.line));
+	printf("%s\n", all.map.line);
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap

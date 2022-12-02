@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 14:33:10 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:31:53 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 		return (1);
 	}
 	// if (check_file_path(*path) == 1)//to reactivate for the textures
-	// 	return (1);
+		// return (1);
 	(*flag)++;
 	return (0);
 }

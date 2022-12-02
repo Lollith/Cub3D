@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 13:22:46 by esmirnov         ###   ########.fr       */
-=======
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 14:15:02 by agouet           ###   ########.fr       */
->>>>>>> acc45417ac62c506b9dfadf24e765d3660a86337
+/*   Updated: 2022/12/02 16:12:16y agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +34,23 @@ static void	init_map(t_map *map)
 	map->y = 0;
 }
 
-static void	init_tex(t_texture *tex)
+static void	init_tex(t_all *all)
 {
-	tex->n = NULL;
-	tex->s = NULL;
-	tex->w = NULL;
-	tex->e = NULL;
-	tex->c = 0;
-	tex->f = 0;
+	int	i;
+
+	i = 0;
+	while(i < 4)
+	{
+		all->tex[i].dir = NULL;
+		all->tex[i].img = NULL;
+		all->tex[i].height = 0;
+		all->tex[i].width = 0;
+		all->tex[i].addr = NULL;
+		all->tex[i].bpp = 0;
+		all->tex[i].endian = 0;
+		all->tex[i].line_len = 0;
+		i++;
+	}
 }
 
 static void	init_px(t_all *all)
@@ -58,6 +60,8 @@ static void	init_px(t_all *all)
 	all->img_px.endian = 0;
 	all->img_px.line_len = 0;
 	all->img_px.mlx_img = NULL;
+	all->img_px.c = 0;
+	all->img_px.f = 0;
 }
 
 static void	init_ray(t_all *all)
@@ -77,13 +81,6 @@ static void	init_ray(t_all *all)
 
 }
 
-static	void init_file(t_all *all)
-{
-	all->file.no = NULL;
-	all->file.so = NULL;
-	all->file.we = NULL;
-	all->file.ea = NULL;
-}
 
 // position initiale de perso
 void	read_pos_ini(t_all *all)
@@ -132,22 +129,21 @@ int	ft_init(char *av)
 	t_all		all;
 	t_window	win;
 	t_map		map;
-	t_texture	tex;
+	// t_texture	tex[4];
 	t_pos		pos;
 
 // printf("ft_init IN\n");//to be deleted
 	init_win(&win);
 	init_map(&map);
 	init_pos(&pos);
-	init_tex(&tex);
+	init_tex(&all);
 	init_px(&all);
 	init_ray(&all);
-	init_file(&all);
 	all.win = win;
 	all.doc = NULL;
 	all.flag = 0;
 	all.map = map;
-	all.tex = tex;
+	// all.tex = tex;
 	all.pos = pos;
 
 	if (ft_parse(av, &all) == 1)
@@ -155,7 +151,7 @@ int	ft_init(char *av)
 		free_all(&all);
 		return (1);
 	}
-	printf("%s", all.map.line);
+	printf("%s\n", all.map.line);
 	if(all.map.line == NULL)
 		return (1);
 	create_window(&all.win);
@@ -163,6 +159,9 @@ int	ft_init(char *av)
 	// creation img minimap
 	read_pos_ini(&all);
 	orientation_P(&all);
+	// creation textures comme img
+
+	files_to_images(&all);
 	// commandes
 	ft_key_loop_hook(&all);
 	//  render

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/01 18:55:19 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/02 14:48:44 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	raycasting(t_all *all)
 			color = color / 2;
 		// draw the pixels of the stripe as a vertical line
 //------------------------------------------------------------------------------		
-		draw_vert_wall(all, &all->img_minimap, x, color);
+		draw_vert_wall(all, &all->img_px, x, color);
 		x++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 14:12:31 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/02 15:06:05 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	esc_hook(int keysym, t_all *all)
 {
 	(void) all;
 	if (keysym == XK_Escape)
+	{
+	
 		exit(1);
+	}
 	return (0);
 }
 

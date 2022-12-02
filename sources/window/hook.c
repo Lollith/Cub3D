@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 11:10:19 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/02 14:12:31 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // ATTENTION ESC a refaire comletement  LEAKS
 int	esc_hook(int keysym, t_all *all)
 {
+	(void) all;
 	if (keysym == XK_Escape)
 		exit(1);
 	return (0);

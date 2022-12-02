@@ -1,10 +1,10 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./assets/bark.xpm
+SO ./assets/brick.xpm
+WE ./assets/rock.xpm
+EA ./assets/tile.xpm
 
-F 220,100,0
-C 225,30,0
+F 55,71,79
+C 236,239,241
 1111111111111111111111111
 1000000000000000000000001
 1000000000000000000000001

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 13:44:16 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 14:25:48 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ typedef struct s_img
 	int				endian;
 }					t_img;
 
+typedef struct s_file
+{
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+}			t_file;
+
 typedef struct s_ray
 {
 	double	orient_x;
@@ -125,10 +133,11 @@ typedef struct s_all
 	int				flag;
 	t_window		win;
 	t_map			map;
-	t_img			img_minimap;
+	t_img			img_px;
 	t_texture		tex;
 	t_pos			pos;
 	t_ray			ray;
+	t_file			file;
 }					t_all;
 
 /*-----------------------------------ARGS------------------------------------*/

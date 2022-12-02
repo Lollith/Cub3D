@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
 /*   Updated: 2022/12/02 13:22:46 by esmirnov         ###   ########.fr       */
+=======
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
+/*   Updated: 2022/12/02 14:15:02 by agouet           ###   ########.fr       */
+>>>>>>> acc45417ac62c506b9dfadf24e765d3660a86337
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +21,7 @@
 
 static void	init_pos(t_pos *pos)
 {
-	pos->p_x = 0.2;// au lieu de 0 marche sur minimap?
+	pos->p_x = 0.2;
 	pos->p_y = 0.2;
 	pos->p = 'P';
 	pos->old_p_x = 0;
@@ -44,13 +51,13 @@ static void	init_tex(t_texture *tex)
 	tex->f = 0;
 }
 
-static void	init_minimap(t_all *all)
+static void	init_px(t_all *all)
 {
-	all->img_minimap.addr = NULL;
-	all->img_minimap.bpp = 0;
-	all->img_minimap.endian = 0;
-	all->img_minimap.line_len = 0;
-	all->img_minimap.mlx_img = NULL;
+	all->img_px.addr = NULL;
+	all->img_px.bpp = 0;
+	all->img_px.endian = 0;
+	all->img_px.line_len = 0;
+	all->img_px.mlx_img = NULL;
 }
 
 static void	init_ray(t_all *all)
@@ -68,6 +75,14 @@ static void	init_ray(t_all *all)
 	all->ray.draw_start = 0;
 	all->ray.draw_end = 0;
 
+}
+
+static	void init_file(t_all *all)
+{
+	all->file.no = NULL;
+	all->file.so = NULL;
+	all->file.we = NULL;
+	all->file.ea = NULL;
 }
 
 // position initiale de perso
@@ -125,14 +140,16 @@ int	ft_init(char *av)
 	init_map(&map);
 	init_pos(&pos);
 	init_tex(&tex);
-	init_minimap(&all);
+	init_px(&all);
 	init_ray(&all);
+	init_file(&all);
 	all.win = win;
 	all.doc = NULL;
 	all.flag = 0;
 	all.map = map;
 	all.tex = tex;
 	all.pos = pos;
+
 	if (ft_parse(av, &all) == 1)
 	{
 		free_all(&all);

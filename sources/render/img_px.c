@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img.c                                              :+:      :+:    :+:   */
+/*   img_px.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/02 14:00:44 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 14:26:17 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 // creation img minimap
 void	img_creation(t_all *all)
 {
-	all->img_minimap.mlx_img = mlx_new_image(all->win.pt_mlx,
+	all->img_px.mlx_img = mlx_new_image(all->win.pt_mlx,
 			W_WIDTH, W_HEIGHT);
-	all->img_minimap.addr = mlx_get_data_addr(all->img_minimap.mlx_img,
-			&all->img_minimap.bpp, &all->img_minimap.line_len,
-			&all->img_minimap.endian);
+	all->img_px.addr = mlx_get_data_addr(all->img_px.mlx_img,
+			&all->img_px.bpp, &all->img_px.line_len,
+			&all->img_px.endian);
 }
 
 // point de pixels rouge

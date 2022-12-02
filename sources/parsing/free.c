@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:50:33 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/28 17:12:03 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/02 10:51:18 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ int	free_all(t_all *all)
 int	the_end(t_all *all)
 {
 	mlx_destroy_window(all->win.pt_mlx, all->win.pt_win);
-	mlx_destroy_image(all->win.pt_mlx, all->img_minimap.mlx_img);
 	mlx_destroy_display(all->win.pt_mlx);
-	// free(all->map.line);
-	free(all->win.pt_mlx);
+	
+	if (all->win.pt_mlx != NULL)
+		{
+		free(all->win.pt_mlx);
+			all->win.pt_mlx = NULL;
+		}
 	return (-1);
 }

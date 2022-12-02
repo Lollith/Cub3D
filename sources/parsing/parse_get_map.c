@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:24:02 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/01 18:21:47 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 13:34:41 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_map_x_max(char *line, int *x)
 	int	tmp;
 
 	tmp = ft_strlen(line);
-	printf("x is %d, tmp is %d\n", *x, tmp);
+	// printf("x is %d, tmp is %d\n", *x, tmp);// TBD
 	if (tmp > *x)
 		*x = tmp;//a verifier si marche comme je veux
 	return (0);

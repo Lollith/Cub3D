@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/29 09:50:57 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:39:08 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static unsigned int	ft_create_rgb(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
-static int	ft_char_int(char *line,int *i)
+static int	ft_char_int(char *line, int *i)
 {
 	int	j;
 	int	ret;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
+#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/11/28 17:06:21 by agouet           ###   ########.fr        #
+#    Updated: 2022/12/01 16:47:24 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ PARSING_SRCS	:= checks.c init.c parse.c parse_get_img.c parse_get_color.c\
 					map_square.c\
 					
 
-RENDER_SRCS		:= draw.c move.c img.c raycasting.c
+RENDER_SRCS		:= draw.c move.c img.c raycasting.c dda.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

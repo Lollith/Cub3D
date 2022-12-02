@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/11/30 17:21:27 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 09:52:07 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	init_pos(t_pos *pos)
 {
-	pos->p_x = 0;
-	pos->p_y = 0;
+	pos->p_x = 0.2;// au lieu de 0 marche sur minimap?
+	pos->p_y = 0.2;
 	pos->p = 'P';
 	pos->old_p_x = 0;
 	pos->old_p_y = 0;
@@ -61,6 +61,13 @@ static void	init_ray(t_all *all)
 	all->ray.orient_y = 0;
 	all->ray.plane_x = 0.00;
 	all->ray.plane_y = 0.00;
+	all->ray.dist_x = 0;
+	all->ray.dist_y = 0;
+	all->ray.delta_dist_x = 0;
+	all->ray.delta_dist_y = 0;
+	all->ray.draw_start = 0;
+	all->ray.draw_end = 0;
+
 }
 
 // position initiale de perso
@@ -131,8 +138,10 @@ int	ft_init(char *av)
 		free_all(&all);
 		return (1);
 	}
-	// printf("%s", all.map.line);
-	create_window(&all.win);//to be deleted
+	printf("%s", all.map.line);
+	if(all.map.line == NULL)
+		return (1);
+	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
 	read_pos_ini(&all);

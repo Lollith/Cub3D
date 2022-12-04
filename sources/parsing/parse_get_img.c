@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 15:31:53 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/04 15:24:22 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_get_img_path(char *line, char **path, int *flag)
+static int	ft_get_img_path(char *line, char *path, int *flag)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 		print_error_fd("ft_get_img_path: invalide file", NULL, 2);
 		return (1);
 	}
-	*path = ft_strdup_path(&line[i]);
+	path = ft_strdup_path(&line[i]);
 	if (path == NULL)
 	{
 		print_error_fd("ft_get_img_path: strdup failed", NULL, 2);
@@ -42,13 +42,13 @@ int	ft_get_tex_img(t_texture *tex, char *line, t_all *all)
 
 	i = 0;
 	if (line[i] == 'N' && line[i + 1] == 'O')
-		ret = ft_get_img_path(&line[i + 2], &tex->n, &all->flag);
+		ret = ft_get_img_path(&line[i + 2], tex[NORTH].dir, &all->flag);
 	else if (line[i] == 'S' && line[i + 1] == 'O')
-		ret = ft_get_img_path(&line[i + 2], &tex->s, &all->flag);
+		ret = ft_get_img_path(&line[i + 2], tex[SOUTH].dir, &all->flag);
 	else if (line[i] == 'W' && line[i + 1] == 'E')
-		ret = ft_get_img_path(&line[i + 2], &tex->w, &all->flag);
+		ret = ft_get_img_path(&line[i + 2], tex[WEST].dir, &all->flag);
 	else if (line[i] == 'E' && line[i + 1] == 'A')
-		ret = ft_get_img_path(&line[i + 2], &tex->e, &all->flag);
+		ret = ft_get_img_path(&line[i + 2], tex[EAST].dir, &all->flag);
 	else
 	{
 		print_error_fd("ft_get_tex_img: invalide file", NULL, 2);

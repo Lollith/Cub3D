@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 18:58:34 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/04 15:36:10 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 // # define RIGHT 100
 //# define ESC 65307
 
-# define W_WIDTH 1300
-# define W_HEIGHT 800
+# define W_WIDTH 800
+# define W_HEIGHT 300
 
 
 # define MINI_CUB 10
@@ -159,8 +159,8 @@ int		ft_parse(char *av, t_all *all);
 int		ft_get_info(char *av, t_all *all);
 int		ft_skip(char *line, int *i);
 int		ft_skip_char(char *line, int *i, char c);
-int		ft_get_tex_img(t_texture **tex, char *line, t_all *all);
-int		ft_get_tex_color(t_texture **tex, char *line, t_all *all);
+int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
+int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);
 int		ft_get_map(char *line, t_map *map, t_all *all);
 int		ft_create_rect_map(t_map *map);
 int		free_all(t_all *all);

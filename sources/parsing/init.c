@@ -168,7 +168,7 @@ int	ft_init(char *av)
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
 //  //-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
-	the_end(&all);
-	free_all(&all);
+	// the_end(&all);
+	// free_all(&all);
 	return (0);
 }

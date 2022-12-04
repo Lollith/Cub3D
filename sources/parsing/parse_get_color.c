@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 11:39:08 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/04 15:28:30 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int	ft_get_tex_color(t_texture *tex, char *line, t_all *all)
 {
 	int	i;
 	int	ret;
-
+	(void) tex; // a supprimer
 	i = 0;
 	if (line[i] == 'F')
-		ret = ft_get_color(&tex->f, &line[i + 1], &all->flag);
+		ret = ft_get_color(&all->img_px.f, &line[i + 1], &all->flag);
 	else
-		ret = ft_get_color(&tex->c, &line[i + 1], &all->flag);
+		ret = ft_get_color(&all->img_px.c, &line[i + 1], &all->flag);
 	return (ret);
 }

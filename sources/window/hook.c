@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 14:12:31 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/04 18:48:38 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	esc_hook(int keysym, t_all *all)
 {
 	(void) all;
 	if (keysym == XK_Escape)
+	{
+		mlx_destroy_window(all->win.pt_mlx, all->win.pt_win);
 		exit(1);
+	}
 	return (0);
 }
 
@@ -42,9 +45,15 @@ int	keypress(int keysym, t_all *all)
 		move(all->pos.p_x, all->pos.p_y - MINI_MOV, -1.1, all);
 	if (keysym == XK_s || keysym == XK_Down)
 		move(all->pos.p_x, all->pos.p_y + MINI_MOV, 1, all);
-	if (keysym == XK_a || keysym == XK_Left)
+	if (keysym == XK_a)
 		move(all->pos.p_x - MINI_MOV, all->pos.p_y, -1.1, all);
-	if (keysym == XK_d || keysym == XK_Right)
+	if (keysym == XK_d)
 		move(all->pos.p_x + MINI_MOV, all->pos.p_y, 1, all);
+	if (keysym == XK_Left)
+	{
+		// if(all->ray.orient_x > -1)
+			all->ray.orient_x = all->ray.orient_x - 0.5;
+	}
+	// if (keysym == XK_Right)
 	return (0);
 }

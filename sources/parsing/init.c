@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 17:03:51 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/04 18:31:07 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	read_pos_ini(t_all *all)
 	i = 0;
 	while (all->map.line[i])
 	{
-		if (all->map.line[i] == 'P') // || N || S...
+		if (all->map.line[i] == 'P' || all->map.line[i] == 'S' //a remplacer par N
+			|| all->map.line[i] == 'W' || all->map.line[i] == 'E')
 		{
 			all->pos.p_x = i % (all->map.x);
 			all->pos.p_y = i / (all->map.x);
@@ -157,10 +158,10 @@ int	ft_init(char *av)
 	// creation img minimap
 	read_pos_ini(&all);
 	orientation_P(&all);
-	// commandes
-	ft_key_loop_hook(&all);
 	//  render
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
+	// commandes
+	ft_key_loop_hook(&all);
 //  //-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
 	the_end(&all);

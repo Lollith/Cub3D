@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:50:33 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 10:51:18 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/04 18:09:17 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ int	the_end(t_all *all)
 {
 	mlx_destroy_window(all->win.pt_mlx, all->win.pt_win);
 	mlx_destroy_display(all->win.pt_mlx);
-	
-	if (all->win.pt_mlx != NULL)
-		{
-		free(all->win.pt_mlx);
-			all->win.pt_mlx = NULL;
-		}
+	free(all->win.pt_mlx);
 	return (-1);
 }

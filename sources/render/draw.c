@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/04 15:37:15 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/04 17:16:47 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ int	render(t_all *all)
 	if (all->win.pt_win == NULL)
 		return (1);
 	img_creation(all);
-	// put_background(&all->img_px,all);
+	put_background(&all->img_px,all);
 	raycasting(all);
 	put_minimap(&all->img_px, all);
-	// draw_heroe(&all->img_px, all);
+	draw_heroe(&all->img_px, all);
 
 	// draw_ray(&all->img_minimap, all);
-	// mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
-		// all->img_px.mlx_img, 0, 0);
-	// mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
-		// all->tex[NORTH].img, 0, 0);
+	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
+		all->img_px.mlx_img, 0, 0);
+	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
+		all->tex[NORTH].img, 0, 0);
 	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);
 	return (0);
 }

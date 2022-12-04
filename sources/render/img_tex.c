@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_tex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:33:33 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 18:51:43 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/04 17:21:17 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	files_to_images(t_all *all)
 {
 	all->tex[NORTH].img = mlx_xpm_file_to_image(all->win.pt_mlx, all->tex[NORTH].dir, &all->tex[NORTH].width, &all->tex[NORTH].height);
 	if (check_img(all))
+	{
 		return (FALSE);
+	}
 	return (TRUE);
 }
 

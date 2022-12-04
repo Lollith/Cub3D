@@ -39,6 +39,13 @@ static void	init_tex(t_all *all)
 	int	i;
 
 	i = 0;
+
+	all->tex = (t_texture *) malloc (sizeof(t_texture) * 4);
+	if (!all->tex)
+	{
+		// printf("malloc error");
+		return; // retrun NULL, corriger la fct pour return
+	}
 	while(i < 4)
 	{
 		all->tex[i].dir = NULL;
@@ -148,7 +155,7 @@ int	ft_init(char *av)
 
 	if (ft_parse(av, &all) == 1)
 	{
-		free_all(&all);
+		// free_all(&all);// attention double free ne pas mettre
 		return (1);
 	}
 	printf("%s\n", all.map.line);
@@ -168,7 +175,7 @@ int	ft_init(char *av)
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
 //  //-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
-	// the_end(&all);
-	// free_all(&all);
+	the_end(&all);
+	free_all(&all);
 	return (0);
 }

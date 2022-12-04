@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/04 15:28:30 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/04 16:04:11 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	ft_get_color(unsigned int *color, char *line, int *flag)
 	return (0);
 }
 
-int	ft_get_tex_color(t_texture *tex, char *line, t_all *all)
+int	ft_get_tex_color(t_texture **tex, char *line, t_all *all)
 {
 	int	i;
 	int	ret;

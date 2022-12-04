@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/04 15:36:10 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/04 17:11:58 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ typedef struct s_all
 	t_window		win;
 	t_map			map;
 	t_img			img_px;
-	t_texture		tex[4];
+	t_texture		*tex;
 	t_pos			pos;
 	t_ray			ray;
 }					t_all;
@@ -159,8 +159,8 @@ int		ft_parse(char *av, t_all *all);
 int		ft_get_info(char *av, t_all *all);
 int		ft_skip(char *line, int *i);
 int		ft_skip_char(char *line, int *i, char c);
-int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
-int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);
+int		ft_get_tex_img(char *line, t_all *all);
+int		ft_get_tex_color(t_texture **tex, char *line, t_all *all);
 int		ft_get_map(char *line, t_map *map, t_all *all);
 int		ft_create_rect_map(t_map *map);
 int		free_all(t_all *all);

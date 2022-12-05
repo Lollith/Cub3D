@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 13:28:20 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:26:59 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@
 // # define RIGHT 100
 //# define ESC 65307
 
-# define W_WIDTH 800
-# define W_HEIGHT 300
+# define W_WIDTH 1200
+# define W_HEIGHT 800
 
 
 # define MINI_CUB 10
 # define MINI_P 0.4
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.05
 
 # ifndef FD_MAX
 #  define FD_MAX 1024

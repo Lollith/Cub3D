@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 13:28:50 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 13:45:04 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	read_pos_ini(t_all *all)
 
 void	orientation_p(t_all *all)
 {
-	if (all->pos.p == 'P') // a remplacer par  N 
+	if (all->pos.p == 'N')
 	{
 		all->ray.orient_y = -1;
 		all->ray.plane_x = 0.60;

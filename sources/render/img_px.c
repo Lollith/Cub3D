@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/02 15:56:40 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 14:14:05 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,47 @@ void	draw_heroe(t_img *img, t_all *all)
 			x++;
 		}
 		y++;
+	}
+	// pointe direction
+	if (all->pos.p == 'N')
+	{
+		x = (all->pos.p_x + 0.1) * MINI_CUB;
+		y = (all->pos.p_y) * MINI_CUB;
+		while ((x < (all->pos.p_x + 0.3) * MINI_CUB))
+		{
+			img_pix(img, x, y -0.1 + all->map.mini_pos, YELLOW);
+			x++;
+		}
+	}
+	if (all->pos.p == 'S')
+	{
+		x = (all->pos.p_x + 0.1) * MINI_CUB;
+		y = (all->pos.p_y + MINI_P) * MINI_CUB;
+		while ((x < (all->pos.p_x + 0.3) * MINI_CUB))
+		{
+			img_pix(img, x, y + 0.1 + all->map.mini_pos, YELLOW);
+			x++;
+		}
+	}
+	if (all->pos.p == 'W')
+	{
+		x = (all->pos.p_x) * MINI_CUB;
+		y = (all->pos.p_y + 0.1) * MINI_CUB;
+		while ((y < (all->pos.p_y + 0.3) * MINI_CUB))
+		{
+			img_pix(img, x - 0.1, y+ all->map.mini_pos, YELLOW);
+			y++;
+		}
+	}
+	if (all->pos.p == 'E')
+	{
+		x = (all->pos.p_x + MINI_P) * MINI_CUB;
+		y = (all->pos.p_y + 0.1) * MINI_CUB;
+		while ((y < (all->pos.p_y + 0.3) * MINI_CUB))
+		{
+			img_pix(img, x + 0.1, y+ all->map.mini_pos, YELLOW);
+			y++;
+		}
 	}
 }
 

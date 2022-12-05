@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 16:12:16y agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 10:59:21 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,15 @@ static void	init_map(t_map *map)
 	map->y = 0;
 }
 
-static void	init_tex(t_all *all)
+static int	init_tex(t_all *all)
 {
 	int	i;
 
 	i = 0;
-
 	all->tex = (t_texture *) malloc (sizeof(t_texture) * 4);
 	if (!all->tex)
-	{
-		// printf("malloc error");
-		return; // retrun NULL, corriger la fct pour return
-	}
-	while(i < 4)
+		return (1);
+	while (i < 4)
 	{
 		all->tex[i].dir = NULL;
 		all->tex[i].img = NULL;
@@ -58,6 +54,7 @@ static void	init_tex(t_all *all)
 		all->tex[i].line_len = 0;
 		i++;
 	}
+	return (0);
 }
 
 static void	init_px(t_all *all)
@@ -85,9 +82,7 @@ static void	init_ray(t_all *all)
 	all->ray.delta_dist_y = 0;
 	all->ray.draw_start = 0;
 	all->ray.draw_end = 0;
-
 }
-
 
 // position initiale de perso
 void	read_pos_ini(t_all *all)
@@ -107,7 +102,7 @@ void	read_pos_ini(t_all *all)
 	}
 }
 
-void	orientation_P(t_all *all)
+void	orientation_p(t_all *all)
 {
 	if (all->pos.p == 'P') // a remplacer par  N 
 	{
@@ -136,36 +131,35 @@ int	ft_init(char *av)
 	t_all		all;
 	t_window	win;
 	t_map		map;
-	// t_texture	tex[4];
 	t_pos		pos;
 
 // printf("ft_init IN\n");//to be deleted
 	init_win(&win);
 	init_map(&map);
 	init_pos(&pos);
-	init_tex(&all);
+	if (init_tex(&all) == 1)
+		return (1);
 	init_px(&all);
 	init_ray(&all);
 	all.win = win;
 	all.doc = NULL;
 	all.flag = 0;
 	all.map = map;
-	// all.tex = tex;
 	all.pos = pos;
 
 	if (ft_parse(av, &all) == 1)
 	{
-		// free_all(&all);// attention double free ne pas mettre
+		// free_all(&all);// attention double free ??
 		return (1);
 	}
 	printf("%s\n", all.map.line);
-	if(all.map.line == NULL)
+	if (all.map.line == NULL)
 		return (1);
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
 	read_pos_ini(&all);
-	orientation_P(&all);
+	orientation_p(&all);
 	// creation textures comme img
 
 	files_to_images(&all);

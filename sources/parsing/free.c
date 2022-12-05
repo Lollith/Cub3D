@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:50:33 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 18:39:39 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 11:16:42 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 int	free_all(t_all *all)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (all != NULL)
 	{
-		while(i < 4)
+		while (i < 4)
 		{
 			if (all->tex[i].dir != NULL)
 				free(all->tex[i].dir);
+			i++;
 		}
+		if (all->tex != NULL)
+			free(all->tex);
 		if (all->map.line != NULL)
 			free(all->map.line);
 	}

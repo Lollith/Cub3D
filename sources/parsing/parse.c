@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/04 17:11:25 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/05 11:19:07 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	ft_get_tex_map(char *line, t_all *all)
 			|| line[i] == 'E')
 			ret = ft_get_tex_img( &line[i], all);
 		else if (line[i] == 'F' || line[i] == 'C')
-			ret = ft_get_tex_color(&all->tex, &line[i], all);
+			ret = ft_get_tex_color(&line[i], all);
 		else if (line[i] == '\0')
 			return (0);
 		else

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:30:27 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 12:50:47 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:07:19 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_check_player(char *map_line, char *player, int *flag)
 
 	i = 0;
 	*flag = 0;
-	printf("BEGIN Player orien is %c\nflag is %d\n i is %d\n", *player, *flag, i);
+	// printf("BEGIN Player orien is %c\nflag is %d\n i is %d\n", *player, *flag, i);
 	while (map_line[i])
 	{
 		if ((map_line[i] == 'N' || map_line[i] == 'S' || map_line[i] == 'E'
@@ -29,7 +29,7 @@ static int	ft_check_player(char *map_line, char *player, int *flag)
 		}
 		i++;
 	}
-	printf("Player orien is %c\nflag is %d\n i is %d\n", *player, *flag, i);
+	// printf("Player orien is %c\nflag is %d\n i is %d\n", *player, *flag, i);
 	if (*flag != 1)
 	{
 		if (*flag == 0)

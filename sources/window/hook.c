@@ -62,9 +62,9 @@ void	ft_key_loop_hook(t_all *all)
 int	keypress(int keysym, t_all *all)
 {
 	if (keysym == XK_w || keysym == XK_Up)
-			move(all->pos.p_x + all->ray.orient_x * MOVE_SPEED, all->pos.p_y + all->ray.orient_y * MOVE_SPEED, all);
+			move(all->pos.p_x + all->ray.orient_x * MOVE_SPEED, all->pos.p_y + all->ray.orient_y * MOVE_SPEED, -0.4, all);
 	if (keysym == XK_s || keysym == XK_Down)
-			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED, all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all);
+			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED, all->pos.p_y - all->ray.orient_y * MOVE_SPEED, 0.3, all);
 	// if (keysym == XK_a):wq
 	
 	// 	move(all->pos.p_x - MINI_MOV, all->pos.p_y, -1.1, all);

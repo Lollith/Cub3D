@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 10:48:27 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 13:17:43 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@
 // 	}
 // }
 
-void	move(double new_pos_x, double new_pos_y, t_all *all)
+void	move(double new_pos_x, double new_pos_y, double sign, t_all *all)
 {
 	int	next_index;
 	int	map_x;
 	int	map_y;
 	
-	map_x = (int)(new_pos_x + MINI_P / 2 + all->ray.orient_x * MOVE_SPEED);
-	map_y = (int)(new_pos_y + MINI_P / 2 - all->ray.orient_y * MOVE_SPEED);
+	map_x = (int)(new_pos_x + MINI_P / 2 + sign + all->ray.orient_x * MOVE_SPEED);
+	map_y = (int)(new_pos_y + MINI_P / 2 + sign - all->ray.orient_y * MOVE_SPEED);
 	next_index = map_y * all->map.x + map_x;
 	if (all->map.line[next_index] != '1')
 	{

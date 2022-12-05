@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 11:47:51 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 13:25:38 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	init_pos(t_pos *pos)
 	pos->p_x = 0.2;
 	pos->p_y = 0.2;
 	pos->p = 'P';
-	pos->old_p_x = 0;
-	pos->old_p_y = 0;
+	// pos->old_p_x = 0;a supprimer
+	// pos->old_p_y = 0;
 }
 
 static void	init_win(t_window *win)
@@ -92,7 +92,8 @@ void	read_pos_ini(t_all *all)
 	i = 0;
 	while (all->map.line[i])
 	{
-		if (all->map.line[i] == 'P') // || N || S...
+		if (all->map.line[i] == 'P' || all->map.line[i] == 'S' //a remplacer par N
+			|| all->map.line[i] == 'W' || all->map.line[i] == 'E')
 		{
 			all->pos.p_x = i % (all->map.x);
 			all->pos.p_y = i / (all->map.x);

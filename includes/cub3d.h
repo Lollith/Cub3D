@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 11:46:01 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 13:21:54 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define MINI_CUB 10
 # define MINI_P 0.4
-# define MINI_MOV 0.1 // deplacement sur minicarte
+# define MOVE_SPEED 0.1
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -76,8 +76,8 @@ typedef struct s_pos
 	double			p_x;
 	double			p_y;
 	char			p;
-	double			old_p_x;
-	double			old_p_y;
+	// double			old_p_x;
+	// double			old_p_y;
 	int				index; // position i sur ma *line
 }					t_pos;
 

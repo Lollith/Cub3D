@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 13:07:00 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:42:49 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	read_pos_ini(t_all *all)
 
 void	orientation_p(t_all *all)
 {
-	if (all->pos.p == 'P') // a remplacer par  N 
+	if (all->pos.p == 'N') 
 	{
 		all->ray.orient_y = -1;
 		all->ray.plane_x = 0.60;
@@ -161,7 +161,7 @@ int	ft_init(char *av)
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
-	read_pos_ini(&all);
+	//read_pos_ini(&all);//see Elena & ft_checks_char in parse map scan
 	orientation_p(&all);
 	// creation textures comme img
 

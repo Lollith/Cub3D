@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:30:27 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 17:01:23 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 20:50:30 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_check_player(char *map_line, char *player, int *flag, t_all *all)
 	while (map_line[i] != '\0')
 	{
 		if ((map_line[i] == 'N' || map_line[i] == 'S' || map_line[i] == 'E'
-			|| map_line[i] == 'W'))
+				|| map_line[i] == 'W'))
 		{
 			*player = map_line[i];
 			// map_line[i] = '0';//to replace char by 0=>to simplify the map parse
@@ -56,7 +56,6 @@ static int	ft_check_player(char *map_line, char *player, int *flag, t_all *all)
 			print_error_fd("ft_check_player", "multiplayers fobbiden", 2);
 		return (1);
 	}
-	
 	return (0);
 }
 
@@ -73,7 +72,7 @@ static int	ft_check_chars(char *map_line)
 		j = 0;
 		while (map_chars[j] && map_chars[j] != map_line[i])
 			j++;
-		if(map_chars[j] != map_line[i])
+		if (map_chars[j] != map_line[i])
 		{
 			print_error_fd("ft_check_chars", "map: forbidden character", 2);
 			return (1);

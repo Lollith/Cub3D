@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/04 18:48:38by alollith         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:26:23 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	esc_hook(int keysym, t_all *all)
 	(void) all;
 	if (keysym == XK_Escape)
 	{
-		mlx_destroy_window(all->win.pt_mlx, all->win.pt_win);
 		exit(1);
 	}
 	return (0);

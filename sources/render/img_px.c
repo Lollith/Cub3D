@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_px.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/02 14:26:17 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:56:40 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	draw_wall(int *pt_i, t_img *img, t_all *all, int color)
 	int	x;
 	int	y;
 	int	i;
-
 	i = *pt_i;
 	y = i / (all->map.x) * MINI_CUB;
 	while (y < (i / all->map.x + 1) * MINI_CUB)

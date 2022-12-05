@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 15:26:59 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 17:44:35 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ typedef struct s_pos
 	double			p_x;
 	double			p_y;
 	char			p;
-	// double			old_p_x;
-	// double			old_p_y;
 	int				index; // position i sur ma *line
 }					t_pos;
 
@@ -182,7 +180,7 @@ int		ft_parse(char *av, t_all *all);
 
 /*----------------------------------WINDOW------------------------------------*/
 int		create_window(t_window *win);
-int		keypress(int keysym, t_all *all);
+int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);
 int		ft_find_map_begin(char **doc);
@@ -193,6 +191,7 @@ void	img_pix(t_img *img, int x, int y, int color);
 void	read_pos_ini(t_all *all);
 int		render(t_all *all);
 void	move(double new_pos_x, double new_pos_y, double sign, t_all *all);
+void	rotate(t_all *all, int sign);
 void	img_creation(t_all *all);
 void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);

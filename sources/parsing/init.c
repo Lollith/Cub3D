@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 13:45:04 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 16:01:12 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	init_pos(t_pos *pos)
 	pos->p_x = 0.2;
 	pos->p_y = 0.2;
 	pos->p = 'P';
-	// pos->old_p_x = 0;a supprimer
-	// pos->old_p_y = 0;
 }
 
 static void	init_win(t_window *win)

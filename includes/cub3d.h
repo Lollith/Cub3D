@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 13:00:58 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:21:15 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define W_WIDTH 800
 # define W_HEIGHT 300
 
+# define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
 # define MINI_CUB 10
 # define MINI_P 0.4

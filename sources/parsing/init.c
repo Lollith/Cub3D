@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 17:03:51 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:48:10 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	read_pos_ini(t_all *all)
 	i = 0;
 	while (all->map.line[i])
 	{
-		if (all->map.line[i] == 'P') // || N || S...
+		if (all->map.line[i] == 'N' || all->map.line[i] == 'S'
+			|| all->map.line[i] == 'E' || all->map.line[i] == 'W')
 		{
 			all->pos.p_x = i % (all->map.x);
 			all->pos.p_y = i / (all->map.x);

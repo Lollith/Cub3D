@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:39:38 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 17:35:02 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:18:17 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ static int	ft_create_rect_map(t_map *map)
 	return (0);
 }
 
-int	ft_check_map(t_map *map)
+int	ft_check_map(t_map *map, t_all *all)
 {
 	if (ft_create_rect_map(map) == 1)
 		return (1);
-	if (ft_check_map(map) == 1)
+	if (ft_scan_map(map, all) == 1)
 		return (1);
 	return (0);
 }

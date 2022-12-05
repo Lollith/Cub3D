@@ -6,7 +6,7 @@
 #    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/02 17:30:34 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/12/05 11:34:05 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ WINDOW_SRCS		:= hook.c window.c
 	
 PARSING_SRCS	:= checks.c init.c parse.c parse_get_img.c parse_get_color.c\
 					parse_get_map.c parse_tools.c parse_map.c utils_1.c\
-					parse_map_checks.c utils_2.c free.c\
+					parse_map_scan.c utils_2.c free.c\
 					
 
 RENDER_SRCS		:= draw.c move.c img_px.c img_file.c raycasting.c dda.c

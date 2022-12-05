@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 17:37:46 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:43:56 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,8 @@ int		ft_init(char *av);
 /*----------------------------------------------------------------------------*/
 
 /*-----------------------------------PARSE------------------------------------*/
-int		ft_map_check(t_map *map);
+int		ft_scan_map(t_map *map, t_all *all);
+int		ft_check_map(t_map *map, t_all *all);
 int		ft_parse_map(t_map *map);
 int		ft_get_map(char *line, t_map *map, t_all *all);
 int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);

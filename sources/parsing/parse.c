@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/02 17:37:07 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:43:29 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_parse(char *av, t_all *all)
 {
 	if (ft_get_info(av, all) == 1)
 		return (1);
-	if (ft_map_check(&all->map) == 1)
+	if (ft_scan_map(&all->map, all) == 1)
 		return (1);
 	return (0);
 }

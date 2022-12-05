@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:30:27 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 11:54:17 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:50:47 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_check_player(char *map_line, char *player, int *flag)
 		if (*flag == 0)
 			print_error_fd("invalid file", "player is missing", 2);
 		else
-			print_error_fd("invalid file", "invalid player position(s)", 2);
+			print_error_fd("invalid file", "multiplayers fobbiden", 2);
 		return (1);
 	}
 	return (0);

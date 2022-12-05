@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:39:38 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 12:32:05 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 12:57:27 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_map_line_cpy(char *tmp_line, t_map *map)
 	}
 }
 
-int	ft_create_rect_map(t_map *map)
+static int	ft_create_rect_map(t_map *map)
 {
 	char	*tmp_line;
 	int		i;
@@ -56,5 +56,14 @@ int	ft_create_rect_map(t_map *map)
 	ft_map_line_cpy(tmp_line, map);
 	free (map->line);
 	map->line = tmp_line;
+	return (0);
+}
+
+int	ft_check_map(t_map *map, t_all *all)
+{
+	if (ft_create_rect_map(map) == 1)
+		return (1);
+	if (ft_scan_map(map, all) == 1)
+		return (1);
 	return (0);
 }

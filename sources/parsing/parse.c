@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 12:32:14 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 12:55:23 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	ft_parse_map(t_map *map)
-{
-	if (ft_create_rect_map(map) == 1)
-		return (1);
-	return (0);
-}
 
 static int	ft_get_tex_map(char *line, t_all *all)
 {
@@ -80,7 +73,7 @@ int	ft_parse(char *av, t_all *all)
 {
 	if (ft_get_info(av, all) == 1)
 		return (1);
-	if (ft_parse_map(&all->map) == 1)
+	if (ft_scan_map(&all->map, all) == 1)
 		return (1);
 	return (0);
 }

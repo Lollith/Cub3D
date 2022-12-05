@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 13:21:54 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 13:28:20 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,15 +155,20 @@ int		ft_init(char *av);
 /*----------------------------------------------------------------------------*/
 
 /*-----------------------------------PARSE------------------------------------*/
-int		ft_create_rect_map(t_map *map);
+int		ft_scan_map(t_map *map, t_all *all);
+int		ft_check_map(t_map *map, t_all *all);
+int		ft_parse_map(t_map *map);
+int		ft_get_map(char *line, t_map *map, t_all *all);
+// int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);
+// int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
 int		ft_skip(char *line, int *i);
 int		ft_skip_char(char *line, int *i, char c);
 int		ft_get_tex_img(char *line, t_all *all);
 int		ft_get_tex_color(char *line, t_all *all);
 int		ft_get_map(char *line, t_map *map, t_all *all);
 int		free_all(t_all *all);
-int		ft_parse(char *av, t_all *all);
 int		ft_get_info(char *av, t_all *all);
+int		ft_parse(char *av, t_all *all);
 // int		ft_get_color(unsigned int *color, char *line, int *flag); static
 // int		ft_get_img_path(char *line, char *path, int *flag); static
 // int		ft_file_read(char *av, t_all *all);

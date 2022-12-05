@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 10:59:21 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 11:47:51 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,8 @@ int	ft_init(char *av)
 	printf("%s\n", all.map.line);
 	if (all.map.line == NULL)
 		return (1);
+	printf("x = %d, y = %d, x *y = %d, len = %zu\n", all.map.x, all.map.y, all.map.x * all.map.y, ft_strlen(all.map.line));
+	printf("%s\n", all.map.line);
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap

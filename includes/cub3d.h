@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 16:34:52 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 10:05:48 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 # define MINI_CUB 10
 # define MINI_P 0.4
-# define MINI_MOV 0.1 // deplacement sur minicarte
+# define MOVE_SPEED 0.1
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -68,8 +68,8 @@ typedef struct s_pos
 	double			p_x;
 	double			p_y;
 	char			p;
-	double			old_p_x;
-	double			old_p_y;
+	// double			old_p_x;
+	// double			old_p_y;
 	int				index; // position i sur ma *line
 }					t_pos;
 
@@ -179,7 +179,7 @@ int		ft_find_map_begin(char **doc);
 void	img_pix(t_img *img, int x, int y, int color);
 void	read_pos_ini(t_all *all);
 int		render(t_all *all);
-void	move(double new_pos_x, double new_pos_y, double sign, t_all *all);
+void	move(double new_pos_x, double new_pos_y, t_all *all);
 void	img_creation(t_all *all);
 void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);

@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/04 18:48:38 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/04 18:48:38by alollith         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,42 @@ void	ft_key_loop_hook(t_all *all)
 
 // signe  pour decallage du perso sur minimap +1.1 pour decaller un peu plus, 
 //correction manuelle
+// int	keypress(int keysym, t_all *all)
+// {
+// 	if (keysym == XK_w || keysym == XK_Up)
+// 		move(all->pos.p_x, all->pos.p_y - MINI_MOV, -1.1, all);
+// 	if (keysym == XK_s || keysym == XK_Down)
+// 		move(all->pos.p_x, all->pos.p_y + MINI_MOV, 1, all);
+// 	if (keysym == XK_a)
+// 		move(all->pos.p_x - MINI_MOV, all->pos.p_y, -1.1, all);
+// 	if (keysym == XK_d)
+// 		move(all->pos.p_x + MINI_MOV, all->pos.p_y, 1, all);
+// 	// if (keysym == XK_Left)
+// 	// {
+// 	// 	// if(all->ray.orient_x > -1)
+// 	// 		all->ray.orient_x = all->ray.orient_x - 0.5;
+// 	// }
+// 	if (keysym == XK_Right)
+// 	return (0);
+// }
+
+// dir
 int	keypress(int keysym, t_all *all)
 {
 	if (keysym == XK_w || keysym == XK_Up)
-		move(all->pos.p_x, all->pos.p_y - MINI_MOV, -1.1, all);
+			move(all->pos.p_x + all->ray.orient_x * MOVE_SPEED, all->pos.p_y + all->ray.orient_y * MOVE_SPEED, all);
 	if (keysym == XK_s || keysym == XK_Down)
-		move(all->pos.p_x, all->pos.p_y + MINI_MOV, 1, all);
-	if (keysym == XK_a)
-		move(all->pos.p_x - MINI_MOV, all->pos.p_y, -1.1, all);
-	if (keysym == XK_d)
-		move(all->pos.p_x + MINI_MOV, all->pos.p_y, 1, all);
-	if (keysym == XK_Left)
-	{
-		// if(all->ray.orient_x > -1)
-			all->ray.orient_x = all->ray.orient_x - 0.5;
-	}
-	// if (keysym == XK_Right)
+			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED, all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all);
+	// if (keysym == XK_a):wq
+	
+	// 	move(all->pos.p_x - MINI_MOV, all->pos.p_y, -1.1, all);
+	// if (keysym == XK_d)
+	// 	move(all->pos.p_x + MINI_MOV, all->pos.p_y, 1, all);
+	// if (keysym == XK_Left)
+	// {
+	// 	// if(all->ray.orient_x > -1)
+	// 		all->ray.orient_x = all->ray.orient_x - 0.5;
+	// }
+	// // if (keysym == XK_Right)
 	return (0);
 }

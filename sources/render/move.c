@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/02 08:45:58 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 10:48:27 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,36 @@
 
 // move = ne change pas  ma carte, met a jour les pixels
 //cast de ma position => donne la case 
-void	move(double new_pos_X, double new_pos_Y, double sign, t_all *all)
+// void	move(double new_pos_X, double new_pos_Y, double sign, t_all *all)
+// {
+// 	int	next_index;
+// 	int	map_x;
+// 	int	map_y;
+
+// 	map_x = (int)(new_pos_X + MINI_P/2 + sign * 0.2 );
+// 	map_y = (int)(new_pos_Y + MINI_P/2 + sign * 0.2);
+// 	next_index = map_y * all->map.x + map_x;
+// 	if (all->map.line[next_index] != '1')
+// 	{
+// 		// all->pos.old_p_y = all->pos.p_y + MINI_P;
+// 		// all->pos.old_p_x = all->pos.p_x + MINI_P;
+// 		all->pos.p_x = new_pos_X;
+// 		all->pos.p_y = new_pos_Y;
+// 	}
+// }
+
+void	move(double new_pos_x, double new_pos_y, t_all *all)
 {
 	int	next_index;
 	int	map_x;
 	int	map_y;
-
-	map_x = (int)(new_pos_X + MINI_P/2 + sign * 0.2 );
-	map_y = (int)(new_pos_Y + MINI_P/2 + sign * 0.2);
+	
+	map_x = (int)(new_pos_x + MINI_P / 2 + all->ray.orient_x * MOVE_SPEED);
+	map_y = (int)(new_pos_y + MINI_P / 2 - all->ray.orient_y * MOVE_SPEED);
 	next_index = map_y * all->map.x + map_x;
 	if (all->map.line[next_index] != '1')
 	{
-		all->pos.old_p_y = all->pos.p_y + MINI_P;
-		all->pos.old_p_x = all->pos.p_x + MINI_P;
-		all->pos.p_x = new_pos_X;
-		all->pos.p_y = new_pos_Y;
+		all->pos.p_x = new_pos_x;
+		all->pos.p_y = new_pos_y;
 	}
 }

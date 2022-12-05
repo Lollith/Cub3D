@@ -6,7 +6,7 @@
 #    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/05 11:34:05 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/12/05 12:57:53 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ PARSING_SRCS	:= checks.c init.c parse.c parse_get_img.c parse_get_color.c\
 					parse_map_scan.c utils_2.c free.c\
 					
 
-RENDER_SRCS		:= draw.c move.c img_px.c img_file.c raycasting.c dda.c
+RENDER_SRCS		:= draw.c move.c img_px.c img_tex.c raycasting.c dda.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 11:43:56 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:54:23 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 //# define ESC 65307
 
 # define W_WIDTH 800
-# define W_HEIGHT 500
+# define W_HEIGHT 300
+
 
 # define MINI_CUB 10
 # define MINI_P 0.4
@@ -52,6 +53,13 @@
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
 // # define T_BLACK 0x1A000000
+typedef enum E_dir{
+	
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+}			t_dir;
 
 typedef struct s_window{
 	void			*pt_mlx;
@@ -83,16 +91,24 @@ typedef struct s_map
 
 typedef struct s_texture
 {
-	char			*n; // p>e unsigned int? attention init a MAJ
-	char			*s; // p>e unsigned int? attention init a MAJ
-	char			*w; // p>e unsigned int? attention init a MAJ
-	char			*e; // p>e unsigned int? attention init a MAJ
-	unsigned int	c;
-	unsigned int	f;
+// 	char			*n; // p>e unsigned int? attention init a MAJ
+// 	char			*s; // p>e unsigned int? attention init a MAJ
+// 	char			*w; // p>e unsigned int? attention init a MAJ
+// 	char			*e; // p>e unsigned int? attention init a MAJ
+	char			*dir;
+	void			*img;
+	int				width;
+	int				height;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
 }					t_texture;
 
 typedef struct s_img
 {
+	unsigned int	c;
+	unsigned int	f;
 	void			*mlx_img;
 	char			*addr;
 	int				bpp;
@@ -100,13 +116,6 @@ typedef struct s_img
 	int				endian;
 }					t_img;
 
-typedef struct s_file
-{
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
-}			t_file;
 
 typedef struct s_ray
 {
@@ -134,10 +143,9 @@ typedef struct s_all
 	t_window		win;
 	t_map			map;
 	t_img			img_px;
-	t_texture		tex;
+	t_texture		*tex;
 	t_pos			pos;
 	t_ray			ray;
-	t_file			file;
 }					t_all;
 
 /*-----------------------------------ARGS------------------------------------*/
@@ -155,6 +163,9 @@ int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);
 int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
 int		ft_skip(char *line, int *i);
 int		ft_skip_char(char *line, int *i, char c);
+int		ft_get_tex_img(char *line, t_all *all);
+int		ft_get_tex_color(char *line, t_all *all);
+int		ft_get_map(char *line, t_map *map, t_all *all);
 int		free_all(t_all *all);
 int		ft_get_info(char *av, t_all *all);
 int		ft_parse(char *av, t_all *all);
@@ -193,6 +204,8 @@ void	digital_differential_analysis(t_all *a, int *mapx, int *mapy, int *s);
 void	dda_init(t_all *all, int *map_x, int *map_y);
 void	calcul_view(t_all *all, int *side);
 void	raycasting(t_all *all);
+void	ft_distroy_img(t_all *all);
+int		files_to_images(t_all *all);
 
 /*----------------------------------------------------------------------------*/
 

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 11:43:29 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:55:23 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_get_tex_map(char *line, t_all *all)
 		ft_skip(&line[i], &i);
 		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
 			|| line[i] == 'E')
-			ret = ft_get_tex_img(&all->tex, &line[i], all);
+			ret = ft_get_tex_img( &line[i], all);
 		else if (line[i] == 'F' || line[i] == 'C')
-			ret = ft_get_tex_color(&all->tex, &line[i], all);
+			ret = ft_get_tex_color(&line[i], all);
 		else if (line[i] == '\0')
 			return (0);
 		else

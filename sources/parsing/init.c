@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 16:42:49 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 20:57:32 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	init_pos(t_pos *pos)
 	pos->p_x = 0.2;
 	pos->p_y = 0.2;
 	pos->p = 'P';
-	pos->old_p_x = 0;
-	pos->old_p_y = 0;
+	// pos->old_p_x = 0;a supprimer
+	// pos->old_p_y = 0;
 }
 
 static void	init_win(t_window *win)
@@ -105,7 +105,7 @@ void	read_pos_ini(t_all *all)
 
 void	orientation_p(t_all *all)
 {
-	if (all->pos.p == 'N') 
+	if (all->pos.p == 'N')
 	{
 		all->ray.orient_y = -1;
 		all->ray.plane_x = 0.60;

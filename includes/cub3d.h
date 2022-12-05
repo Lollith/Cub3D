@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 16:57:24 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 20:58:35 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@
 // # define RIGHT 100
 //# define ESC 65307
 
-# define W_WIDTH 800
-# define W_HEIGHT 300
+# define W_WIDTH 1200
+# define W_HEIGHT 800
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
 # define MINI_CUB 10
 # define MINI_P 0.4
-# define MINI_MOV 0.1 // deplacement sur minicarte
+# define MOVE_SPEED 0.05
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -77,8 +77,8 @@ typedef struct s_pos
 	double			p_x;
 	double			p_y;
 	char			p;
-	double			old_p_x;
-	double			old_p_y;
+	// double			old_p_x;
+	// double			old_p_y;
 	int				index; // position i sur ma *line
 }					t_pos;
 

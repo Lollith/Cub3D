@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 18:46:09 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/06 08:30:25 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,28 @@ void	move(double new_pos_x, double new_pos_y, double sign, t_all *all)
 	int	map_x;
 	int	map_y;
 	(void)sign;//?
+	double old_x = all->pos.p_x;
+	double old_y= all->pos.p_y;
 	
-	map_x = (int)(new_pos_x + MINI_P +sign + all->ray.orient_x * MOVE_SPEED);
-	map_y = (int)(new_pos_y + MINI_P + sign + - all->ray.orient_y * MOVE_SPEED);
+	map_x = (int)(new_pos_x + all->ray.orient_x * MOVE_SPEED);
+	map_y = (int)(new_pos_y - all->ray.orient_y * MOVE_SPEED);
 	next_index = map_y * all->map.x + map_x;
 	if (all->map.line[next_index] != '1')
-	{
 		all->pos.p_x = new_pos_x;
+	if (all->map.line[next_index] != '1')
 		all->pos.p_y = new_pos_y;
-	}
+
+	int actual_map_x=(int)(all->pos.p_x);
+	int actual_map_y=(int)(all->pos.p_y);
+
+//gestion colision =)
+	int index = actual_map_y * all->map.x +actual_map_x;
+	if (all->map.line[index] == '1')
+		{
+		all->pos.p_x = old_x;
+		all->pos.p_y = old_y;
+
+		}
 }
 
 void	rotate(t_all *all, int sign)

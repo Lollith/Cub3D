@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/05 17:44:35 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/06 08:28:21 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@
 // # define RIGHT 100
 //# define ESC 65307
 
-# define W_WIDTH 1200
-# define W_HEIGHT 800
+# define W_WIDTH 1000
+# define W_HEIGHT 500
 
 
 # define MINI_CUB 10
-# define MINI_P 0.4
+# define MINI_P 0.2
 # define MOVE_SPEED 0.05
 
 # ifndef FD_MAX

@@ -58,7 +58,7 @@ int	keypress_wsad(int keysym, t_all *all)
 		all->pos.p_y + all->ray.orient_x * MOVE_SPEED, - 0.5, all);		
 	if (keysym == XK_d)
 		move(all->pos.p_x - all->ray.orient_y * MOVE_SPEED, 
-		all->pos.p_y - all->ray.orient_x * MOVE_SPEED, + 0.1, all);
+		all->pos.p_y - all->ray.orient_x * MOVE_SPEED, 0.1, all);
 	if (keysym == XK_Right)
 		rotate(all, 1);
 	if (keysym == XK_Left)

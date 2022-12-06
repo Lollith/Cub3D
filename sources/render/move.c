@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/06 08:30:25 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/06 08:33:59 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ void	move(double new_pos_x, double new_pos_y, double sign, t_all *all)
 //gestion colision =)
 	int index = actual_map_y * all->map.x +actual_map_x;
 	if (all->map.line[index] == '1')
-		{
 		all->pos.p_x = old_x;
+	if (all->map.line[index] == '1') // faire pour x et y => plus precis
 		all->pos.p_y = old_y;
-
-		}
 }
 
 void	rotate(t_all *all, int sign)

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:30:27 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/06 17:28:58 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:11:17 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ static int	ft_scan_forbid_chars(char *map_line)
 
 int	ft_scan_map(t_map *map, t_all *all)
 {
-	if (ft_scan_player(map->line, &all->pos.p, &all->flag, all) == 1)
+	if (ft_scan_forbid_chars(map->line) == 1)
 		return (1);
-	else if (ft_scan_forbid_chars(map->line) == 1)
+	else if (ft_scan_player(map->line, &all->pos.p, &all->flag, all) == 1)
 		return (1);
 	else if (ft_scan_zero(map->line, map) == 1)
 		return (1);

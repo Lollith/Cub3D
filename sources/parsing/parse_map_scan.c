@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:30:27 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 20:50:30 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:48:50 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_check_player(char *map_line, char *player, int *flag, t_all *all)
 				|| map_line[i] == 'W'))
 		{
 			*player = map_line[i];
-			// map_line[i] = '0';//to replace char by 0=>to simplify the map parse
+			map_line[i] = '0';
 			(*flag)++;
 		}
 		i++;
@@ -88,7 +88,7 @@ int	ft_scan_map(t_map *map, t_all *all)
 		return (1);
 	else if (ft_check_player(map->line, &all->pos.p, &all->flag, all) == 1)
 		return (1);
-	// printf("%s\n", map->line);
+	printf("%s\n", map->line);
 	// else if (ft_check_walls(map->line, all->x, all->y) == 1)
 	// 	return (1);
 	// else if ( ft_check_empty_char(map->line) == 1)

@@ -17,8 +17,6 @@ static void	init_pos(t_pos *pos)
 	pos->p_x = 0.2;
 	pos->p_y = 0.2;
 	pos->p = 'P';
-	// pos->old_p_x = 0;a supprimer
-	// pos->old_p_y = 0;
 }
 
 static void	init_win(t_window *win)

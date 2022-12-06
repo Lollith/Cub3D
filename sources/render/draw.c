@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/05 17:06:02 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:05:23 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,16 @@ void	put_minimap(t_img *img, t_all *all)
 	{
 		if (all->map.line[i] == '1')
 			draw_wall(&i, img, all, GREY);
-		if (all->map.line[i] == ' ')
-			draw_wall(&i, img, all, RED);
+		// if (all->map.line[i] == ' ')
+		// 	draw_wall(&i, img, all, RED);
 
-		if (all->map.line[i] == '\n')
-		{
-			draw_wall(&i, img, all, GREEN);
-		}
+		// if (all->map.line[i] == '\n')
+		// {
+		// 	draw_wall(&i, img, all, GREEN);
+		// }
 		// rempli entierement ma minimap , meme la ou P
-		if (all->map.line[i] != '1' && all->map.line[i] != '\n')
-			draw_wall(&i, img, all, BLACK);
+		// if (all->map.line[i] != '1' && all->map.line[i] != '\n')
+		// 	draw_wall(&i, img, all, BLACK);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 20:52:52 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:39:26 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static int	ft_get_tex_map(char *line, t_all *all)
 		ft_skip(&line[i], &i);
 		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
 			|| line[i] == 'E')
-			ret = ft_get_tex_img( &line[i], all);
+			ret = ft_get_tex_img(&line[i], all);
 		else if (line[i] == 'F' || line[i] == 'C')
 			ret = ft_get_tex_color(&line[i], all);
 		else if (line[i] == '\0')
 			return (0);
 		else
 		{
-			print_error_fd("ft_get_tex_map: invalide file", NULL, 2);
+			print_error_fd("ft_get_tex_map: invalid file", NULL, 2);
 			return (1);
 		}
 	}

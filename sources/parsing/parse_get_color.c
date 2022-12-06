@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 11:18:35 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/06 18:50:49 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ static int	ft_get_color(unsigned int *color, char *line, int *flag)
 	int				i;
 
 	i = 0;
+	if (line[i] != ' ')
+	{
+		print_error_fd("ft_get_color: invalide color description", NULL, 2);
+		return (1);
+	}
 	ft_skip(line, &i);
 	if (line == NULL || line[i] == '\0')
 	{
@@ -73,7 +78,7 @@ int	ft_get_tex_color(char *line, t_all *all)
 {
 	int	i;
 	int	ret;
-	
+
 	i = 0;
 	if (line[i] == 'F')
 		ret = ft_get_color(&all->img_px.f, &line[i + 1], &all->flag);

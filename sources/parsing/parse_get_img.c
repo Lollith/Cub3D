@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 12:31:44 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/06 18:36:59 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 	int	i;
 
 	i = 0;
+	if (line[i] != ' ')
+	{
+		print_error_fd("ft_get_img_path: invalide tex. description", NULL, 2);
+		return (1);
+	}
 	ft_skip(&line[i], &i);
 	if (line == NULL || line[i] == '\0')
 	{
-		print_error_fd("ft_get_img_path: invalide file", NULL, 2);
+		print_error_fd("ft_get_img_path: invalide tex. description", NULL, 2);
 		return (1);
 	}
 	*path = ft_strdup_path(&line[i]);

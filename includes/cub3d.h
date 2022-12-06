@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/06 09:28:32 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/06 14:37:59 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
 # define MINI_CUB 10
-# define MINI_P 0.2
+# define MINI_P 0.3
 # define MOVE_SPEED 0.05
 
 # ifndef FD_MAX

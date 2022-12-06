@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/06 14:37:59 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/06 18:43:17 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 # define W_WIDTH 1000
 # define W_HEIGHT 500
+# define TEX_SIZE 64
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -202,7 +203,7 @@ void	ray_direction(t_all *all, int *pt_x);
 void	ray_size_in_square(t_all *all);
 void	digital_differential_analysis(t_all *a, int *mapx, int *mapy, int *s);
 void	dda_init(t_all *all, int *map_x, int *map_y);
-void	calcul_view(t_all *all, int *side);
+int		calcul_view(t_all *all, int *side, int x);
 void	raycasting(t_all *all);
 void	ft_distroy_img(t_all *all);
 int		files_to_images(t_all *all);

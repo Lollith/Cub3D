@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 16:45:55 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/01 19:10:53 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/06 15:06:02 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	ray_size_in_square(t_all *all)
 //  pos + -1.2 avance un peu mon perso sur la case
 void	dda_init(t_all *all, int *map_x, int *map_y)
 {
-	// posX = all->pos.p_x + 0.2;  check si minimap ok avec linitialisation
-	// posY = all->pos.p_y + 0.2;
 	*map_x = (int)all->pos.p_x;
 	*map_y = (int)all->pos.p_y;
 	if (all->ray.r_dir_x < 0)

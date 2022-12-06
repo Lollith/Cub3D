@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/05 17:05:23 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/06 20:08:01 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	render(t_all *all)
 	if (all->win.pt_win == NULL)
 		return (1);
 	img_creation(all);
-	put_background(&all->img_px,all);
+	// put_background(&all->img_px,all);
 	raycasting(all);
 	put_minimap(&all->img_px, all);
 	draw_heroe(&all->img_px, all);

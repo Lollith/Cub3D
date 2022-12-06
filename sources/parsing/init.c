@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 16:01:12 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/05 20:57:32 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int	ft_init(char *av)
 	create_window(&all.win);
 //--------------------------------fonctions---------------------------------
 	// creation img minimap
-	read_pos_ini(&all);
+	//read_pos_ini(&all);//see Elena & ft_checks_char in parse map scan
 	orientation_p(&all);
 	// creation textures comme img
 

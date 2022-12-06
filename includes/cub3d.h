@@ -33,6 +33,7 @@
 # define W_WIDTH 1000
 # define W_HEIGHT 500
 
+# define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
 # define MINI_CUB 10
 # define MINI_P 0.2

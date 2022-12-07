@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 15:00:57 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 17:17:17 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,13 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 
 	i = 0;
 	if (line[i] != ' ')
-	{
-		print_error_fd("ft_get_img_path: invalide file", NULL, 2);
-		return (1);
-	}
+		return (msg_err("ft_get_img_path: invalide path", NULL, 2));
 	ft_skip(&line[i], &i);
 	if (line == NULL || line[i] == '\0')
-	{
-		print_error_fd("ft_get_img_path: invalide file", NULL, 2);
-		return (1);
-	}
+		return (msg_err("ft_get_img_path: invalide path", NULL, 2));
 	*path = ft_strdup_path(&line[i]);
 	if (path == NULL)
-	{
-		print_error_fd("ft_get_img_path: strdup failed", NULL, 2);
-		return (1);
-	}
+		return (msg_err("ft_get_img_path: strdup failed", NULL, 2));
 	if (check_file_path(*path) == 1)//to reactivate for the textures
 		return (1);
 	(*flag)++;
@@ -55,9 +46,6 @@ int	ft_get_tex_img( char *line, t_all *all)
 	else if (line[i] == 'E' && line[i + 1] == 'A' && all->tex[EAST].dir == NULL)
 		ret = ft_get_img_path(&line[i + 2], &all->tex[EAST].dir, &all->flag);
 	else
-	{
-		print_error_fd("ft_get_tex_img: invalide file", NULL, 2);
-		return (1);
-	}
+		return (msg_err("ft_get_tex_img: invalid file", NULL, 2));
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 14:11:00 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 17:13:22 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_char_int(char *line, int *i)
 	{
 		if (line[j] < '0' || line[j] > '9')
 		{
-			print_error_fd("ft_char_int: invalide color number", NULL, 2);
+			msg_err("ft_char_int: invalide color number", NULL, 2);
 			return (-1);
 		}
 		ret = ret * 10 + line[j] - '0';
@@ -37,7 +37,7 @@ static int	ft_char_int(char *line, int *i)
 	}
 	if (line[j] != ',' && line[j] != '\n')
 	{
-		print_error_fd("ft_char_int: invalide color description", NULL, 2);
+		msg_err("ft_char_int: invalide color description", NULL, 2);
 		return (-1);
 	}
 	else
@@ -70,16 +70,10 @@ static int	ft_get_color(unsigned int *color, char *line, int *flag)
 
 	i = 0;
 	if (line[i] != ' ')
-	{
-		print_error_fd("ft_get_color: invalide color description", NULL, 2);
-		return (1);
-	}
+		return (msg_err("ft_get_color: invalide color", NULL, 2));
 	ft_skip(line, &i);
 	if (line == NULL || line[i] == '\0')
-	{
-		print_error_fd("ft_put_color: invalide color description", NULL, 2);
-		return (1);
-	}
+		return (msg_err("ft_put_color: invalide color", NULL, 2));
 	if (ft_get_rgb_color(&line[i], &i, color) == 1)
 		return (1);
 	(*flag)++;
@@ -97,9 +91,6 @@ int	ft_get_tex_color(char *line, t_all *all)
 	else if (line[i] == 'C' && all->img_px.c == 0)
 		ret = ft_get_color(&all->img_px.c, &line[i + 1], &all->flag);
 	else
-	{
-		print_error_fd("ft_get_tex_color: invalide file", NULL, 2);
-		return (1);
-	}
+		return (msg_err("ft_get_tex_color: invalide file", NULL, 2));
 	return (ret);
 }

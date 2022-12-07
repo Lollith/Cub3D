@@ -3,8 +3,6 @@ SO ./assets/brick.xpm
 WE ./assets/rock.xpm
 EA ./assets/tile.xpm
 
-
-
 F 150,100,100
 C 100,240,255
 

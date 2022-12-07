@@ -6,7 +6,7 @@
 #    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/07 14:34:22 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/12/07 17:21:16 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,10 @@ MKDIR			= mkdir -p
 # Mandatory source files
 # ---------------------------------------------------------------------------- #
 WINDOW_SRCS		:= hook.c window.c
-	
-PARSING_SRCS	:= checks.c init.c parse.c parse_get_img.c parse_get_color.c\
-					parse_get_map.c parse_map.c parse_map_scan.c\
+
+PARSING_SRCS	:= checks.c init.c parse.c parse_get_tex_img.c parse_scan_map.c\
+					parse_get_tex_color.c parse_get_map.c parse_check_map.c\
 					msg_error.c utils_1.c utils_2.c free.c\
-					
 
 RENDER_SRCS		:= draw.c move.c img_px.c img_tex.c raycasting.c dda.c
 

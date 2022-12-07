@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/07 14:16:57 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 17:02:23 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ void	map_size(char **av, t_map *map);
 // int		ft_atoi(const char *str);
 // size_t	ft_strlen(const char *s);//already in gnl folder
 char	*ft_strjoin_no_free(char const *s1, char const *s2);
-int		print_error_fd(char *s1, char *s2, int fd);
+int		msg_err(char *s1, char *s2, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(char *src);

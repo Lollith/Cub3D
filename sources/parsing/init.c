@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 15:21:51 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 17:03:19 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	init_tex(t_all *all)
 	i = 0;
 	all->tex = (t_texture *) malloc (sizeof(t_texture) * 4);
 	if (!all->tex)
-		return (print_error_fd("init_tex", "malloc failed", 2));
+		return (msg_err("init_tex", "malloc failed", 2));
 	while (i < 4)
 	{
 		all->tex[i].dir = NULL;

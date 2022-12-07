@@ -1,0 +1,10 @@
+[0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/file_does_not_exist[0m
+Error
+/mnt/nfs/homes/esmirnov/Documents/cub3D/maps/file_does_not_exist: file does not exists !!!
+[0;31mProgram failed[0m
+[0;34m------------------------[0m
+[0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/map_subject.cub[0m
+Error
+./path_to_the_north_texture: file does not exists !!!
+[0;31mProgram failed[0m
+[0;34m------------------------[0m

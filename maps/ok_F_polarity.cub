@@ -1,0 +1,10 @@
+NO ./assets/bark.xpm
+SO ./assets/brick.xpm
+WE ./assets/rock.xpm
+EA ./assets/tile.xpm
+F +220,0,0
+C 0,167,170
+
+111111
+1E0001
+111111

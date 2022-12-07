@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:17:16 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:02:55 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:34:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_file_path(char *pathname)
 	int	fd;
 
 	if (access(pathname, F_OK) == -1)
-		return (msg_err(pathname, "file does not exists", 2));
+		return (msg_err(pathname, "file does not exists !!!", 2));
 	if (access(pathname, R_OK) == -1)
 		return (msg_err(pathname, "file read denied", 2));
 	fd = open(pathname, O_DIRECTORY);

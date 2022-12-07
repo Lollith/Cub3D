@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 13:24:16 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/07 13:48:18 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	raycasting(t_all *all)
 	int	x;
 	int	map_x;
 	int	map_y;
-	int	side;
 
 	x = 0;
 	while (x < W_WIDTH)

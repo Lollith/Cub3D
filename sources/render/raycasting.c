@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 11:23:39 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/07 13:24:16 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 // calculate lowest and highest pixel to fill in current stripe
 
 //dist_perp evite le fisheye  
-int	calcul_view(t_all *all, int *side, int x)
+int	calcul_view(t_all *all, int x)
 {
 	double	dist_perp;
 	int		wall_height;
 
-	if (*side == 0)
+	if (all->ray.side == 0)
 		dist_perp = (all->ray.dist_x - all->ray.delta_dist_x);
 	else
 		dist_perp = (all->ray.dist_y - all->ray.delta_dist_y);
@@ -34,11 +34,11 @@ int	calcul_view(t_all *all, int *side, int x)
 	all->ray.draw_end = wall_height / 2 + W_HEIGHT / 2;
 	if (all->ray.draw_end >= W_HEIGHT)
 		all->ray.draw_end = W_HEIGHT - 1;
-
-	//---------------------------------------
 //calcul texture
+
+
 	double wall_x;// exact value hit
-	if (*side == 0)
+	if (all->ray.side == 0)
 		wall_x = all->pos.p_y + dist_perp * all->ray.r_dir_y;
 	else
 		wall_x = all->pos.p_x + dist_perp * all->ray.r_dir_x;
@@ -46,9 +46,9 @@ int	calcul_view(t_all *all, int *side, int x)
 
 		//x coordinate de la texture
 		int tex_x = (int)(wall_x * TEX_SIZE);
-		if(*side == 0 && all->ray.r_dir_x > 0)
+		if(all->ray.side == 0 && all->ray.r_dir_x > 0)
 			tex_x = TEX_SIZE - tex_x -1;
-		if (*side == 1 && all->ray.r_dir_y < 0)
+		if (all->ray.side == 1 && all->ray.r_dir_y < 0)
 			tex_x = TEX_SIZE -tex_x -1;
 
 			
@@ -61,21 +61,21 @@ int	calcul_view(t_all *all, int *side, int x)
 		{
 			int tex_y = (int) tex_pos;
 			tex_pos += ratio;
-			// all->img_px.addr[y * all->img_px.line_len + x * all->img_px.bpp /8] = all->tex[0].addr[tex_y * all->tex[0].line_len  + tex_x * all->tex[NORTH].bpp /8];
-			
 		int index = tex_y * all->tex[0].line_len  + tex_x * all->tex[NORTH].bpp /8;
 		color  = ((int *)all->tex[0].addr)[index/4];
 			img_pix(&all->img_px, x, y, color);
-		// printf ("%c\n", color);
 		}
 
 	return color;// a suprimer
 }
 
-void	draw_vert_wall(t_all *all, t_img *img, int x, int color)
+// a garder de coter
+void	draw_vert_wall(t_all *all, t_img *img, int x, int *side)
 {
 	int	y;
-
+ 	int color = BLUE;
+	if (*side == 1)
+		color = color / 2;
 	y = all->ray.draw_start;
 		while (y < all->ray.draw_end)
 		{
@@ -100,21 +100,10 @@ void	raycasting(t_all *all)
 		ray_direction(all, &x);
 		ray_size_in_square(all);
 		dda_init(all, &map_x, &map_y);
-		digital_differential_analysis(all, &map_x, &map_y, &side);
-		calcul_view(all, &side, x);
-//------------------------------------------------------------------------------
-		// a remplacer par texture
-		// give x and y sides different brightness
-		// draw the pixels of the stripe as a vertical line
-
-	
-//---------------------------------------------- --------------------------------		
-// a garder de coter
-		// color = BLUE;
-		// if (side == 1)
-			// color = color / 2;
-		// draw_vert_wall(all, &all->img_px, x, color);
-//------------------------------------------------------------------------------//
+		digital_differential_analysis(all, &map_x, &map_y);
+		calcul_view(all, x);
+		
 		x++;
 	}
 }
+		// draw_vert_wall(all, &all->img_px, x, &side);

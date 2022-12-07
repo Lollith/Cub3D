@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 16:45:55 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/06 15:06:02 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/07 13:19:45 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	dda_init(t_all *all, int *map_x, int *map_y)
 // side was a NS or a EW wall hit?
 // jump to next map square, either in x-direction, or in y-direction
 // Check if ray has hit a wall
-void	digital_differential_analysis(t_all *a, int *mapx, int *mapy, int *side)
+void	digital_differential_analysis(t_all *all, int *mapx, int *mapy)
 {
 	int	hit;
 	int	index;
@@ -80,20 +80,20 @@ void	digital_differential_analysis(t_all *a, int *mapx, int *mapy, int *side)
 	hit = 0;
 	while (hit == 0)
 	{
-		if (a->ray.dist_x < a->ray.dist_y)
+		if (all->ray.dist_x < all->ray.dist_y)
 		{
-			a->ray.dist_x += a->ray.delta_dist_x;
-			(*mapx) += a->ray.step_x;
-			(*side) = 0;
+			all->ray.dist_x += all->ray.delta_dist_x;
+			(*mapx) += all->ray.step_x;
+			(all->ray.side) = 0;
 		}
 		else
 		{
-			a->ray.dist_y += a->ray.delta_dist_y;
-			(*mapy) += a->ray.step_y;
-			*side = 1;
+			all->ray.dist_y += all->ray.delta_dist_y;
+			(*mapy) += all->ray.step_y;
+			all->ray.side = 1;
 		}
-		index = (*mapy) * (a->map.x) + (*mapx);
-		if (a->map.line[index] == '1')
+		index = (*mapy) * (all->map.x) + (*mapx);
+		if (all->map.line[index] == '1')
 			hit = 1;
 	}
 }

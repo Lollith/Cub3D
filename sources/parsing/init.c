@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 13:15:35 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:17:19 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static void	init_ray(t_all *all)
 	all->ray.delta_dist_y = 0;
 	all->ray.draw_start = 0;
 	all->ray.draw_end = 0;
+	all->ray.side = -1;
 }
 
 // position initiale de perso
@@ -163,7 +164,7 @@ int	ft_init(char *av)
 	orientation_p(&all);
 	// creation textures comme img
 
-	files_to_images(&all);
+	tex_creation(&all);
 	// commandes
 	ft_key_loop_hook(&all);
 	//  render

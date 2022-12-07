@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/07 13:12:52 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:16:57 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 # define W_WIDTH 1000
 # define W_HEIGHT 500
+# define TEX_SIZE 64
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -89,10 +90,6 @@ typedef struct s_map
 
 typedef struct s_texture
 {
-// 	char			*n; // p>e unsigned int? attention init a MAJ
-// 	char			*s; // p>e unsigned int? attention init a MAJ
-// 	char			*w; // p>e unsigned int? attention init a MAJ
-// 	char			*e; // p>e unsigned int? attention init a MAJ
 	char			*dir;
 	void			*img;
 	int				width;
@@ -101,6 +98,8 @@ typedef struct s_texture
 	int				bpp;
 	int				line_len;
 	int				endian;
+	int				x;
+	int				y;
 }					t_texture;
 
 typedef struct s_img
@@ -131,6 +130,7 @@ typedef struct s_ray
 	double	delta_dist_y;
 	int		draw_start;
 	int		draw_end;
+	int		side;
 	
 }		t_ray;
 
@@ -188,6 +188,7 @@ int		ft_find_map_begin(char **doc);
 
 /*----------------------------------RENDER------------------------------------*/
 void	img_pix(t_img *img, int x, int y, int color);
+int		tex_creation(t_all *all);
 void	read_pos_ini(t_all *all);
 int		render(t_all *all);
 void	move(double new_pos_x, double new_pos_y, double sign, t_all *all);
@@ -196,15 +197,15 @@ void	img_creation(t_all *all);
 void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
 void	draw_ray(t_img *img, t_all *all);
-void	clean_px(t_img *img, t_all *all);
+// void	clean_px(t_img *img, t_all *all);
 void	ray_direction(t_all *all, int *pt_x);
 void	ray_size_in_square(t_all *all);
-void	digital_differential_analysis(t_all *a, int *mapx, int *mapy, int *s);
+void	digital_differential_analysis(t_all *a, int *mapx, int *mapy);
 void	dda_init(t_all *all, int *map_x, int *map_y);
-void	calcul_view(t_all *all, int *side);
+int		calcul_view(t_all *all, int x);
 void	raycasting(t_all *all);
 void	ft_distroy_img(t_all *all);
-int		files_to_images(t_all *all);
+void	files_to_images(t_all *all);
 
 /*----------------------------------------------------------------------------*/
 

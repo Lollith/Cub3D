@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/06 18:50:49 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:11:00 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_char_int(char *line, int *i)
 	ret = 0;
 	while (line[j] != '\n' && line[j] != ',' && j < 3)
 	{
-		if (line [j] < '0' || line[j] > '9')
+		if (line[j] < '0' || line[j] > '9')
 		{
 			print_error_fd("ft_char_int: invalide color number", NULL, 2);
 			return (-1);
@@ -45,12 +45,28 @@ static int	ft_char_int(char *line, int *i)
 	return (ret);
 }
 
+static int	ft_get_rgb_color(char *line, int *i, unsigned int *color)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = ft_char_int(&line[*i], i);
+	if (r == -1)
+		return (1);
+	g = ft_char_int(&line[*i], i);
+	if (g == -1)
+		return (1);
+	b = ft_char_int(&line[*i], i);
+	if (b == -1)
+		return (1);
+	*color = ft_create_rgb(r, g, b);
+	return (0);
+}
+
 static int	ft_get_color(unsigned int *color, char *line, int *flag)
 {
-	int				r;
-	int				g;
-	int				b;
-	int				i;
+	int	i;
 
 	i = 0;
 	if (line[i] != ' ')
@@ -64,12 +80,8 @@ static int	ft_get_color(unsigned int *color, char *line, int *flag)
 		print_error_fd("ft_put_color: invalide color description", NULL, 2);
 		return (1);
 	}
-	r = ft_char_int(&line[i], &i);
-	g = ft_char_int(&line[i], &i);
-	b = ft_char_int(&line[i], &i);
-	if (r == -1 || g == -1 || b == -1)
+	if (ft_get_rgb_color(&line[i], &i, color) == 1)
 		return (1);
-	*color = ft_create_rgb(r, g, b);
 	(*flag)++;
 	return (0);
 }
@@ -80,9 +92,14 @@ int	ft_get_tex_color(char *line, t_all *all)
 	int	ret;
 
 	i = 0;
-	if (line[i] == 'F')
+	if (line[i] == 'F' && all->img_px.f == 0)
 		ret = ft_get_color(&all->img_px.f, &line[i + 1], &all->flag);
-	else
+	else if (line[i] == 'C' && all->img_px.c == 0)
 		ret = ft_get_color(&all->img_px.c, &line[i + 1], &all->flag);
+	else
+	{
+		print_error_fd("ft_get_tex_color: invalide file", NULL, 2);
+		return (1);
+	}
 	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/06 14:37:59 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/07 13:12:52 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
 // # define T_BLACK 0x1A000000
-typedef enum E_dir{
+typedef enum e_dir{
 	
 	NORTH,
 	SOUTH,
@@ -70,7 +70,6 @@ typedef struct s_window{
 /*
 ** p_x & p_y are for player position
 ** x - nb of columns, y - nb of lines
-** all spaces on the map will be noted as 8
 */
 typedef struct s_pos
 {

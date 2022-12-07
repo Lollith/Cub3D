@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:50:33 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 13:23:50 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:12:13 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	free_all(t_all *all)
 
 int	the_end(t_all *all)
 {
-	ft_distroy_img(all);
+	ft_distroy_tex(all);
 	mlx_destroy_window(all->win.pt_mlx, all->win.pt_win);
 	mlx_destroy_display(all->win.pt_mlx);
 	if (all->win.pt_mlx != NULL)

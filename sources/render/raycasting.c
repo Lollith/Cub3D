@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 13:48:18 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/07 16:43:34by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,40 @@ int	calcul_view(t_all *all, int x)
 		{
 			int tex_y = (int) tex_pos;
 			tex_pos += ratio;
-		int index = tex_y * all->tex[0].line_len  + tex_x * all->tex[NORTH].bpp /8;
-		color  = ((int *)all->tex[0].addr)[index/4];
-			img_pix(&all->img_px, x, y, color);
+
+			
+		if (all->ray.side == 1 && all->ray.r_dir_y > 0 )  //side =1 = NS , ry_dir y < 0 => N
+		{
+			int index = tex_y * all->tex[SOUTH].line_len  + tex_x * all->tex[SOUTH].bpp /8;
+			color  = ((int *)all->tex[SOUTH].addr)[index/4];
+		}
+		else if (all->ray.side == 1 && all->ray.r_dir_y < 0)  //side =1 = NS , ry_dir y < 0 => N
+		{
+			int index = tex_y * all->tex[NORTH].line_len  + tex_x * all->tex[NORTH].bpp /8;
+			color  = ((int *)all->tex[NORTH].addr)[index/4];
+		}	
+		else if (all->ray.side == 0 && all->ray.r_dir_x > 0)
+		{
+			int index = tex_y * all->tex[EAST].line_len  + tex_x * all->tex[EAST].bpp /8;
+			color  = ((int *)all->tex[EAST].addr)[index/4];
+		}
+		else if (all->ray.side == 0 && all->ray.r_dir_x < 0)
+		{
+			int index = tex_y * all->tex[WEST].line_len  + tex_x * all->tex[WEST].bpp /8;
+			color  = ((int *)all->tex[WEST].addr)[index/4];
+		}
+			img_pix(&all->img_px, x, y, color);		
 		}
 
 	return color;// a suprimer
 }
 
 // a garder de coter
-void	draw_vert_wall(t_all *all, t_img *img, int x, int *side)
+void	draw_vert_wall(t_all *all, t_img *img, int x)
 {
 	int	y;
  	int color = BLUE;
-	if (*side == 1)
+	if (all->ray.side == 1)
 		color = color / 2;
 	y = all->ray.draw_start;
 		while (y < all->ray.draw_end)

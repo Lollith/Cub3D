@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/06 20:50:09 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/07 11:23:39 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ int	calcul_view(t_all *all, int *side, int x)
 			tex_x = TEX_SIZE - tex_x -1;
 		if (*side == 1 && all->ray.r_dir_y < 0)
 			tex_x = TEX_SIZE -tex_x -1;
-		
+
+			
+		int color = 0;
 	// 	//ratio taille de texture \ taille ecran=> de cb augmenter ma texture 
 	// 	// en fct de la taille de lecran
 		double ratio  =  (double)TEX_SIZE / wall_height;
@@ -59,11 +61,15 @@ int	calcul_view(t_all *all, int *side, int x)
 		{
 			int tex_y = (int) tex_pos;
 			tex_pos += ratio;
-			all->img_px.addr[y * all->img_px.line_len + x * all->img_px.bpp /8] = all->tex[0].addr[tex_y * all->tex[0].line_len  + tex_x * all->tex[NORTH].bpp /8];
-			// printf("%d\n", all->tex[0].bpp);
+			// all->img_px.addr[y * all->img_px.line_len + x * all->img_px.bpp /8] = all->tex[0].addr[tex_y * all->tex[0].line_len  + tex_x * all->tex[NORTH].bpp /8];
+			
+		int index = tex_y * all->tex[0].line_len  + tex_x * all->tex[NORTH].bpp /8;
+		color  = ((int *)all->tex[0].addr)[index/4];
+			img_pix(&all->img_px, x, y, color);
+		// printf ("%c\n", color);
 		}
 
-	return 0;// a suprimer
+	return color;// a suprimer
 }
 
 void	draw_vert_wall(t_all *all, t_img *img, int x, int color)

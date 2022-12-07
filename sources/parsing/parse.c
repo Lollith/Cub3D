@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 14:14:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:48:09 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ static int	ft_get_tex_map(char *line, t_all *all)
 	return (ret);
 }
 
+static char *ft_get_first_line(int fd)
+{
+	char *line;
+
+	line = get_next_line(fd);
+	if (!line)
+	{
+		get_next_line(-1);
+		print_error_fd("ft_ft_get_first_line: invalid file", NULL, 2);
+		return (NULL);
+    }
+    return (line);
+}
+
 int	ft_get_info(char *av, t_all *all)
 {
 	char	*line;
@@ -51,23 +65,55 @@ int	ft_get_info(char *av, t_all *all)
 		print_error_fd("ft_get_info: invalid fd", NULL, 2);
 		return (1);
 	}
-	line = NULL;
-	while (TRUE)
+	line = ft_get_first_line(fd);
+	while (line)
 	{
-		line = get_next_line(fd);
-		if (line == NULL) // a confirmer avec Adeline EOF => NULL et erreur NULL pe check structure vide ou pas et en fonction reagit EOF ou pb de lecture
-			break ;
 		if (ft_get_tex_map(line, all) == 1)
 		{
+			get_next_line(-1);
 			free (line);
 			close (fd);
 			return (1);
 		}
 		free (line);
+		line = get_next_line(fd);
 	}
+	get_next_line(-1);
 	close (fd);
 	return (0);
 }
+
+// int	ft_get_info(char *av, t_all *all)
+// {
+// 	char	*line;
+// 	int		fd;
+
+// 	fd = open(av, O_RDONLY);
+// 	if (fd < 0 || fd == 2 || fd > FD_MAX)
+// 	{
+// 		print_error_fd("ft_get_info: invalid fd", NULL, 2);
+// 		return (1);
+// 	}
+// 	line = NULL;
+// 	while (TRUE)
+// 	{
+// 		line = get_next_line(fd);
+// 		if (line == NULL) // a confirmer avec Adeline EOF => NULL et erreur NULL pe check structure vide ou pas et en fonction reagit EOF ou pb de lecture
+// 		{
+// 			get_next_line(-1);
+// 			break ;
+// 		}
+// 		if (ft_get_tex_map(line, all) == 1)
+// 		{
+// 			free (line);
+// 			close (fd);
+// 			return (1);
+// 		}
+// 		free (line);
+// 	}
+// 	close (fd);
+// 	return (0);
+// }
 
 int	ft_parse(char *av, t_all *all)
 {

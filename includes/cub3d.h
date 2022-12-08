@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 14:47:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:22:42 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_strdup_path(char *src);
 void	*ft_memset(void *str, int c, size_t n);
-int		check_file_path(char *pathname);
+// int		check_file_path(char *pathname);
+int	ft_open_file(char *av, int *fd);
 int		check_file_name(char *name, char *base);
 /*----------------------------------------------------------------------------*/
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_get_img.c                                    :+:      :+:    :+:   */
+/*   parse_get_tex_img.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:17:17 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:24:37 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 	*path = ft_strdup_path(&line[i]);
 	if (path == NULL)
 		return (msg_err("ft_get_img_path: strdup failed", NULL, 2));
-	if (check_file_path(*path) == 1)//to reactivate for the textures
-		return (1);
+	// if (check_file_path(*path) == 1)//to reactivate for the textures
+	// 	return (1);
 	(*flag)++;
 	return (0);
 }

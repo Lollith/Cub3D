@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 13:18:21 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 15:56:50 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	init_pos(t_pos *pos)
 	pos->p_x = 0.2;
 	pos->p_y = 0.2;
 	pos->p = 'P';
+	pos->left_handed = 0;
 }
 
 static void	init_win(t_window *win)
@@ -37,7 +38,7 @@ static int	init_tex(t_all *all)
 	int	i;
 
 	i = 0;
-	all->tex = (t_texture *) malloc (sizeof(t_texture) * 4);
+	all->tex = (t_texture *)malloc(sizeof(t_texture) * 4);
 	if (!all->tex)
 		return (msg_err("init_tex", "malloc failed", 2));
 	while (i < 4)
@@ -99,7 +100,7 @@ void	read_pos_ini(t_all *all)
 			|| all->map.line[i] == 'E' || all->map.line[i] == 'W')
 		{
 			all->pos.p_x = i % (all->map.x) + 0.1;
-			all->pos.p_y = i / (all->map.x);
+			all->pos.p_y = i / (all->map.x) + 0.1;
 			all->pos.index = i;
 		}
 		i++;
@@ -127,7 +128,7 @@ void	orientation_p(t_all *all)
 	{
 		all->ray.orient_x = -1;
 		all->ray.plane_y = 0.60;
-		all->ray.plane_y = 0.60;
+		all->pos.left_handed = 1;
 	}
 }
 
@@ -158,7 +159,7 @@ int	ft_init(char *av)
 	}
 	if (all.map.line == NULL)
 		return (1);
-	if (create_window(&all.win) == 1)
+	if (create_window(&all, &all.win) == 1)
 		return (1);
 	orientation_p(&all);
 	tex_creation(&all);

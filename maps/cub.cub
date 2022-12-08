@@ -2,7 +2,7 @@
 NO ./assets/bark.xpm
 SO ./assets/brick.xpm
 WE ./assets/rock.xpm
-EA./path_to_the_east_texture
+EA ./assets/tile.xpm
 
 F 1,0,0
 C 1,0,0

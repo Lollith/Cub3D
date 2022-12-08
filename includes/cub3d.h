@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 13:09:22 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 15:19:51 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_pos
 	double			p_y;
 	char			p;
 	int				index; // position i sur ma *line
+	int				left_handed;
 }					t_pos;
 
 typedef struct s_map
@@ -134,6 +135,7 @@ typedef struct s_ray
 	int		tex_x;
 	int		tex_y;
 	int		wall_height;
+	int gaucher;
 }		t_ray;
 
 typedef struct s_all
@@ -182,7 +184,7 @@ void	read_pos_ini(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------IO---------------------------------------*/
-int		create_window(t_window *win);
+int		create_window(t_all *all, t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);

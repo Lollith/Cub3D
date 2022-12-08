@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:37 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/04 17:56:47 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/08 09:31:41 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,20 @@ int	create_window(t_window *win)
 	if (win->pt_mlx == NULL)
 	{
 		free(win->pt_mlx);
+		//MESSAGE ERROR
 		return (1);
 	}
 	win->pt_win = mlx_new_window(win->pt_mlx, size_x, size_y, "cub3D");
-	// if (win->pt_win == NULL)
-	// {
-	// 	mlx_destroy_window(win->pt_mlx, win->pt_win);
-	// 	mlx_destroy_display(win->pt_mlx);
-	// 	free(win->pt_win);
-	// 	free(win->pt_mlx);
-	// 	return (1);
-	// }
+	// win->pt_mlx = NULL; //=> leak
+	if (win->pt_win == NULL)
+	{
+		// mlx_destroy_window(win->pt_mlx, win->pt_win);
+		// mlx_destroy_display(win->pt_mlx);
+		// free(win->pt_win);
+		// free(win->pt_mlx);
+		// 
+		//MESSAGE ERROR
+		return (1);
+	}
 	return (0);
 }

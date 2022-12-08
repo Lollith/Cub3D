@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 17:55:09 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:43:12 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,7 @@ void	*ft_memset(void *str, int c, size_t n);
 // int		check_file_path(char *pathname);
 int		ft_open_file(char *av, int *fd, char * file_extension);
 int		check_file_name(char *name, char *base);
+int		ft_scan_line(char *line);
 /*----------------------------------------------------------------------------*/
 
 //to be deleted just to start work with raycasting

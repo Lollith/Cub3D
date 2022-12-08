@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 15:46:17 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:37:59 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 	if (line == NULL || line[i] == '\0')
 		return (msg_err("ft_get_img_path: invalide path", *path, 2));
 	*path = ft_strdup_path(&line[i]);
-	if (path == NULL)
-		return (msg_err("ft_get_img_path: strdup failed", NULL, 2));
-	if (ft_open_file(*path, &fd, ".xpm") == 1)
+	if (*path == NULL || ft_open_file(*path, &fd, ".xpm") == 1)
 		return (1);
 	(*flag)++;
 	return (0);

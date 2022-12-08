@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:03:19 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:18:21 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ static void	init_ray(t_all *all)
 	all->ray.draw_start = 0;
 	all->ray.draw_end = 0;
 	all->ray.side = -1;
+	all->ray.dir_tex = 0;
+	all->ray.tex_x = 0;
+	all->ray.tex_y = 0;
+	all->ray.wall_height = 0;
 }
 
 // position initiale de perso
@@ -94,7 +98,7 @@ void	read_pos_ini(t_all *all)
 		if (all->map.line[i] == 'N' || all->map.line[i] == 'S'
 			|| all->map.line[i] == 'E' || all->map.line[i] == 'W')
 		{
-			all->pos.p_x = i % (all->map.x);
+			all->pos.p_x = i % (all->map.x) + 0.1;
 			all->pos.p_y = i / (all->map.x);
 			all->pos.index = i;
 		}
@@ -122,6 +126,7 @@ void	orientation_p(t_all *all)
 	if (all->pos.p == 'W')
 	{
 		all->ray.orient_x = -1;
+		all->ray.plane_y = 0.60;
 		all->ray.plane_y = 0.60;
 	}
 }
@@ -151,24 +156,14 @@ int	ft_init(char *av)
 		free_all(&all);// attention double free ??
 		return (1);
 	}
-	// printf("%s\n", all.map.line);
 	if (all.map.line == NULL)
 		return (1);
-	// printf("x = %d, y = %d, x *y = %d, len = %zu\n", all.map.x, all.map.y, all.map.x * all.map.y, ft_strlen(all.map.line));
-	// printf("%s\n", all.map.line);
-	create_window(&all.win);
-//--------------------------------fonctions---------------------------------
-	// creation img minimap
-	//read_pos_ini(&all);//see Elena & ft_checks_char in parse map scan
+	if (create_window(&all.win) == 1)
+		return (1);
 	orientation_p(&all);
-	// creation textures comme img
-
 	tex_creation(&all);
-	// commandes
 	ft_key_loop_hook(&all);
-	//  render
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
-//  //-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
 	the_end(&all);
 	free_all(&all);

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:03:57 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:15:59 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,34 @@ static char *ft_get_first_line(int fd)
 	if (!line)
 	{
 		get_next_line(-1);
-		msg_err("ft_ft_get_first_line: invalid file", NULL, 2);
+		msg_err("ft_get_first_line: invalid file", NULL, 2);
 		return (NULL);
 	}
 	return (line);
+}
+
+static int	ft_open_file(char *av, int *fd)
+{
+	*fd = open(av, O_DIRECTORY);
+	if (*fd != -1)
+	{
+		close (*fd);
+		return (msg_err(av, "is a directory", 2));
+	}
+	*fd = open(av, O_RDONLY);
+	if (*fd < 0 || *fd == 2 || *fd > FD_MAX)
+	{
+		if (*fd == 2 || *fd > FD_MAX)
+			close (*fd);
+		perror("Error\nft_open_file: ");
+		return (1);
+	}
+	if (check_file_name(av, ".cub") != 0)
+	{
+		close (*fd);
+		return (msg_err("ft_open_file", "invalid file extension", 2));
+	}
+	return (0);
 }
 
 int	ft_get_info(char *av, t_all *all)
@@ -56,10 +80,10 @@ int	ft_get_info(char *av, t_all *all)
 	char	*line;
 	int		fd;
 
-	fd = open(av, O_RDONLY);
-	if (fd < 0 || fd == 2 || fd > FD_MAX)
-		return (msg_err("ft_get_info: invalid fd", NULL, 2));
-
+	fd = -1;
+	if (ft_open_file(av, &fd) == 1)
+		return (1);
+	printf("fd is %d\n", fd);
 	line = ft_get_first_line(fd);
 	while (line)
 	{

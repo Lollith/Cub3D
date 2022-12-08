@@ -6,13 +6,22 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 13:50:37 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 13:45:01 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+// creation img minimap
+void	img_creation(t_all *all)
+{
+	all->img_px.mlx_img = mlx_new_image(all->win.pt_mlx,
+			W_WIDTH, W_HEIGHT);
+	all->img_px.addr = mlx_get_data_addr(all->img_px.mlx_img,
+			&all->img_px.bpp, &all->img_px.line_len,
+			&all->img_px.endian);
+}
 
-void draw_rectangle(t_img *img, int position, unsigned int color)
+void	draw_rectangle(t_img *img, int position, unsigned int color)
 {
 	int	x;
 	int	y;
@@ -46,17 +55,9 @@ void	put_minimap(t_img *img, t_all *all)
 	while (all->map.line[i])
 	{
 		if (all->map.line[i] == '1')
-			draw_wall(&i, img, all, GREY);
-		// if (all->map.line[i] == ' ')
-		// 	draw_wall(&i, img, all, RED);
-
-		// if (all->map.line[i] == '\n')
-		// {
-		// 	draw_wall(&i, img, all, GREEN);
-		// }
-		// rempli entierement ma minimap , meme la ou P
-		// if (all->map.line[i] != '1' && all->map.line[i] != '\n')
-		// 	draw_wall(&i, img, all, BLACK);
+			draw_mini_wall(&i, img, all, GREY);
+		if (all->map.line[i] != '1' && all->map.line[i] != '\n')
+			draw_mini_wall(&i, img, all, BLACK);
 		i++;
 	}
 }
@@ -68,16 +69,13 @@ int	render(t_all *all)
 	if (all->win.pt_win == NULL)
 		return (1);
 	img_creation(all);
-	put_background(&all->img_px,all);
+	put_background(&all->img_px, all);
 	raycasting(all);
 	put_minimap(&all->img_px, all);
 	draw_heroe(&all->img_px, all);
-
-	// draw_ray(&all->img_minimap, all);
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
 		all->img_px.mlx_img, 0, 0);
-	// mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
-	// 	all->tex[NORTH].img, 0, 0);
 	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);
 	return (0);
 }
+// draw_ray(&all->img_minimap, all);

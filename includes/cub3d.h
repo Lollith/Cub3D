@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/07 17:02:23 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:47:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 
 # define W_WIDTH 1000
 # define W_HEIGHT 500
-# define TEX_SIZE 64
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -131,7 +130,10 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 	int		side;
-	
+	int		dir_tex;
+	int		tex_x;
+	int		tex_y;
+	int		wall_height;
 }		t_ray;
 
 typedef struct s_all
@@ -147,8 +149,8 @@ typedef struct s_all
 }					t_all;
 
 /*-----------------------------------ARGS------------------------------------*/
-int		check_args(int ac, char **av);
-int		check_file_path(char *pathname);
+// int		check_args(int ac, char **av);
+
 int		ft_init(char *av);
 /*----------------------------------------------------------------------------*/
 
@@ -167,6 +169,7 @@ int		ft_get_map(char *line, t_map *map, t_all *all);
 int		free_all(t_all *all);
 int		ft_get_info(char *av, t_all *all);
 int		ft_parse(char *av, t_all *all);
+void	read_pos_ini(t_all *all);
 // int		ft_get_color(unsigned int *color, char *line, int *flag); static
 // int		ft_get_img_path(char *line, char *path, int *flag); static
 // int		ft_file_read(char *av, t_all *all);
@@ -178,34 +181,37 @@ int		ft_parse(char *av, t_all *all);
 // int		ft_put_tex(t_texture *tex, char *line, char *path, int *flag);
 /*----------------------------------------------------------------------------*/
 
-/*----------------------------------WINDOW------------------------------------*/
+/*----------------------------------IO---------------------------------------*/
 int		create_window(t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);
-int		ft_find_map_begin(char **doc);
+// int		ft_find_map_begin(char **doc);
+void	move(double new_pos_x, double new_pos_y, t_all *all);
+void	rotate(t_all *all, int sign);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/
+//img_px
 void	img_pix(t_img *img, int x, int y, int color);
-int		tex_creation(t_all *all);
-void	read_pos_ini(t_all *all);
-int		render(t_all *all);
-void	move(double new_pos_x, double new_pos_y, double sign, t_all *all);
-void	rotate(t_all *all, int sign);
 void	img_creation(t_all *all);
-void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
+void	draw_mini_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
+//a supprimer
 void	draw_ray(t_img *img, t_all *all);
-// void	clean_px(t_img *img, t_all *all);
+//draw
+int		render(t_all *all);
+//raycasting+dda
 void	ray_direction(t_all *all, int *pt_x);
-void	ray_size_in_square(t_all *all);
 void	digital_differential_analysis(t_all *a, int *mapx, int *mapy);
 void	dda_init(t_all *all, int *map_x, int *map_y);
-int		calcul_view(t_all *all, int x);
+void	dir_tex(t_all *all);
+double	calcul_view(t_all *all);
+void	ray_size_in_square(t_all *all);
 void	raycasting(t_all *all);
-void	ft_distroy_img(t_all *all);
-void	files_to_images(t_all *all);
+//img_tex
+int		tex_creation(t_all *all);
+void	ft_distroy_tex(t_all *all);
 
 /*----------------------------------------------------------------------------*/
 
@@ -225,6 +231,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_strdup_path(char *src);
 void	*ft_memset(void *str, int c, size_t n);
+int		check_file_path(char *pathname);
+int		check_file_name(char *name, char *base);
 /*----------------------------------------------------------------------------*/
 
 //to be deleted just to start work with raycasting

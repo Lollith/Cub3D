@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/07 17:21:16 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/12/08 13:19:01 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,13 @@ MKDIR			= mkdir -p
 # ---------------------------------------------------------------------------- #
 # Mandatory source files
 # ---------------------------------------------------------------------------- #
-WINDOW_SRCS		:= hook.c window.c
+IO_SRCS			:= hook.c window.c move.c
 
 PARSING_SRCS	:= checks.c init.c parse.c parse_get_tex_img.c parse_scan_map.c\
 					parse_get_tex_color.c parse_get_map.c parse_check_map.c\
 					msg_error.c utils_1.c utils_2.c free.c\
-
-RENDER_SRCS		:= draw.c move.c img_px.c img_tex.c raycasting.c dda.c
+					
+RENDER_SRCS		:= draw.c img_px.c img_tex.c raycasting.c dda.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 
@@ -39,7 +39,7 @@ MAIN_SRCS		:= main.c
 
 SRCS_PATH		:= sources/
 SRCS			:= $(MAIN_SRCS)
-SRCS			+= $(addprefix window/, $(WINDOW_SRCS))
+SRCS			+= $(addprefix input_output/, $(IO_SRCS))
 SRCS			+= $(addprefix render/, $(RENDER_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
 SRCS			+= $(addprefix gnl/,$(GNL_SRCS))

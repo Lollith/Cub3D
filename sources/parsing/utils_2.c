@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:48:40 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:03:35 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:47:31 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,23 @@ void	*ft_memset(void *str, int c, size_t n)
 		i++;
 	}
 	return (s);
+}
+
+int	check_file_name(char *name, char *base)
+{
+	int	i;
+	int	j;
+
+	i = ft_strlen(name) - 1;
+	j = ft_strlen(base) - 1;
+	if (i <= j || name[i - j - 1] == '/')
+		return (1);
+	while (j >= 0)
+	{
+		if (name[i] != base[j])
+			return (1);
+		i--;
+		j--;
+	}
+	return (0);
 }

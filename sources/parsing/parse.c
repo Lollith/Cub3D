@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 15:50:57 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:57:00 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	ft_get_info(char *av, t_all *all)
 	fd = -1;
 	if (ft_open_file(av, &fd, ".cub") == 1)
 		return (1);
-	printf("fd is %d\n", fd);
 	line = ft_get_first_line(fd);
 	while (line)
 	{

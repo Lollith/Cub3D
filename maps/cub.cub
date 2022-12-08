@@ -2,11 +2,11 @@
 NO ./assets/bark.xpm
 SO ./assets/brick.xpm
 WE ./assets/rock.xpm
-EA ./path_to_the_east_texture
+EA ./assets/tile.xpmm
 
 F 1,0,0
 C 1,0,0
 
 111111
-10E001
+10W001
 111111

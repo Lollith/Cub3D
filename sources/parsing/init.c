@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 13:18:21 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 15:57:47 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	read_pos_ini(t_all *all)
 			|| all->map.line[i] == 'E' || all->map.line[i] == 'W')
 		{
 			all->pos.p_x = i % (all->map.x) + 0.1;
-			all->pos.p_y = i / (all->map.x);
+			all->pos.p_y = i / (all->map.x) + 0.1;
 			all->pos.index = i;
 		}
 		i++;

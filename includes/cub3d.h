@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 15:19:51 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 17:11:30 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ void	draw_heroe(t_img *img, t_all *all);
 void	draw_ray(t_img *img, t_all *all);
 //draw
 int		render(t_all *all);
+void	loop(t_all *all);
 //raycasting+dda
 void	ray_direction(t_all *all, int *pt_x);
 void	digital_differential_analysis(t_all *a, int *mapx, int *mapy);

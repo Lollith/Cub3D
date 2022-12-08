@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 15:56:50 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 18:20:22 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,12 @@ void	orientation_p(t_all *all)
 		all->pos.left_handed = 1;
 	}
 }
+void	loop(t_all *all)
+{
+	ft_key_loop_hook(all);
+	mlx_loop_hook(all->win.pt_mlx, &render, all); //boucle sur mes images
+	mlx_loop(all->win.pt_mlx);
+}
 
 int	ft_init(char *av)
 {
@@ -163,9 +169,7 @@ int	ft_init(char *av)
 		return (1);
 	orientation_p(&all);
 	tex_creation(&all);
-	ft_key_loop_hook(&all);
-	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
-	mlx_loop(all.win.pt_mlx);
+	loop(&all);
 	the_end(&all);
 	free_all(&all);
 	return (0);

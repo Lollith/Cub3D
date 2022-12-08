@@ -6,7 +6,7 @@
 #    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/08 13:12:23 by agouet           ###   ########.fr        #
+#    Updated: 2022/12/08 13:19:01 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,9 @@ MKDIR			= mkdir -p
 # ---------------------------------------------------------------------------- #
 IO_SRCS			:= hook.c window.c move.c
 
-PARSING_SRCS	:= checks.c init.c parse.c parse_get_img.c parse_get_color.c\
-					parse_get_map.c parse_tools.c parse_map.c utils_1.c\
-					parse_map_scan.c utils_2.c free.c\
+PARSING_SRCS	:= checks.c init.c parse.c parse_get_tex_img.c parse_scan_map.c\
+					parse_get_tex_color.c parse_get_map.c parse_check_map.c\
+					msg_error.c utils_1.c utils_2.c free.c\
 					
 RENDER_SRCS		:= draw.c img_px.c img_tex.c raycasting.c dda.c
 

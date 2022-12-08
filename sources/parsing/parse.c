@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 15:22:32 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:50:57 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char *ft_get_first_line(int fd)
 	return (line);
 }
 
-int	ft_open_file(char *av, int *fd)
+int	ft_open_file(char *av, int *fd, char *file_extension)
 {
 	*fd = open(av, O_DIRECTORY);
 	if (*fd != -1)
@@ -65,12 +65,14 @@ int	ft_open_file(char *av, int *fd)
 		if (*fd == 2 || *fd > FD_MAX)
 			close (*fd);
 		perror("Error\nft_open_file: ");
+		write(2, av, ft_strlen(av));
+		write(2, "\n", 1);
 		return (1);
 	}
-	if (check_file_name(av, ".cub") != 0)
+	if (check_file_name(av, file_extension) != 0)
 	{
 		close (*fd);
-		return (msg_err("ft_open_file", "invalid file extension", 2));
+		return (msg_err("ft_open_file: invalid file extension", av, 2));
 	}
 	return (0);
 }
@@ -81,7 +83,7 @@ int	ft_get_info(char *av, t_all *all)
 	int		fd;
 
 	fd = -1;
-	if (ft_open_file(av, &fd) == 1)
+	if (ft_open_file(av, &fd, ".cub") == 1)
 		return (1);
 	printf("fd is %d\n", fd);
 	line = ft_get_first_line(fd);

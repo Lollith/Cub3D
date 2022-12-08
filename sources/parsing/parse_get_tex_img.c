@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 15:24:37 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:46:17 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,20 @@
 static int	ft_get_img_path(char *line, char **path, int *flag)
 {
 	int	i;
-
+	int	fd;
+	
 	i = 0;
+	fd = -1;
 	if (line[i] != ' ')
-		return (msg_err("ft_get_img_path: invalide path", NULL, 2));
+		return (msg_err("ft_get_img_path: invalide path", *path, 2));
 	ft_skip(&line[i], &i);
 	if (line == NULL || line[i] == '\0')
-		return (msg_err("ft_get_img_path: invalide path", NULL, 2));
+		return (msg_err("ft_get_img_path: invalide path", *path, 2));
 	*path = ft_strdup_path(&line[i]);
 	if (path == NULL)
 		return (msg_err("ft_get_img_path: strdup failed", NULL, 2));
-	// if (check_file_path(*path) == 1)//to reactivate for the textures
-	// 	return (1);
+	if (ft_open_file(*path, &fd, ".xpm") == 1)
+		return (1);
 	(*flag)++;
 	return (0);
 }

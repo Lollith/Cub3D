@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 15:03:15 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 10:32:20 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	put_minimap(t_img *img, t_all *all)
 	while (all->map.line[i])
 	{
 		if (all->map.line[i] == '1')
-			draw_wall(&i, img, all, GREY);
-		// if (all->map.line[i] != '1' && all->map.line[i] != '\n')
-			// draw_wall(&i, img, all, BLACK);
+			draw_mini_wall(&i, img, all, GREY);
+		if (all->map.line[i] != '1' && all->map.line[i] != '\n')
+			draw_mini_wall(&i, img, all, BLACK);
 		i++;
 	}
 }
@@ -73,11 +73,9 @@ int	render(t_all *all)
 	raycasting(all);
 	put_minimap(&all->img_px, all);
 	draw_heroe(&all->img_px, all);
-	// draw_ray(&all->img_minimap, all);
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
 		all->img_px.mlx_img, 0, 0);
-	// mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
-	// 	all->tex[NORTH].img, 0, 0);
 	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);
 	return (0);
 }
+// draw_ray(&all->img_minimap, all);

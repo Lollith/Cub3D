@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:47:31 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 12:47:13 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ static void	init_map(t_map *map)
 	map->line = NULL;
 	map->x = 0;
 	map->y = 0;
-	// map->orient_x = 1;
-	// map->orient_y = -1;
 }
 
 static int	init_tex(t_all *all)
@@ -83,6 +81,10 @@ static void	init_ray(t_all *all)
 	all->ray.draw_start = 0;
 	all->ray.draw_end = 0;
 	all->ray.side = -1;
+	all->ray.dir_tex = 0;
+	all->ray.tex_x = 0;
+	all->ray.tex_y = 0;
+	all->ray.wall_height = 0;
 }
 
 // position initiale de perso
@@ -157,15 +159,12 @@ int	ft_init(char *av)
 	}
 	if (all.map.line == NULL)
 		return (1);
-	create_window(&all.win);
-//--------------------------------fonctions---------------------------------
-	// creation img minimap
-	//read_pos_ini(&all);//see Elena & ft_checks_char in parse map scan
+	if (create_window(&all.win) == 1)
+		return (1);
 	orientation_p(&all);
 	tex_creation(&all);
 	ft_key_loop_hook(&all);
 	mlx_loop_hook(all.win.pt_mlx, &render, &all); //boucle sur mes images
-//  //-------------------------------ends---------------------------------------
 	mlx_loop(all.win.pt_mlx);
 	the_end(&all);
 	free_all(&all);

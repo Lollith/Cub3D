@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 16:43:34by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 13:00:20 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,90 +18,82 @@
 // calculate lowest and highest pixel to fill in current stripe
 
 //dist_perp evite le fisheye  
-int	calcul_view(t_all *all, int x)
+double	calcul_view(t_all *all)
 {
 	double	dist_perp;
-	int		wall_height;
 
 	if (all->ray.side == 0)
 		dist_perp = (all->ray.dist_x - all->ray.delta_dist_x);
 	else
 		dist_perp = (all->ray.dist_y - all->ray.delta_dist_y);
-	wall_height = (int)(W_HEIGHT / dist_perp);
-	all->ray.draw_start = - wall_height / 2 + W_HEIGHT / 2;
+	all->ray.wall_height = (int)(W_HEIGHT / dist_perp);
+	all->ray.draw_start = -all->ray.wall_height / 2 + W_HEIGHT / 2;
 	if (all->ray.draw_start < 0)
 		all->ray.draw_start = 0;
-	all->ray.draw_end = wall_height / 2 + W_HEIGHT / 2;
+	all->ray.draw_end = all->ray.wall_height / 2 + W_HEIGHT / 2;
 	if (all->ray.draw_end >= W_HEIGHT)
 		all->ray.draw_end = W_HEIGHT - 1;
-//calcul texture
+	return (dist_perp);
+}
 
+//wall_x = exact value of hit (on x or y)
+void	tex_coord_x(t_all *all, double dist_perp)
+{
+	double	wall_x;
 
-	double wall_x;// exact value hit
 	if (all->ray.side == 0)
 		wall_x = all->pos.p_y + dist_perp * all->ray.r_dir_y;
 	else
 		wall_x = all->pos.p_x + dist_perp * all->ray.r_dir_x;
-	wall_x -= (int) wall_x; // fct floor??
-
-		//x coordinate de la texture
-		int tex_x = (int)(wall_x * TEX_SIZE);
-		if(all->ray.side == 0 && all->ray.r_dir_x > 0)
-			tex_x = TEX_SIZE - tex_x -1;
-		if (all->ray.side == 1 && all->ray.r_dir_y < 0)
-			tex_x = TEX_SIZE -tex_x -1;
-
-			
-		int color = 0;
-	// 	//ratio taille de texture \ taille ecran=> de cb augmenter ma texture 
-	// 	// en fct de la taille de lecran
-		double ratio  =  (double)TEX_SIZE / wall_height;
-		double tex_pos = (all->ray.draw_start - W_HEIGHT / 2 + wall_height / 2 ) * ratio;
-		for (int y = all->ray.draw_start; y < all->ray.draw_end; y++)
-		{
-			int tex_y = (int) tex_pos;
-			tex_pos += ratio;
-
-			
-		if (all->ray.side == 1 && all->ray.r_dir_y > 0 )  //side =1 = NS , ry_dir y < 0 => N
-		{
-			int index = tex_y * all->tex[SOUTH].line_len  + tex_x * all->tex[SOUTH].bpp /8;
-			color  = ((int *)all->tex[SOUTH].addr)[index/4];
-		}
-		else if (all->ray.side == 1 && all->ray.r_dir_y < 0)  //side =1 = NS , ry_dir y < 0 => N
-		{
-			int index = tex_y * all->tex[NORTH].line_len  + tex_x * all->tex[NORTH].bpp /8;
-			color  = ((int *)all->tex[NORTH].addr)[index/4];
-		}	
-		else if (all->ray.side == 0 && all->ray.r_dir_x > 0)
-		{
-			int index = tex_y * all->tex[EAST].line_len  + tex_x * all->tex[EAST].bpp /8;
-			color  = ((int *)all->tex[EAST].addr)[index/4];
-		}
-		else if (all->ray.side == 0 && all->ray.r_dir_x < 0)
-		{
-			int index = tex_y * all->tex[WEST].line_len  + tex_x * all->tex[WEST].bpp /8;
-			color  = ((int *)all->tex[WEST].addr)[index/4];
-		}
-			img_pix(&all->img_px, x, y, color);		
-		}
-
-	return color;// a suprimer
+	wall_x -= (int) wall_x;
+	all->ray.tex_x = (int)(wall_x * all->tex[all->ray.dir_tex].width);
+	if (all->ray.side == 0 && all->ray.r_dir_x > 0)
+		all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
+	if (all->ray.side == 1 && all->ray.r_dir_y < 0)
+		all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
 }
 
-// a garder de coter
+//ratio taille de texture \ taille ecran=> de cb augmenter ma texture 
+// en fct de la taille de lecran
+void	draw_wall(t_all *all, int x)
+{
+	int		color;
+	int		y;
+	int		index;
+	double	ratio;
+	double	tex_pos;
+
+	ratio = (double)all->tex[all->ray.dir_tex].width / all->ray.wall_height;
+	tex_pos = (all->ray.draw_start - W_HEIGHT / 2 + all->ray.wall_height / 2)
+		* ratio;
+	y = all->ray.draw_start;
+	while (y < all->ray.draw_end)
+	{
+		all->ray.tex_y = (int) tex_pos;
+		tex_pos += ratio;
+		index = all->ray.tex_y * all->tex[all->ray.dir_tex].line_len
+			+ all->ray.tex_x * all->tex[all->ray.dir_tex].bpp / 8;
+		color = ((int *)all->tex[all->ray.dir_tex].addr)[index / 4];
+		img_pix(&all->img_px, x, y, color);
+		y++;
+	}
+}
+
+// a garder de cote
 void	draw_vert_wall(t_all *all, t_img *img, int x)
 {
 	int	y;
- 	int color = BLUE;
+	int	color;
+
+	color = BLUE;
 	if (all->ray.side == 1)
 		color = color / 2;
 	y = all->ray.draw_start;
-		while (y < all->ray.draw_end)
-		{
-			img_pix(img, x, y, color);
-			y++;
-		}
+	while (y < all->ray.draw_end)
+	{
+		img_pix(img, x, y, color);
+		y++;
+	}
 }
 
 // fov = 60 , tan(60/2)=  oppose/adj
@@ -109,9 +101,10 @@ void	draw_vert_wall(t_all *all, t_img *img, int x)
 // ratioX = cameraX
 void	raycasting(t_all *all)
 {
-	int	x;
-	int	map_x;
-	int	map_y;
+	int		x;
+	int		map_x;
+	int		map_y;
+	double	dist_perp;
 
 	x = 0;
 	while (x < W_WIDTH)
@@ -120,9 +113,12 @@ void	raycasting(t_all *all)
 		ray_size_in_square(all);
 		dda_init(all, &map_x, &map_y);
 		digital_differential_analysis(all, &map_x, &map_y);
-		calcul_view(all, x);
-		
+		dist_perp = calcul_view(all);
+		dir_tex(all);
+		tex_coord_x(all, dist_perp);
+		draw_wall(all, x);
 		x++;
 	}
 }
-		// draw_vert_wall(all, &all->img_px, x, &side);
+
+// draw_vert_wall(all, &all->img_px, x);

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 15:02:08 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 10:32:33 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	img_pix(t_img *img, int x, int y, int color)
 
 //boucle : map+1 rempli du debut et jusquq 1 caree de Mini_cub
 //y + mini_pos = place la minimap en bas de lecran
-void	draw_wall(int *pt_i, t_img *img, t_all *all, int color)
+void	draw_mini_wall(int *pt_i, t_img *img, t_all *all, int color)
 {
 	int	x;
 	int	y;

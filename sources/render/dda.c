@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 16:45:55 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/07 13:19:45 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 12:58:09 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,17 @@ void	digital_differential_analysis(t_all *all, int *mapx, int *mapy)
 		if (all->map.line[index] == '1')
 			hit = 1;
 	}
+}
+
+//side =1 = NS , ry_dir y < 0 => N
+void	dir_tex(t_all *all)
+{
+	if (all->ray.side == 1 && all->ray.r_dir_y < 0)
+		all->ray.dir_tex = NORTH;
+	else if (all->ray.side == 1 && all->ray.r_dir_y > 0)
+		all->ray.dir_tex = SOUTH;
+	else if (all->ray.side == 0 && all->ray.r_dir_x > 0)
+		all->ray.dir_tex = EAST;
+	else if (all->ray.side == 0 && all->ray.r_dir_x < 0)
+		all->ray.dir_tex = WEST;
 }

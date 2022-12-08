@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/07 17:42:01 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 12:58:32 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 
 # define W_WIDTH 1000
 # define W_HEIGHT 500
-# define TEX_SIZE 64
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -55,7 +54,7 @@
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
 // # define T_BLACK 0x1A000000
-typedef enum E_dir{
+typedef enum e_dir{
 	
 	NORTH,
 	SOUTH,
@@ -87,8 +86,6 @@ typedef struct s_map
 	int				x;
 	int				y;
 	int				mini_pos;
-	int 			orient_x;
-	int				orient_y;
 }					t_map;
 
 typedef struct s_texture
@@ -134,7 +131,10 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 	int		side;
-	
+	int		dir_tex;
+	int		tex_x;
+	int		tex_y;
+	int		wall_height;
 }		t_ray;
 
 typedef struct s_all
@@ -182,13 +182,13 @@ void	read_pos_ini(t_all *all);
 // int		ft_put_tex(t_texture *tex, char *line, char *path, int *flag);
 /*----------------------------------------------------------------------------*/
 
-/*----------------------------------WINDOW------------------------------------*/
+/*----------------------------------IO---------------------------------------*/
 int		create_window(t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);
 // int		ft_find_map_begin(char **doc);
-void	move(double new_pos_x, double new_pos_y, double sign, t_all *all);
+void	move(double new_pos_x, double new_pos_y, t_all *all);
 void	rotate(t_all *all, int sign);
 /*----------------------------------------------------------------------------*/
 
@@ -196,7 +196,7 @@ void	rotate(t_all *all, int sign);
 //img_px
 void	img_pix(t_img *img, int x, int y, int color);
 void	img_creation(t_all *all);
-void	draw_wall(int *pt_i, t_img *img, t_all *all, int color);
+void	draw_mini_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
 //a supprimer
 void	draw_ray(t_img *img, t_all *all);
@@ -206,7 +206,8 @@ int		render(t_all *all);
 void	ray_direction(t_all *all, int *pt_x);
 void	digital_differential_analysis(t_all *a, int *mapx, int *mapy);
 void	dda_init(t_all *all, int *map_x, int *map_y);
-int		calcul_view(t_all *all, int x);
+void	dir_tex(t_all *all);
+double	calcul_view(t_all *all);
 void	ray_size_in_square(t_all *all);
 void	raycasting(t_all *all);
 //img_tex

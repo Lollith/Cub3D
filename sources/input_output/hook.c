@@ -18,6 +18,8 @@ int	esc_hook(int keysym, t_all *all)
 	(void) all;
 	if (keysym == XK_Escape)
 	{
+		the_end(all);
+		free_all(all);
 		exit(1);
 	}
 	return (0);

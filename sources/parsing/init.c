@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2022/12/07 17:03:19 by esmirnov         ###   ########.fr       */
+=======
 /*   Updated: 2022/12/08 12:47:13 by agouet           ###   ########.fr       */
+>>>>>>> a_textures2.0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +43,7 @@ static int	init_tex(t_all *all)
 	i = 0;
 	all->tex = (t_texture *) malloc (sizeof(t_texture) * 4);
 	if (!all->tex)
-		return (1);
+		return (msg_err("init_tex", "malloc failed", 2));
 	while (i < 4)
 	{
 		all->tex[i].dir = NULL;
@@ -138,7 +142,6 @@ int	ft_init(char *av)
 	t_map		map;
 	t_pos		pos;
 
-// printf("ft_init IN\n");//to be deleted
 	init_win(&win);
 	init_map(&map);
 	init_pos(&pos);
@@ -154,7 +157,7 @@ int	ft_init(char *av)
 
 	if (ft_parse(av, &all) == 1)
 	{
-		// free_all(&all);// attention double free ??
+		free_all(&all);// attention double free ??
 		return (1);
 	}
 	if (all.map.line == NULL)

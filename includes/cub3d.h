@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 12:58:32 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 13:09:22 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_window{
 /*
 ** p_x & p_y are for player position
 ** x - nb of columns, y - nb of lines
-** all spaces on the map will be noted as 8
 */
 typedef struct s_pos
 {
@@ -226,7 +225,7 @@ void	map_size(char **av, t_map *map);
 // int		ft_atoi(const char *str);
 // size_t	ft_strlen(const char *s);//already in gnl folder
 char	*ft_strjoin_no_free(char const *s1, char const *s2);
-int		print_error_fd(char *s1, char *s2, int fd);
+int		msg_err(char *s1, char *s2, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(char *src);

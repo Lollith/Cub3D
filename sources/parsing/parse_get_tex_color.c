@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_get_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/05 11:18:35 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/07 17:13:22 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	ft_char_int(char *line, int *i)
 	ret = 0;
 	while (line[j] != '\n' && line[j] != ',' && j < 3)
 	{
-		if (line [j] < '0' || line[j] > '9')
+		if (line[j] < '0' || line[j] > '9')
 		{
-			print_error_fd("ft_char_int: invalide color number", NULL, 2);
+			msg_err("ft_char_int: invalide color number", NULL, 2);
 			return (-1);
 		}
 		ret = ret * 10 + line[j] - '0';
@@ -37,7 +37,7 @@ static int	ft_char_int(char *line, int *i)
 	}
 	if (line[j] != ',' && line[j] != '\n')
 	{
-		print_error_fd("ft_char_int: invalide color description", NULL, 2);
+		msg_err("ft_char_int: invalide color description", NULL, 2);
 		return (-1);
 	}
 	else
@@ -45,26 +45,37 @@ static int	ft_char_int(char *line, int *i)
 	return (ret);
 }
 
-static int	ft_get_color(unsigned int *color, char *line, int *flag)
+static int	ft_get_rgb_color(char *line, int *i, unsigned int *color)
 {
-	int				r;
-	int				g;
-	int				b;
-	int				i;
+	int	r;
+	int	g;
+	int	b;
 
-	i = 0;
-	ft_skip(line, &i);
-	if (line == NULL || line[i] == '\0')
-	{
-		print_error_fd("ft_put_color: invalide color description", NULL, 2);
+	r = ft_char_int(&line[*i], i);
+	if (r == -1)
 		return (1);
-	}
-	r = ft_char_int(&line[i], &i);
-	g = ft_char_int(&line[i], &i);
-	b = ft_char_int(&line[i], &i);
-	if (r == -1 || g == -1 || b == -1)
+	g = ft_char_int(&line[*i], i);
+	if (g == -1)
+		return (1);
+	b = ft_char_int(&line[*i], i);
+	if (b == -1)
 		return (1);
 	*color = ft_create_rgb(r, g, b);
+	return (0);
+}
+
+static int	ft_get_color(unsigned int *color, char *line, int *flag)
+{
+	int	i;
+
+	i = 0;
+	if (line[i] != ' ')
+		return (msg_err("ft_get_color: invalide color", NULL, 2));
+	ft_skip(line, &i);
+	if (line == NULL || line[i] == '\0')
+		return (msg_err("ft_put_color: invalide color", NULL, 2));
+	if (ft_get_rgb_color(&line[i], &i, color) == 1)
+		return (1);
 	(*flag)++;
 	return (0);
 }
@@ -73,11 +84,13 @@ int	ft_get_tex_color(char *line, t_all *all)
 {
 	int	i;
 	int	ret;
-	
+
 	i = 0;
-	if (line[i] == 'F')
+	if (line[i] == 'F' && all->img_px.f == 0)
 		ret = ft_get_color(&all->img_px.f, &line[i + 1], &all->flag);
-	else
+	else if (line[i] == 'C' && all->img_px.c == 0)
 		ret = ft_get_color(&all->img_px.c, &line[i + 1], &all->flag);
+	else
+		return (msg_err("ft_get_tex_color: invalide file", NULL, 2));
 	return (ret);
 }

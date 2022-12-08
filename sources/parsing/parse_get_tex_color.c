@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_get_color.c                                  :+:      :+:    :+:   */
+/*   parse_get_tex_color.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:13:22 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:30:14 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ static int	ft_get_color(unsigned int *color, char *line, int *flag)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (line[i] != ' ')
 		return (msg_err("ft_get_color: invalide color", NULL, 2));
 	ft_skip(line, &i);
-	if (line == NULL || line[i] == '\0')
+	if (line == NULL || line[i] == '\0' || line[i] == '\n')
 		return (msg_err("ft_put_color: invalide color", NULL, 2));
-	if (ft_get_rgb_color(&line[i], &i, color) == 1)
+	if (ft_get_rgb_color(line, &i, color) == 1)
 		return (1);
 	(*flag)++;
 	return (0);
@@ -87,9 +87,9 @@ int	ft_get_tex_color(char *line, t_all *all)
 
 	i = 0;
 	if (line[i] == 'F' && all->img_px.f == 0)
-		ret = ft_get_color(&all->img_px.f, &line[i + 1], &all->flag);
+		ret = ft_get_color(&all->img_px.f, line, &all->flag);
 	else if (line[i] == 'C' && all->img_px.c == 0)
-		ret = ft_get_color(&all->img_px.c, &line[i + 1], &all->flag);
+		ret = ft_get_color(&all->img_px.c, line, &all->flag);
 	else
 		return (msg_err("ft_get_tex_color: invalide file", NULL, 2));
 	return (ret);

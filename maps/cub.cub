@@ -2,11 +2,15 @@
 NO ./assets/bark.xpm
 SO ./assets/brick.xpm
 WE ./assets/rock.xpm
-EA ./assets/tile.xpmm
+EA ./assets/tile.xpm
 
-F 1,0,0
-C 1,0,0
+     F        100,55,55             
+             
+   C 255,255,255
 
-111111
-10W001
-111111
+1111111
+10000001
+10000001
+1000N01
+11110001111
+   11111

@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_ray.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/09 11:28:03 by agouet            #+#    #+#             */
+/*   Updated: 2022/12/09 11:32:21 by agouet           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+
 // ne calcul pas la bonne taile du rayon=> l arretr moi meme au mur
 // affichage dun rayon ds la bonne direction
 void	draw_ray(t_img *img, t_all *all)

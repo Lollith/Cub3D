@@ -6,7 +6,7 @@
 #    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/09 08:57:46 by agouet           ###   ########.fr        #
+#    Updated: 2022/12/09 11:26:47 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c
 
 MANDATORY_SRCS  := draw.c
 
-BONUS_SRCS		:= draw_bonus.c
+BONUS_SRCS		:= draw_bonus.c draw_ray.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

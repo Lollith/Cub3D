@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:03:20 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 17:30:41 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:30:52 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	orientation_p(t_all *all)
 	{
 		all->ray.orient_y = 1;
 		all->ray.plane_x = 0.60;
+		all->pos.left_handed = 1;
 	}
 	if (all->pos.p == 'E')
 	{

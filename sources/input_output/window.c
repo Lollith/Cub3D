@@ -6,13 +6,13 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:37 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 09:31:41 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:29:38 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	create_window(t_window *win)
+int	create_window(t_all *all, t_window *win)
 {
 	int	size_x;
 	int	size_y;
@@ -32,6 +32,7 @@ int	create_window(t_window *win)
 	{
 		// mlx_destroy_window(win->pt_mlx, win->pt_win);
 		// mlx_destroy_display(win->pt_mlx);
+		free_all(all);
 		// free(win->pt_win);
 		// free(win->pt_mlx);
 		// 

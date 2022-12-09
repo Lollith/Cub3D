@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 09:37:40 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 15:46:07 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,26 @@ void	ft_key_loop_hook(t_all *all)
 
 int	keypress_wsad(int keysym, t_all *all)
 {
+	int	sign; 
+	
+	sign = 1;
+	if (all->pos.left_handed)
+		sign = -1;
 	if (keysym == XK_w || keysym == XK_Up)
 		move(all->pos.p_x + all->ray.orient_x * MOVE_SPEED,
 			all->pos.p_y + all->ray.orient_y * MOVE_SPEED, all);
 	if (keysym == XK_s || keysym == XK_Down)
-		move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED,
+		move(all->pos.p_x -  all->ray.orient_x * MOVE_SPEED,
 			all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all);
 	if (keysym == XK_a)
-		move(all->pos.p_x + all->ray.orient_y * MOVE_SPEED,
-			all->pos.p_y + all->ray.orient_x * MOVE_SPEED, all);
+		move(all->pos.p_x + sign *all->ray.orient_y * MOVE_SPEED,
+			all->pos.p_y - sign *all->ray.orient_x * MOVE_SPEED, all);
 	if (keysym == XK_d)
-		move(all->pos.p_x - all->ray.orient_y * MOVE_SPEED,
-			all->pos.p_y - all->ray.orient_x * MOVE_SPEED, all);
+		move(all->pos.p_x - sign *all->ray.orient_y * MOVE_SPEED,
+			all->pos.p_y + sign *all->ray.orient_x * MOVE_SPEED, all);
 	if (keysym == XK_Right)
-		rotate(all, 1);
+		rotate(all, sign * 1);
 	if (keysym == XK_Left)
-		rotate(all, -1);
+		rotate(all, sign *(-1));
 	return (0);
 }

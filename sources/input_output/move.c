@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 09:16:08 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:44:56by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,17 @@ void	rotate(t_all *all, int sign)
 
 	old_orient_x = all->ray.orient_x;
 	old_plane_x = all->ray.plane_x;
+	// if (all->pos.left_handed)
+		// sign = -sign;
 	all->ray.orient_x = all->ray.orient_x * cos(sign * MOVE_SPEED)
 		- all->ray.orient_y * sin(sign * MOVE_SPEED);
-	all->ray.orient_y = old_orient_x * sin(sign * MOVE_SPEED)
-		+ all->ray.orient_y * cos(sign * MOVE_SPEED);
 	all->ray.plane_x = all->ray.plane_x * cos(sign * MOVE_SPEED)
 		- all->ray.plane_y * sin (sign * MOVE_SPEED);
+		
+	all->ray.orient_y = old_orient_x * sin(sign * MOVE_SPEED)
+		+ all->ray.orient_y * cos(sign * MOVE_SPEED);
+		
+		
 	all->ray.plane_y = old_plane_x * sin(sign * MOVE_SPEED)
 		+ all->ray.plane_y * cos (sign * MOVE_SPEED);
 }

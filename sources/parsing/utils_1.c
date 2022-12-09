@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:12:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 18:16:04 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:48:54 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,26 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	dstlen;
+	size_t	srclen;
+	size_t	i;
+
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	i = 0;
+	if (dstlen >= size)
+		return (size + srclen);
+	while (src[i] != '\0' && dstlen + i < size - 1)
+	{	
+		dst[dstlen + i] = src [i];
+		i++;
+	}
+	dst[dstlen + i] = '\0';
+	return (dstlen + srclen);
+}
+
 /*
 * DESCRIPTION
 *	allocates (with malloc(3)) and returns a “fresh” string ending with ’\0’,
@@ -98,24 +118,4 @@ char	*ft_strjoin_no_free(char const *s1, char const *s2)
 	ft_memcpy(str, s1, len1 + 1);
 	ft_strlcat(str, s2, len1 + len2 + 1);
 	return (str);
-}
-
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
-{
-	size_t	dstlen;
-	size_t	srclen;
-	size_t	i;
-
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	i = 0;
-	if (dstlen >= size)
-		return (size + srclen);
-	while (src[i] != '\0' && dstlen + i < size - 1)
-	{	
-		dst[dstlen + i] = src [i];
-		i++;
-	}
-	dst[dstlen + i] = '\0';
-	return (dstlen + srclen);
 }

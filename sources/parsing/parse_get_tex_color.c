@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 12:29:54 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:03:45 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static int	ft_char_int(char *line, int *i)
 	int	ret;
 
 	ret = 0;
+	if(line[*i] == '+')
+		(*i)++;
 	while (line[*i] >= '0' && line[*i] <= '9' && line[*i] !='\0')
 	{
 		ret = ret * 10 + line[*i] - '0';
@@ -45,17 +47,18 @@ static int	ft_get_rgb_color(char *line, int *i, unsigned int *color)
 	{
 		ft_skip(line, i);
 		rgb[j] = ft_char_int(line, i);
+		printf("- rgb[%d] = %d\n", j, rgb[j]);//TBD
 		if (rgb[j] == -1)
-			return (1);
+			return (-1);
 		ft_skip(line, i);
 		if (j < 2 && line[*i] != ',')
 		{
-			msg_err("ft_char_int: invalid color 1", line, 2);
+			msg_err("ft_get_rgb_color: invalid color 1", line, 2);
 			return (-1);
 		}
 		if (j == 2 && line[*i] != '\0')
 		{
-			msg_err("ft_char_int: invalid color 2", line, 2);
+			msg_err("ft_get_rgb_color: invalid color 2", line, 2);
 			return (-1);
 		}
 		j++;
@@ -72,6 +75,7 @@ static int	ft_get_color(unsigned int *color, char *line, int *i, int *flag)
 		return (msg_err("ft_get_color: invalid color", line, 2));
 	else if (ft_get_rgb_color(line, i, color) == -1)
 		return (1);
+	
 	(*flag)++;
 	return (0);
 }

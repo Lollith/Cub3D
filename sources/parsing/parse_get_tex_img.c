@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 18:37:59 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:38:10 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 	i = 0;
 	fd = -1;
 	if (line[i] != ' ')
-		return (msg_err("ft_get_img_path: invalide path", *path, 2));
+		return (msg_err("ft_get_img_path: invalid path 1", *path, 2));
 	ft_skip(&line[i], &i);
 	if (line == NULL || line[i] == '\0')
-		return (msg_err("ft_get_img_path: invalide path", *path, 2));
+		return (msg_err("ft_get_img_path: invalid path 2", *path, 2));
 	*path = ft_strdup_path(&line[i]);
 	if (*path == NULL || ft_open_file(*path, &fd, ".xpm") == 1)
 		return (1);

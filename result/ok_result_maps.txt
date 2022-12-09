@@ -1,6 +1,4 @@
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_big_size_1.cub[0m
-Error
-./assets/bark.xpm: file does not exists !!!
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
@@ -14,29 +12,31 @@ Error
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_final_test_1.cub[0m
 Error
-./assets/rock.xpm               : file does not exists !!!
+ft_get_img_path: invalide path
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_final_test_2.cub[0m
 Error
-./assets/rock.xpm               : file does not exists !!!
+ft_get_img_path: invalide path
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_final_test_3.cub[0m
 Error
-./assets/rock.xpm               : file does not exists !!!
+ft_get_img_path: invalide path
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_final_test_4.cub[0m
 Error
-./assets/rock.xpm               : file does not exists !!!
+ft_get_img_path: invalide path
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_final_test_5.cub[0m
+Error
+ft_char_int: invalid color 1: F +26,85,87
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
@@ -46,11 +46,15 @@ Error
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_mini_size.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_all_subject_cool_textures.cub[0m
+Error
+ft_open_file: : No such file or directory
+./texture/greystone.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
@@ -72,19 +76,22 @@ Error
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_C_front_zero.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_C_polarity.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_C_space.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
@@ -94,49 +101,57 @@ Error
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_EA_space_after_path.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_EA_space_before_type_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_EA_space_before_type_2.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_EA_space_between.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_EA_tab_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_F_front_zero.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_F_polarity.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_F_space.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
@@ -170,31 +185,32 @@ Error
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_NO_space_after_path.cub[0m
 Error
-./assets/bark.xpm                       : file does not exists !!!
+ft_scan_line: invalide path: ./texture/no.xpm             		 
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_NO_space_before_type_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_NO_space_before_type_2.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_get_tex_map: invalid line:  	      NO ./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_NO_space_between.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_scan_line: invalide path: 	    		 ./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_NO_tab_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_get_img_path: invalide path
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
@@ -204,31 +220,36 @@ Error
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_SO_space_after_path.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_SO_space_before_type_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_SO_space_before_type_2.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_SO_space_between.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_SO_tab_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
@@ -238,31 +259,35 @@ Error
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_WE_space_after_path.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_scan_line: invalide path: ./texture/no.xpm 
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_WE_space_before_type_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_WE_space_before_type_2.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_WE_space_between.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m
 [0;34mProgress on : /mnt/nfs/homes/esmirnov/Documents/cub3D/maps/ok_WE_tab_1.cub[0m
 Error
-./assets/bark.xpm: file does not exists !!!
+ft_open_file: : No such file or directory
+./texture/no.xpm
 [0;31mProgram failed[0m
 [31;7mRESULT: Wrong[0m
 [0;34m------------------------[0m

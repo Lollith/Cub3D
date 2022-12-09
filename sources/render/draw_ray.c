@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:28:03 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 16:15:03 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 16:34:12 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 // ne calcul pas la bonne taile du rayon=> l arretr moi meme au mur
 // affichage dun rayon ds la bonne direction
-void	draw_ray(t_img *img, t_all *all)
+void	draw_ray(t_all *all)
 {
 	double	x;
 	double	y;
-	(void) img;
-	// double	l;
+	// double	l = all->ray.dist_x * cos (60);
 		
 		x = (all->pos.p_x + MINI_P/2) * MINI_CUB;
 		y = (all->pos.p_y + MINI_P/2) * MINI_CUB;
-		double w = (all->pos.p_x + MINI_P/2) * MINI_CUB;
-		double z = (all->pos.p_y + MINI_P/2) * MINI_CUB;
+		// double w = (all->pos.p_x + MINI_P/2) * MINI_CUB;
+		// double z = (all->pos.p_y + MINI_P/2) * MINI_CUB;
 		// img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
 		while (y < ((all->pos.p_y + all->ray.dist_y - 1)*MINI_CUB)
 			&& x < ((all->pos.p_x + all->ray.dist_x - 1)* MINI_CUB))
 		{
 			// img_pix(img,x, y+ all->map.mini_pos, RED);
 				img_pix(&all->img_px,x ,y + all->map.mini_pos , RED);
-				img_pix(&all->img_px,w ,z + all->map.mini_pos , RED);
+				// img_pix(&all->img_px,w ,z + all->map.mini_pos , RED);
 				
 			x = x + all->ray.step_x * 1;
 			y = y + all->ray.step_y * 1;
-			w = w - all->ray.step_x * cos(  0.6);
-			z = z - all->ray.step_y *sin ( 0.6);
+			// w = w - all->ray.step_x * cos( 60);
+			// z = z - all->ray.step_y *sin ( 60);
 		}
 }
 

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 14:11:34 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 16:33:47 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ void	img_creation(t_all *all);
 void	draw_mini_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
 //a supprimer
-void	draw_ray(t_img *img, t_all *all);
+void	draw_ray(t_all *all);
 //draw
 int		render(t_all *all);
 void	loop(t_all *all);

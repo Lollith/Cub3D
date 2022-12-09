@@ -13,7 +13,8 @@
 #include "cub3d.h"
 //gestion colision =)
 // faire pour x et y => plus precis
-void	check_collision(t_all *all, double old_x, double old_y)
+//-0.01 pour la marche arriere sinon traverse le mur 
+void	check_collision(t_all *all, double old_x, double old_y, int sign)
 {
 	int	actual_map_x;
 	int	actual_map_y;
@@ -23,16 +24,16 @@ void	check_collision(t_all *all, double old_x, double old_y)
 	actual_map_y = (int)(all->pos.p_y);
 	index = actual_map_y * all->map.x + actual_map_x;
 	if (all->map.line[index] == '1')
-		all->pos.p_x = old_x;
+		all->pos.p_x = old_x - sign *0.01;
 	if (all->map.line[index] == '1')
-		all->pos.p_y = old_y;
+		all->pos.p_y = old_y - sign *0.01;
 }
 // move = ne change pas  ma carte, met a jour les pixels
 //cast de ma position => donne la case 
 
 //deplacement x= x+move_speed => on multipliue par le vecteur dorientation 
 //pour tenir compte des changement de rotattion
-void	move(double new_pos_x, double new_pos_y, t_all *all)
+void	move(double new_pos_x, double new_pos_y, t_all *all, int sign)
 {
 	int		next_index;
 	int		map_x;
@@ -49,7 +50,7 @@ void	move(double new_pos_x, double new_pos_y, t_all *all)
 		all->pos.p_x = new_pos_x;
 	if (all->map.line[next_index] != '1')
 		all->pos.p_y = new_pos_y;
-	check_collision(all, old_x, old_y);
+	check_collision(all, old_x, old_y, sign);
 }
 
 void	rotate(t_all *all, int sign)
@@ -59,17 +60,12 @@ void	rotate(t_all *all, int sign)
 
 	old_orient_x = all->ray.orient_x;
 	old_plane_x = all->ray.plane_x;
-	// if (all->pos.left_handed)
-		// sign = -sign;
 	all->ray.orient_x = all->ray.orient_x * cos(sign * MOVE_SPEED)
 		- all->ray.orient_y * sin(sign * MOVE_SPEED);
 	all->ray.plane_x = all->ray.plane_x * cos(sign * MOVE_SPEED)
 		- all->ray.plane_y * sin (sign * MOVE_SPEED);
-		
 	all->ray.orient_y = old_orient_x * sin(sign * MOVE_SPEED)
 		+ all->ray.orient_y * cos(sign * MOVE_SPEED);
-		
-		
 	all->ray.plane_y = old_plane_x * sin(sign * MOVE_SPEED)
 		+ all->ray.plane_y * cos (sign * MOVE_SPEED);
 }

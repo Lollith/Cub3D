@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 17:48:24 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:19:54 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ static int	ft_get_img_color_map(char *line, t_all *all)
 	return (ret);
 }
 
-int	ft_get_info(char *av, t_all *all, int *fd)
+int	ft_get_info(t_all *all, int *fd)
 {
 	char	*line;
 
 	line = ft_get_first_line(*fd);
 	if (line == NULL)
-		return (msg_err("ft_get_info: invalid file", av, 2));
+		return (1);
 	while (line)
 	{
 		if (ft_get_img_color_map(line, all) == 1)
@@ -108,7 +108,7 @@ int	ft_parse(char *av, t_all *all)
 	fd = -1;
 	if (ft_open_file(av, &fd, ".cub") == 1)
 		return (1);
-	if (ft_get_info(av, all, &fd) == 1)
+	if (ft_get_info(all, &fd) == 1)
 		return (1);
 	if (ft_check_map(&all->map, all) == 1)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 18:13:15 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:20:05 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ void	loop(t_all *all);
 
 /*-----------------------------------PARSE------------------------------------*/
 int		ft_parse(char *av, t_all *all);
-int		ft_get_info(char *av, t_all *all, int *fd);
+int		ft_get_info(t_all *all, int *fd);
 int		ft_open_file(char *av, int *fd, char *file_extension);
 int		ft_get_tex_img(char *line, t_all *all);
 int		ft_get_tex_color(char *line, t_all *all);

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 17:17:29 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:13:15 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,35 +149,35 @@ typedef struct s_all
 	t_ray			ray;
 }					t_all;
 
-/*-----------------------------------ARGS------------------------------------*/
+/*-----------------------------------INIT------------------------------------*/
 int		ft_init(char *av);
+void	init_map(t_map *map);
 void	init_pos(t_pos *pos);
 int		init_tex(t_all *all);
-void	init_map(t_map *map);
 void	init_px(t_all *all);
 void	init_ray(t_all *all);
+void	read_pos_ini(t_all *all);
+void	orientation_p(t_all *all);
+int		tex_creation(t_all *all);
+void	loop(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*-----------------------------------PARSE------------------------------------*/
-int		ft_scan_map(t_map *map, t_all *all);
-int		ft_check_map(t_map *map, t_all *all);
-int		ft_get_map(char *line, t_map *map, t_all *all);
-int		ft_skip(char *line, int *i);
-int		ft_count_to_char(char *line, char c);
+int		ft_parse(char *av, t_all *all);
+int		ft_get_info(char *av, t_all *all, int *fd);
+int		ft_open_file(char *av, int *fd, char *file_extension);
 int		ft_get_tex_img(char *line, t_all *all);
 int		ft_get_tex_color(char *line, t_all *all);
 int		ft_get_map(char *line, t_map *map, t_all *all);
-int		free_all(t_all *all);
-int		ft_get_info(char *av, t_all *all);
-int		ft_parse(char *av, t_all *all);
-void	read_pos_ini(t_all *all);
+int		ft_check_map(t_map *map, t_all *all);
+int		ft_scan_map(t_map *map, t_all *all);
 /*----------------------------------------------------------------------------*/
 
-/*----------------------------------IO---------------------------------------*/
+/*----------------------------------IO----------------------------------------*/
 int		create_window(t_all *all, t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
-int		the_end(t_all *all);
+// int		the_end(t_all *all);
 void	move(double new_pos_x, double new_pos_y, t_all *all, int sign);
 void	rotate(t_all *all, int sign);
 /*----------------------------------------------------------------------------*/
@@ -191,9 +191,8 @@ void	draw_heroe(t_img *img, t_all *all);
 //a supprimer
 void	draw_ray(t_img *img, t_all *all);
 //draw
-void	orientation_p(t_all *all);
 int		render(t_all *all);
-void	loop(t_all *all);
+// void	loop(t_all *all);
 //raycasting+dda
 void	ray_direction(t_all *all, int *pt_x);
 void	digital_differential_analysis(t_all *a, int *mapx, int *mapy);
@@ -203,26 +202,26 @@ double	calcul_view(t_all *all);
 void	ray_size_in_square(t_all *all);
 void	raycasting(t_all *all);
 //img_tex
-int		tex_creation(t_all *all);
+// int		tex_creation(t_all *all);
 void	ft_distroy_tex(t_all *all);
 /*----------------------------------------------------------------------------*/
 
-/*------------------------------------MAP-------------------------------------*/
-void	map_read(char **av, t_map *map);
-int		init_square_map(char **av, t_map *map);
-void	map_size(char **av, t_map *map);
-/*----------------------------------------------------------------------------*/
-
 /*-----------------------------------UTILS------------------------------------*/
-char	*ft_strjoin_no_free(char const *s1, char const *s2);
-int		msg_err(char *s1, char *s2, int fd);
+int		ft_skip(char *line, int *i);
+int		ft_count_to_char(char *line, char c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
-char	*ft_strdup(char *src);
-char	*ft_strdup_path(char *src);
-void	*ft_memset(void *str, int c, size_t n);
-int		ft_open_file(char *av, int *fd, char *file_extension);
-int		check_file_name(char *name, char *base);
+char	*ft_strjoin_no_free(char const *s1, char const *s2);
 int		ft_scan_line(char *line);
+char	*ft_strdup_path(char *src);
+char	*ft_strdup(char *src);
+void	*ft_memset(void *str, int c, size_t n);
+int		check_file_name(char *name, char *base);
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------OTHERS------------------------------------*/
+int		msg_err(char *s1, char *s2, int fd);
+int		free_all(t_all *all);
+int		the_end(t_all *all);
 /*----------------------------------------------------------------------------*/
 #endif

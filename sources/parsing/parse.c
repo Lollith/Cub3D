@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 16:07:22 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:48:24 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,35 +77,38 @@ static int	ft_get_img_color_map(char *line, t_all *all)
 	return (ret);
 }
 
-int	ft_get_info(char *av, t_all *all)
+int	ft_get_info(char *av, t_all *all, int *fd)
 {
 	char	*line;
-	int		fd;
 
-	fd = -1;
-	if (ft_open_file(av, &fd, ".cub") == 1)
-		return (1);
-	line = ft_get_first_line(fd);
+	line = ft_get_first_line(*fd);
+	if (line == NULL)
+		return (msg_err("ft_get_info: invalid file", av, 2));
 	while (line)
 	{
 		if (ft_get_img_color_map(line, all) == 1)
 		{
-			get_next_line(-1);
 			free (line);
-			close (fd);
+			get_next_line(-1);
+			close (*fd);
 			return (1);
 		}
 		free (line);
-		line = get_next_line(fd);
+		line = get_next_line(*fd);
 	}
 	get_next_line(-1);
-	close (fd);
+	close (*fd);
 	return (0);
 }
 
 int	ft_parse(char *av, t_all *all)
 {
-	if (ft_get_info(av, all) == 1)
+	int		fd;
+
+	fd = -1;
+	if (ft_open_file(av, &fd, ".cub") == 1)
+		return (1);
+	if (ft_get_info(av, all, &fd) == 1)
 		return (1);
 	if (ft_check_map(&all->map, all) == 1)
 		return (1);

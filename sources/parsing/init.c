@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 08:57:16 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 09:26:29 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void	read_pos_ini(t_all *all)
 		if (all->map.line[i] == 'N' || all->map.line[i] == 'S'
 			|| all->map.line[i] == 'E' || all->map.line[i] == 'W')
 		{
-			all->pos.p_x = i % (all->map.x) + 0.1;
-			all->pos.p_y = i / (all->map.x) + 0.1;
+			all->pos.p_x = i % (all->map.x) + 0.5;
+			all->pos.p_y = i / (all->map.x) + 0.5;
 			all->pos.index = i;
 		}
 		i++;

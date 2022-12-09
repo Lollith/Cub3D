@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 08:56:44 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 09:17:47 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define GREY 0x009E9E9E
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
-// # define T_BLACK 0x1A000000
+# define TBLACK 0x002F4F4F
 typedef enum e_dir{
 	
 	NORTH,

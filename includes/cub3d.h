@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 15:16:05 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:16:25 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
 # define TBLACK 0x002F4F4F
+
 typedef enum e_dir{
-	
 	NORTH,
 	SOUTH,
 	EAST,
@@ -113,7 +113,6 @@ typedef struct s_img
 	int				endian;
 }					t_img;
 
-
 typedef struct s_ray
 {
 	double	orient_x;
@@ -135,8 +134,8 @@ typedef struct s_ray
 	int		tex_x;
 	int		tex_y;
 	int		wall_height;
-	int gaucher;
-}		t_ray;
+	int		gaucher;
+}			t_ray;
 
 typedef struct s_all
 {
@@ -151,18 +150,13 @@ typedef struct s_all
 }					t_all;
 
 /*-----------------------------------ARGS------------------------------------*/
-// int		check_args(int ac, char **av);
-
 int		ft_init(char *av);
 /*----------------------------------------------------------------------------*/
 
 /*-----------------------------------PARSE------------------------------------*/
 int		ft_scan_map(t_map *map, t_all *all);
 int		ft_check_map(t_map *map, t_all *all);
-int		ft_parse_map(t_map *map);
 int		ft_get_map(char *line, t_map *map, t_all *all);
-// int		ft_get_tex_color(t_texture *tex, char *line, t_all *all);
-// int		ft_get_tex_img(t_texture *tex, char *line, t_all *all);
 int		ft_skip(char *line, int *i);
 int		ft_count_to_char(char *line, char c);
 int		ft_get_tex_img(char *line, t_all *all);
@@ -172,23 +166,13 @@ int		free_all(t_all *all);
 int		ft_get_info(char *av, t_all *all);
 int		ft_parse(char *av, t_all *all);
 void	read_pos_ini(t_all *all);
-// int		ft_get_color(unsigned int *color, char *line, int *flag); static
-// int		ft_get_img_path(char *line, char *path, int *flag); static
-// int		ft_file_read(char *av, t_all *all);
-// int		ft_texture(t_texture *tex, char **doc, t_all *all);
-// char	*ft_find_map(char **doc);
-// int		ft_skip(char *line, int *i);
-// char	*ft_map(char **doc);
-// int		ft_put_color(unsigned int *color, char *line, int *flag);
-// int		ft_put_tex(t_texture *tex, char *line, char *path, int *flag);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------IO---------------------------------------*/
 int		create_window(t_all *all, t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
-int 	the_end(t_all *all);
-// int		ft_find_map_begin(char **doc);
+int		the_end(t_all *all);
 void	move(double new_pos_x, double new_pos_y, t_all *all, int sign);
 void	rotate(t_all *all, int sign);
 /*----------------------------------------------------------------------------*/
@@ -215,7 +199,6 @@ void	raycasting(t_all *all);
 //img_tex
 int		tex_creation(t_all *all);
 void	ft_distroy_tex(t_all *all);
-
 /*----------------------------------------------------------------------------*/
 
 /*------------------------------------MAP-------------------------------------*/
@@ -225,8 +208,6 @@ void	map_size(char **av, t_map *map);
 /*----------------------------------------------------------------------------*/
 
 /*-----------------------------------UTILS------------------------------------*/
-// int		ft_atoi(const char *str);
-// size_t	ft_strlen(const char *s);//already in gnl folder
 char	*ft_strjoin_no_free(char const *s1, char const *s2);
 int		msg_err(char *s1, char *s2, int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -234,12 +215,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_strdup_path(char *src);
 void	*ft_memset(void *str, int c, size_t n);
-// int		check_file_path(char *pathname);
-int		ft_open_file(char *av, int *fd, char * file_extension);
+int		ft_open_file(char *av, int *fd, char *file_extension);
 int		check_file_name(char *name, char *base);
 int		ft_scan_line(char *line);
 /*----------------------------------------------------------------------------*/
-
-//to be deleted just to start work with raycasting
-int		init_square_map(char **av, t_map *map);
 #endif

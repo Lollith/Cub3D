@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 18:43:12 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:34:32 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define GREY 0x009E9E9E
 # define YELLOW 0xFFFFFF00
 # define BLACK 0x00000000
-// # define T_BLACK 0x1A000000
+# define TBLACK 0x002F4F4F
 typedef enum e_dir{
 	
 	NORTH,
@@ -77,6 +77,7 @@ typedef struct s_pos
 	double			p_y;
 	char			p;
 	int				index; // position i sur ma *line
+	int				left_handed;
 }					t_pos;
 
 typedef struct s_map
@@ -134,6 +135,7 @@ typedef struct s_ray
 	int		tex_x;
 	int		tex_y;
 	int		wall_height;
+	int gaucher;
 }		t_ray;
 
 typedef struct s_all
@@ -182,7 +184,7 @@ void	read_pos_ini(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------IO---------------------------------------*/
-int		create_window(t_window *win);
+int		create_window(t_all *all, t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);
@@ -201,6 +203,7 @@ void	draw_heroe(t_img *img, t_all *all);
 void	draw_ray(t_img *img, t_all *all);
 //draw
 int		render(t_all *all);
+void	loop(t_all *all);
 //raycasting+dda
 void	ray_direction(t_all *all, int *pt_x);
 void	digital_differential_analysis(t_all *a, int *mapx, int *mapy);

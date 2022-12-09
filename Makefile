@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/08 15:20:56 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/12/09 08:57:46 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= cub3D
+BONUS			= cub3D_bonus
 
 S_MLX			= minilibx-linux
 
@@ -30,7 +31,11 @@ PARSING_SRCS	:= init.c parse.c parse_get_tex_img.c parse_scan_map.c\
 					parse_get_tex_color.c parse_get_map.c parse_check_map.c\
 					msg_error.c utils_1.c utils_2.c free.c\
 					
-RENDER_SRCS		:= draw.c img_px.c img_tex.c raycasting.c dda.c
+RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c
+
+MANDATORY_SRCS  := draw.c
+
+BONUS_SRCS		:= draw_bonus.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 
@@ -40,16 +45,28 @@ MAIN_SRCS		:= main.c
 SRCS_PATH		:= sources/
 SRCS			:= $(MAIN_SRCS)
 SRCS			+= $(addprefix input_output/, $(IO_SRCS))
-SRCS			+= $(addprefix render/, $(RENDER_SRCS))
+SRCS			+= $(addprefix render/, $(RENDER_SRCS)) 
+SRCS			+= $(addprefix render/, $(MANDATORY_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
 SRCS			+= $(addprefix gnl/,$(GNL_SRCS))
 SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS))
+
+SRCS_BONUS		:= $(MAIN_SRCS)
+SRCS_BONUS		+= $(addprefix input_output/, $(IO_SRCS))
+SRCS_BONUS		+= $(addprefix render/, $(RENDER_SRCS))
+SRCS_BONUS		+= $(addprefix render/, $(BONUS_SRCS))
+SRCS_BONUS		+= $(addprefix parsing/,$(PARSING_SRCS))
+SRCS_BONUS		+= $(addprefix gnl/,$(GNL_SRCS))
+SRCS_BONUS		:= $(addprefix $(SRCS_PATH), $(SRCS_BONUS))
+
 # ---------------------------------------------------------------------------- #
 # Object files & Dependencies
 # ---------------------------------------------------------------------------- #
 OBJS_PATH		:= objects/
 OBJS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.o)
 DEPS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.d)
+OBJS_BONUS		:= $(SRCS_BONUS:${SRCS_PATH}%.c=${OBJS_PATH}%.o)
+DEPS_BONUS		:= $(SRCS_BONUS:${SRCS_PATH}%.c=${OBJS_PATH}%.d)
 # ---------------------------------------------------------------------------- #
 # Compiler and flags
 # ---------------------------------------------------------------------------- #
@@ -65,13 +82,20 @@ INC				= -I ./includes  -I /usr/include  -I minilibx-linux
 # ---------------------------------------------------------------------------- #
 # Rules
 # ---------------------------------------------------------------------------- #
+
 all:			$(NAME)
+
+bonus:			$(BONUS)
 
 debug:			CFLAGS := -Werror -Wno-unused-variable 
 debug:			$(NAME) # make debug
 
 $(NAME):		$(OBJS) $(MLX)# $(LIBFT)#
 				$(CC) $(CFLAGS) -o $(NAME) $(MLX) $(OBJS) $(LIB) $(LDFLAGS)
+				
+$(BONUS):		$(OBJS_BONUS) $(MLX)
+				$(CC) $(CFLAGS) -o $(BONUS) $(MLX) $(OBJS_BONUS) $(LIB) $(LDFLAGS)
+
 
 $(MLX):
 				make -C $(S_MLX)
@@ -85,15 +109,19 @@ $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
 
 clean:	
 				make -C $(S_MLX) clean
-				$(RM) $(OBJS) $(DEPS)
+				$(RM) $(OBJS) $(DEPS) $(OBJS_BONUS) $(DEPS_BONUS)
 
 fclean:			clean
 				$(RM) $(NAME)
+				$(RM) $(BONUS)
 
 re:				fclean
 				make -C .
 
--include $(DEPS)
+rebonus:		fclean bonus
+				make bonus -C .
+
+-include $(DEPS) $(DEPS_BONUS)
 
 .PHONY:			all re clean fclean
 

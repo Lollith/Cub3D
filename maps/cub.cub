@@ -4,7 +4,7 @@ SO      ./assets/brick.xpm
 WE ./assets/rock.xpm       
 EA             ./assets/tile.xpm           
 
-F 1433   ,  55,55    
+F 143   ,  55,55    
 
 C 255  ,  255,255   
 

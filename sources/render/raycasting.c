@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/09 14:24:04 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:55:11 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	draw_wall(t_all *all, int x)
 			+ all->ray.tex_x * all->tex[all->ray.dir_tex].bpp / 8;
 		color = ((int *)all->tex[all->ray.dir_tex].addr)[index / 4];
 		img_pix(&all->img_px, x, y, color);
-		
 		y++;
 	}
 }

@@ -19,14 +19,15 @@ void	check_collision(t_all *all, double old_x, double old_y, int sign)
 	int	actual_map_x;
 	int	actual_map_y;
 	int	index;
+	(void) sign;
 
 	actual_map_x = (int)(all->pos.p_x);
 	actual_map_y = (int)(all->pos.p_y);
 	index = actual_map_y * all->map.x + actual_map_x;
 	if (all->map.line[index] == '1')
-		all->pos.p_x = old_x - sign *0.01;
+		all->pos.p_x = old_x;
 	if (all->map.line[index] == '1')
-		all->pos.p_y = old_y - sign *0.01;
+		all->pos.p_y = old_y;
 }
 // move = ne change pas  ma carte, met a jour les pixels
 //cast de ma position => donne la case 

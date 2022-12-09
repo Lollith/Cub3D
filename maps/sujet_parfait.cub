@@ -1,12 +1,12 @@
-NO ./assets/bark_big.xpm
-WE ./assets/rock_big.xpm
-EA ./assets/tile_big.xpm
+NO ./texture/no.xpm
+WE ./assets/we.xpm
+EA ./assets/ea.xpm
 
 F 85,107,47
 C 173,216,230
 
 
-SO ./assets/brick_big.xpm
+SO ./assets/so.xpm
 
 
 1111111111111111111111111

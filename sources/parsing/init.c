@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 09:26:29 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 15:38:25 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void	orientation_p(t_all *all)
 		all->pos.left_handed = 1;
 	}
 }
+
 void	loop(t_all *all)
 {
 	ft_key_loop_hook(all);
@@ -157,10 +158,9 @@ int	ft_init(char *av)
 	all.flag = 0;
 	all.map = map;
 	all.pos = pos;
-
 	if (ft_parse(av, &all) == 1)
 	{
-		free_all(&all);// attention double free ??
+		free_all(&all);
 		return (1);
 	}
 	if (all.map.line == NULL)

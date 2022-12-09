@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:12:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 14:48:54 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:08:28 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int	ft_skip(char *line, int *i)
 {
 	int	j;
-	
+
 	j = 0;
 	while (line[*i] && (line[*i] == ' ' || line[*i] == '\n'))
 	{
@@ -38,19 +38,6 @@ int	ft_count_to_char(char *line, char c)
 		i++;
 	return (i);
 }
-
-// int	ft_skip_to_char(char *line, int *i, char c)
-// {
-// 	int	j;
-
-// 	j = 0;
-// 	while (line[*i] != c)
-// 	{
-// 		j++;
-// 		(*i)++;
-// 	}
-// 	return (j);
-// }
 
 /*
 * DESCRIPTION

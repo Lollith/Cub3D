@@ -2,7 +2,7 @@ NO ./texture/no.xpm
 SO ./texture/so.xpm
 WE ./texture/we.xpm
 EA ./texture/ea.xpm
-F +000000000014300000000000,  5,55
+F 143 ,  5,55
 C 255,255,255
 1111
 1001

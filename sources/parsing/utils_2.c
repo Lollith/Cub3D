@@ -6,23 +6,11 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:48:40 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/08 18:38:57 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:06:21 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// static size_t	ft_strlen_path(const char *s)
-// {
-// 	unsigned int	i;
-
-// 	i = 0;
-// 	if (!s)
-// 		return (0);
-// 	while (s[i] != '\n' && s[i] != '\0')
-// 		i++;
-// 	return (i);
-// }
 
 int	ft_scan_line(char *line)
 {

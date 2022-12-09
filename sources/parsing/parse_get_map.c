@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:24:02 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:38:39 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:03:37 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	ft_map_x_max(char *line, int *x)
 
 	tmp = ft_strlen(line);
 	if (tmp > *x)
-		*x = tmp;//a verifier si marche comme je veux
+		*x = tmp;
 	return (0);
 }
 

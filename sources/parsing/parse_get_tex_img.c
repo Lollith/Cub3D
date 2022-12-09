@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 14:38:10 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:44:15 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 {
 	int	i;
 	int	fd;
-	
+
 	i = 0;
 	fd = -1;
 	if (line[i] != ' ')
@@ -34,18 +34,22 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 int	ft_get_tex_img( char *line, t_all *all)
 {
 	int	i;
-	int	ret;
+	int	j;
+	int	h;
+	int	r;
 
 	i = 0;
-	if (line[i] == 'N' && line[i + 1] == 'O' && all->tex[NORTH].dir == NULL)
-		ret = ft_get_img_path(&line[i + 2], &all->tex[NORTH].dir, &all->flag);
-	else if (line[i] == 'S' && line[i + 1] == 'O' && all->tex[SOUTH].dir == NULL)
-		ret = ft_get_img_path(&line[i + 2], &all->tex[SOUTH].dir, &all->flag);
-	else if (line[i] == 'W' && line[i + 1] == 'E' && all->tex[WEST].dir == NULL)
-		ret = ft_get_img_path(&line[i + 2], &all->tex[WEST].dir, &all->flag);
-	else if (line[i] == 'E' && line[i + 1] == 'A' && all->tex[EAST].dir == NULL)
-		ret = ft_get_img_path(&line[i + 2], &all->tex[EAST].dir, &all->flag);
+	h = i + 1;
+	j = i + 2;
+	if (line[i] == 'N' && line[h] == 'O' && all->tex[NORTH].dir == NULL)
+		r = ft_get_img_path(&line[j], &all->tex[NORTH].dir, &all->flag);
+	else if (line[i] == 'S' && line[h] == 'O' && all->tex[SOUTH].dir == NULL)
+		r = ft_get_img_path(&line[j], &all->tex[SOUTH].dir, &all->flag);
+	else if (line[i] == 'W' && line[h] == 'E' && all->tex[WEST].dir == NULL)
+		r = ft_get_img_path(&line[j], &all->tex[WEST].dir, &all->flag);
+	else if (line[i] == 'E' && line[h] == 'A' && all->tex[EAST].dir == NULL)
+		r = ft_get_img_path(&line[j], &all->tex[EAST].dir, &all->flag);
 	else
 		return (msg_err("ft_get_tex_img: invalid file", NULL, 2));
-	return (ret);
+	return (r);
 }

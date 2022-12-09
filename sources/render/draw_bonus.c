@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/09 14:24:16 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 15:20:38 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	put_minimap(t_img *img, t_all *all)
 {
 	int	i;
 
-	all->map.mini_pos = W_HEIGHT - all->map.y * MINI_CUB;
+	all->map.mini_pos = W_HEIGHT - (all->map.y * MINI_CUB);
 	i = 0;
 	while (all->map.line[i])
 	{
@@ -76,7 +76,7 @@ int	render(t_all *all)
 	raycasting(all);
 	put_minimap(&all->img_px, all);
 	draw_heroe(&all->img_px, all);
-	// draw_ray(&all->img_px, all);
+	draw_ray(&all->img_px, all);
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
 		all->img_px.mlx_img, 0, 0);
 	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);

@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 16:45:55 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/09 13:33:10 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 15:29:57 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	digital_differential_analysis(t_all *all, int *mapx, int *mapy)
 		index = (*mapy) * (all->map.x) + (*mapx);
 		if (all->map.line[index] == '1')
 			hit = 1;
+		// draw_ray(&all->img_px, all);
 	}
 }
 

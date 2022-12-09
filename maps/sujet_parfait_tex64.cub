@@ -1,12 +1,12 @@
-NO ./assets/bark.xpm
-WE ./assets/rock.xpm
-EA ./assets/tile.xpm
+NO ./texture/no.xpm
+SO ./texture/so.xpm
+WE ./texture/we.xpm
+EA ./texture/ea.xpm
 
 F 223,109,255
 C 255,255,255
 
 
-SO ./assets/brick_big.xpm
 
 
 1111111111111111111111111

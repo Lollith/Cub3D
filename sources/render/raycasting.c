@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/08 13:00:20 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:24:04 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	tex_coord_x(t_all *all, double dist_perp)
 		wall_x = all->pos.p_x + dist_perp * all->ray.r_dir_x;
 	wall_x -= (int) wall_x;
 	all->ray.tex_x = (int)(wall_x * all->tex[all->ray.dir_tex].width);
-	if (all->ray.side == 0 && all->ray.r_dir_x > 0)
-		all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
-	if (all->ray.side == 1 && all->ray.r_dir_y < 0)
-		all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
+	// if (all->ray.side == 0 && all->ray.r_dir_x > 0)
+	// 	all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
+	// if (all->ray.side == 1 && all->ray.r_dir_y < 0)
+	// 	all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
 }
 
 //ratio taille de texture \ taille ecran=> de cb augmenter ma texture 
@@ -75,6 +75,7 @@ void	draw_wall(t_all *all, int x)
 			+ all->ray.tex_x * all->tex[all->ray.dir_tex].bpp / 8;
 		color = ((int *)all->tex[all->ray.dir_tex].addr)[index / 4];
 		img_pix(&all->img_px, x, y, color);
+		
 		y++;
 	}
 }

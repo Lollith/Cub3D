@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_ray.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/09 11:28:03 by agouet            #+#    #+#             */
+/*   Updated: 2022/12/09 13:32:09 by agouet           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+
 // ne calcul pas la bonne taile du rayon=> l arretr moi meme au mur
 // affichage dun rayon ds la bonne direction
 void	draw_ray(t_img *img, t_all *all)
@@ -6,16 +20,16 @@ void	draw_ray(t_img *img, t_all *all)
 	double	y;
 	// double	l;
 		
-		y = (all->pos.p_y + MINI_P / 2) * MINI_CUB;
-		x = (all->pos.p_x + MINI_P / 2) * MINI_CUB;
+		y = (all->pos.p_y ) * MINI_CUB;
+		x = (all->pos.p_x ) * MINI_CUB;
 		// img_pix(img, all->ray.step_x * (x + MINI_P), all->ray.step_y * (y+ MINI_P)+ all->map.mini_pos, 0xF00020);
-		while (y < ((all->pos.p_y + MINI_P / 2 + all->ray.dist_y)* MINI_CUB)
-			&& x < ((all->pos.p_x + MINI_P / 2 + all->ray.dist_x))* MINI_CUB)
+		while (y < ((all->pos.p_y  )* MINI_CUB)
+			&& x < ((all->pos.p_x  )* MINI_CUB))
 		{
-			img_pix(img,x + MINI_P, y + MINI_P + all->map.mini_pos, RED);
+			img_pix(img,x, y+ all->map.mini_pos, RED);
 			// img_pix(img, all->ray.step_x * (x + MINI_P )  , all->ray.step_y * (y + MINI_P+ l)  + all->map.mini_pos, 0xFFFF00FF);
-			x = x + (1/all->ray.r_dir_x);// ratio defini la direction de mon x en fct de ce ratio
-			y = y + (1/all->ray.r_dir_y);
+			x ++;// ratio defini la direction de mon x en fct de ce ratio
+			y ++;
 		}
 }
 

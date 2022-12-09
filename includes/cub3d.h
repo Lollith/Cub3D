@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 12:34:32 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:29:32 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 // # define RIGHT 100
 //# define ESC 65307
 
-# define W_WIDTH 1000
-# define W_HEIGHT 500
+# define W_WIDTH 1800
+# define W_HEIGHT 1000
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -189,7 +189,7 @@ int		keypress_wsad(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 int 	the_end(t_all *all);
 // int		ft_find_map_begin(char **doc);
-void	move(double new_pos_x, double new_pos_y, t_all *all);
+void	move(double new_pos_x, double new_pos_y, t_all *all, int sign);
 void	rotate(t_all *all, int sign);
 /*----------------------------------------------------------------------------*/
 

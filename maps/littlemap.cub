@@ -1,0 +1,14 @@
+NO ./assets/bark.xpm
+WE ./assets/rock.xpm
+EA ./assets/tile.xpm
+
+F 252,241,153
+C 255,255,255
+
+
+SO ./assets/brick_big.xpm
+
+1111
+1001
+1W01
+1111

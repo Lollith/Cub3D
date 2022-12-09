@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 16:16:25 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:17:29 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,11 @@ typedef struct s_all
 
 /*-----------------------------------ARGS------------------------------------*/
 int		ft_init(char *av);
+void	init_pos(t_pos *pos);
+int		init_tex(t_all *all);
+void	init_map(t_map *map);
+void	init_px(t_all *all);
+void	init_ray(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*-----------------------------------PARSE------------------------------------*/
@@ -186,6 +191,7 @@ void	draw_heroe(t_img *img, t_all *all);
 //a supprimer
 void	draw_ray(t_img *img, t_all *all);
 //draw
+void	orientation_p(t_all *all);
 int		render(t_all *all);
 void	loop(t_all *all);
 //raycasting+dda

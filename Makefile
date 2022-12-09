@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
+#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/09 11:26:47 by agouet           ###   ########.fr        #
+#    Updated: 2022/12/09 17:25:03 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ MKDIR			= mkdir -p
 # ---------------------------------------------------------------------------- #
 IO_SRCS			:= hook.c window.c move.c
 
-PARSING_SRCS	:= init.c parse.c parse_get_tex_img.c parse_scan_map.c\
+PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
+					parse_get_tex_img.c parse_scan_map.c\
 					parse_get_tex_color.c parse_get_map.c parse_check_map.c\
 					msg_error.c utils_1.c utils_2.c free.c\
 					

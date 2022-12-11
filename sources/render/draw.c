@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/11 10:33:54 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:04:50 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,4 @@ void	put_background(t_img *img, t_all *all)
 {
 	draw_rectangle(img, 0, all->img_px.c);
 	draw_rectangle(img, W_HEIGHT / 2, all->img_px.f);
-}
-
-//mlx put image = affiche limage
-//destroy :// permet de mettre a jour mon image, pas de superposition des pixels
-int	render(t_all *all)
-{
-	if (all->win.pt_win == NULL)
-		return (1);
-	img_creation(all);
-	put_background(&all->img_px, all);
-	raycasting(all);
-	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
-		all->img_px.mlx_img, 0, 0);
-	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);
-	return (0);
 }

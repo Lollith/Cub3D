@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/11 10:37:03 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:02:16 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_win(t_window *win)
 {
 	win->pt_mlx = NULL;
 	win->pt_win = NULL;
+	win->mouse_position = 0;
 }
 
 static int	ft_init_parse_win(char *av, t_all *all, t_window *win)

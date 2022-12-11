@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/11 10:43:50 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:02:00 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define W_WIDTH 500
+# define W_WIDTH 1300
 # define W_HEIGHT 500
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
@@ -32,6 +32,7 @@
 # define MINI_CUB 10
 # define MINI_P 0.3
 # define MOVE_SPEED 0.05
+# define MOUSE_SPEED 0.015
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
@@ -56,9 +57,16 @@ typedef enum e_dir{
 	WEST,
 }			t_dir;
 
+typedef enum e_key{
+	KEYPRESS = 2,
+	MOUSEMOVE = 6,
+	DISTROY = 17,
+}			t_key;
+
 typedef struct s_window{
 	void			*pt_mlx;
 	void			*pt_win;
+	int				mouse_position;
 }					t_window;
 
 /*
@@ -173,7 +181,10 @@ int		keypress_wsad(int keysym, t_all *all);
 int		keypress_rotation(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 void	move(double new_pos_x, double new_pos_y, t_all *all, int sign);
-void	rotate(t_all *all, int sign);
+int		init_mouse(int x, int y, t_all *all);
+void	rotate(t_all *all, int sign, double speed);
+int		esc_hook(int keysym, t_all *all);
+int		ft_close(t_window *win);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/
@@ -182,6 +193,7 @@ void	img_pix(t_img *img, int x, int y, int color);
 void	img_creation(t_all *all);
 void	draw_mini_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
+void	put_background(t_img *img, t_all *all);
 //draw
 int		render(t_all *all);
 //raycasting+dda

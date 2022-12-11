@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/11 10:19:55 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:05:33 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 // ATTENTION ESC a refaire comletement  LEAKS
 int	esc_hook(int keysym, t_all *all)
 {
-	(void) all;
 	if (keysym == XK_Escape)
 	{
 		the_end(all);
@@ -31,20 +30,12 @@ int	ft_close(t_window *win)
 	return (0);
 }
 
-void	ft_key_loop_hook(t_all *all)
-{
-	mlx_hook(all->win.pt_win, 2, 1L << 0, keypress_wsad, all);
-	mlx_key_hook(all->win.pt_win, esc_hook, all);
-	mlx_hook(all->win.pt_win, 17, 0, ft_close, &all->win);
-}
-
 // deplacement droite et gauche:ex si  dir_y = -1 et dir_x= 0 (ini), 
 //pour aller a droite et a gauche => mes dir doivent etre inversee dc pos_x 
 //doit aller vers -1 au lieu de 0 
 //rotate:  to rotate a vector  , * with the matrix rotation
 //[ cos(a) -sin(a) ]
 //[ sin(a)  cos(a) ]
-
 int	keypress_wsad(int keysym, t_all *all)
 {
 	int	sign;
@@ -82,8 +73,8 @@ int	keypress_rotation(int keysym, t_all *all)
 	if (all->pos.left_handed)
 		sign = -1;
 	if (keysym == XK_Right)
-		rotate(all, sign);
+		rotate(all, sign, MOVE_SPEED);
 	if (keysym == XK_Left)
-		rotate(all, -sign);
+		rotate(all, -sign, MOVE_SPEED);
 	return (0);
 }

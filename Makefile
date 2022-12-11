@@ -6,7 +6,7 @@
 #    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/11 09:51:38 by lollith          ###   ########.fr        #
+#    Updated: 2022/12/11 14:54:46 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,11 @@ PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
 					parse_get_tex_color.c parse_get_map.c parse_check_map.c\
 					msg_error.c utils_1.c utils_2.c free.c\
 					
-RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c
+RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c draw.c
 
-MANDATORY_SRCS  := draw.c
+MANDATORY_SRCS  := draw_mandatory.c hook_mandatory.c
 
-BONUS_SRCS		:= draw_bonus.c
+BONUS_SRCS		:= draw_bonus.c hook_bonus.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 
@@ -46,16 +46,16 @@ MAIN_SRCS		:= main.c
 SRCS_PATH		:= sources/
 SRCS			:= $(MAIN_SRCS)
 SRCS			+= $(addprefix input_output/, $(IO_SRCS))
+SRCS			+= $(addprefix mandatory/, $(MANDATORY_SRCS))
 SRCS			+= $(addprefix render/, $(RENDER_SRCS)) 
-SRCS			+= $(addprefix render/, $(MANDATORY_SRCS))
 SRCS			+= $(addprefix parsing/,$(PARSING_SRCS))
 SRCS			+= $(addprefix gnl/,$(GNL_SRCS))
 SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS))
 
 SRCS_BONUS		:= $(MAIN_SRCS)
 SRCS_BONUS		+= $(addprefix input_output/, $(IO_SRCS))
+SRCS_BONUS		+= $(addprefix bonus/, $(BONUS_SRCS))
 SRCS_BONUS		+= $(addprefix render/, $(RENDER_SRCS))
-SRCS_BONUS		+= $(addprefix render/, $(BONUS_SRCS))
 SRCS_BONUS		+= $(addprefix parsing/,$(PARSING_SRCS))
 SRCS_BONUS		+= $(addprefix gnl/,$(GNL_SRCS))
 SRCS_BONUS		:= $(addprefix $(SRCS_PATH), $(SRCS_BONUS))

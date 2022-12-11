@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/11 10:45:12 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/11 10:57:26 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_open_file(char *av, int *fd, char *file_extension)
 		if (*fd == 2 || *fd > FD_MAX)
 			close (*fd);
 		perror("Error\nft_open_file: ");
-		write(2, av, ft_strlen(av));
-		write(2, "\n", 1);
+		// write(2, av, ft_strlen(av));
+		// write(2, "\n", 1);
 		return (1);
 	}
 	if (check_file_name(av, file_extension) != 0)

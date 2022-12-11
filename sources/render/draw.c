@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/09 18:24:45 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:33:54 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-// creation img minimap
+
 void	img_creation(t_all *all)
 {
 	all->img_px.mlx_img = mlx_new_image(all->win.pt_mlx,
@@ -59,4 +59,3 @@ int	render(t_all *all)
 	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);
 	return (0);
 }
-

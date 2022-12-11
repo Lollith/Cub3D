@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:37 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 18:22:42 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:08:06 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@ int	create_window(t_all *all, t_window *win)
 	win->pt_win = mlx_new_window(win->pt_mlx, size_x, size_y, "cub3D");
 	if (win->pt_win == NULL)
 	{
-		mlx_destroy_window(win->pt_mlx, win->pt_win);
 		mlx_destroy_display(win->pt_mlx);
 		free(win->pt_mlx);
 		free_all(all);
-		// 
-		//MESSAGE ERROR
-		return (1);
+		return (msg_err("Can't create window", NULL, 2));
 	}
 	return (0);
 }

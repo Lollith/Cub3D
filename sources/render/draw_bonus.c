@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/09 14:24:16 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:39:29 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	put_background(t_img *img, t_all *all)
 	draw_rectangle(img, W_HEIGHT / 2, all->img_px.f);
 }
 
-
-
 // creer une minimap , map.x = longueur de la map sur x
 void	put_minimap(t_img *img, t_all *all)
 {
@@ -76,7 +74,6 @@ int	render(t_all *all)
 	raycasting(all);
 	put_minimap(&all->img_px, all);
 	draw_heroe(&all->img_px, all);
-	// draw_ray(&all->img_px, all);
 	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
 		all->img_px.mlx_img, 0, 0);
 	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);

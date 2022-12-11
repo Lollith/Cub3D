@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/09 18:01:00 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/12/11 09:51:38 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c
 
 MANDATORY_SRCS  := draw.c
 
-BONUS_SRCS		:= draw_bonus.c draw_ray.c
+BONUS_SRCS		:= draw_bonus.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

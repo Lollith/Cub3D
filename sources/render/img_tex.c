@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_tex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:33:33 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/07 14:28:04 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:25:52 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ int	tex_creation(t_all *all)
 		all->tex[i].img = mlx_xpm_file_to_image(all->win.pt_mlx,
 				all->tex[i].dir, &all->tex[i].width, &all->tex[i].height);
 		if (all->tex[i].img == NULL)
-		{
-			//MESSAGE D ERREUR
-			return (1);
-		}
+			return (msg_err("Can't create image from texture", NULL, 2));
 		all->tex[i].addr = mlx_get_data_addr(all->tex[i].img,
 				&all->tex[i].bpp, &all->tex[i].line_len,
 				&all->tex[i].endian);

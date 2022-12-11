@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/08 14:44:56by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:17:07 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	check_collision(t_all *all, double old_x, double old_y, int sign)
 	int	actual_map_x;
 	int	actual_map_y;
 	int	index;
-	(void) sign;
 
+	(void) sign;
 	actual_map_x = (int)(all->pos.p_x);
 	actual_map_y = (int)(all->pos.p_y);
 	index = actual_map_y * all->map.x + actual_map_x;
@@ -32,7 +32,7 @@ void	check_collision(t_all *all, double old_x, double old_y, int sign)
 // move = ne change pas  ma carte, met a jour les pixels
 //cast de ma position => donne la case 
 
-//deplacement x= x+move_speed => on multipliue par le vecteur dorientation 
+//deplacement x= x+move_speed => on multiplie par le vecteur dorientation 
 //pour tenir compte des changement de rotattion
 void	move(double new_pos_x, double new_pos_y, t_all *all, int sign)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 16:45:55 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/09 13:33:10 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:41:12 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ray_size_in_square(t_all *all)
 // mapX  which box of the map we're in =>cast la pos
 //  calculate step and initial sideDist = dist_
 //  what direction to step in x or y-direction (either +0 or -1)
-//  pos + -1.2 avance un peu mon perso sur la case
 void	dda_init(t_all *all, int *map_x, int *map_y)
 {
 	*map_x = (int)all->pos.p_x;

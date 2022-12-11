@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:44:44 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/09 17:55:11 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:41:56 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 //(Euclidean distance would give fisheye effect!)
 // Calculate height of line to draw on screen
 // calculate lowest and highest pixel to fill in current stripe
-
 //dist_perp evite le fisheye  
 double	calcul_view(t_all *all)
 {
@@ -47,10 +46,6 @@ void	tex_coord_x(t_all *all, double dist_perp)
 		wall_x = all->pos.p_x + dist_perp * all->ray.r_dir_x;
 	wall_x -= (int) wall_x;
 	all->ray.tex_x = (int)(wall_x * all->tex[all->ray.dir_tex].width);
-	// if (all->ray.side == 0 && all->ray.r_dir_x > 0)
-	// 	all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
-	// if (all->ray.side == 1 && all->ray.r_dir_y < 0)
-	// 	all->ray.tex_x = all->tex[all->ray.dir_tex].width - all->ray.tex_x - 1;
 }
 
 //ratio taille de texture \ taille ecran=> de cb augmenter ma texture 

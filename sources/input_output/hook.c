@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/09 17:57:35 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:19:55 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	ft_key_loop_hook(t_all *all)
 
 int	keypress_wsad(int keysym, t_all *all)
 {
-	int	sign; 
-	
+	int	sign;
+
 	sign = 1;
 	if (all->pos.left_handed)
 		sign = -1;
@@ -58,18 +58,29 @@ int	keypress_wsad(int keysym, t_all *all)
 	if (keysym == XK_s || keysym == XK_Down)
 	{
 		if (all->pos.left_handed)
-			move(all->pos.p_x -  all->ray.orient_x * MOVE_SPEED + 0.02,
+			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED + 0.02,
 				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, sign);
 		else
-			move(all->pos.p_x -  all->ray.orient_x * MOVE_SPEED,
+			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED,
 				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, -1);
 	}
 	if (keysym == XK_a)
-		move(all->pos.p_x + sign *all->ray.orient_y * MOVE_SPEED,
-			all->pos.p_y - sign *all->ray.orient_x * MOVE_SPEED, all, 0);
+		move(all->pos.p_x + sign * all->ray.orient_y * MOVE_SPEED,
+			all->pos.p_y - sign * all->ray.orient_x * MOVE_SPEED, all, 0);
 	if (keysym == XK_d)
-		move(all->pos.p_x - sign *all->ray.orient_y * MOVE_SPEED,
-			all->pos.p_y + sign *all->ray.orient_x * MOVE_SPEED, all, 0);
+		move(all->pos.p_x - sign * all->ray.orient_y * MOVE_SPEED,
+			all->pos.p_y + sign * all->ray.orient_x * MOVE_SPEED, all, 0);
+	keypress_rotation(keysym, all);
+	return (0);
+}
+
+int	keypress_rotation(int keysym, t_all *all)
+{
+	int	sign;
+
+	sign = 1;
+	if (all->pos.left_handed)
+		sign = -1;
 	if (keysym == XK_Right)
 		rotate(all, sign);
 	if (keysym == XK_Left)

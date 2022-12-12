@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:19:15 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 16:03:15 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:56:33 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static int	ft_char_int(char *line, int *i, int *rgb)
 	ret = 0;
 	if (line[*i] == '+')
 		(*i)++;
+	else if (line[*i] < '0' || line[*i] > '9')
+	{
+		msg_err("ft_char_int: invalid color", line, 2);
+		return (-1);
+	}
 	while (line[*i] >= '0' && line[*i] <= '9' && line[*i] != '\0')
 	{
 		ret = ret * 10 + line[*i] - '0';

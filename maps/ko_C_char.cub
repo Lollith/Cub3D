@@ -3,6 +3,7 @@ SO ./texture/brick_big.xpm
 WE ./texture/rock_big.xpm
 EA ./texture/tile_big.xpm
 F 26,85,87
-C 0,167,170
+C 0a,167,170
 111111
+1E0001
 111111

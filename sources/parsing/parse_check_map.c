@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:39:38 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/07 17:05:53 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:33:20 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	ft_create_rect_map(t_map *map)
 
 int	ft_check_map(t_map *map, t_all *all)
 {
-	if (map->x * map->y < 9)
+	if (map->x < 3 || map->y < 3)
 		return (msg_err("ft_check_map", "invalid map", 2));
 	if (ft_create_rect_map(map) == 1)
 		return (1);

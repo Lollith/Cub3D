@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/11 15:04:30 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/12 14:25:30 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	ft_get_img_color_map(char *line, t_all *all)
 		else if (line[i] == '\0')
 			return (0);
 		else
-			return (msg_err("ft_get_tex_map: invalid line", line, 2));
+			return (msg_err("ft_get_img_color_map: invalid file", NULL, 2));
 	}
 	else
 		ret = ft_get_map(line, &all->map, all);

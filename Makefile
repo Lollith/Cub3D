@@ -3,28 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
+#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/11 14:54:46 by lollith          ###   ########.fr        #
+#    Updated: 2022/12/12 13:19:36 by esmirnov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= cub3D
+
 BONUS			= cub3D_bonus
 
 S_MLX			= minilibx-linux
 
 MLX				= $(S_MLX)/libmlx_Linux.a
 
-#LIBFT			= libft/libft.a
-
 RM				= rm -rf
 
 MKDIR			= mkdir -p
+
 # ---------------------------------------------------------------------------- #
 # Mandatory source files
 # ---------------------------------------------------------------------------- #
+
 IO_SRCS			:= hook.c window.c move.c
 
 PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
@@ -63,14 +64,17 @@ SRCS_BONUS		:= $(addprefix $(SRCS_PATH), $(SRCS_BONUS))
 # ---------------------------------------------------------------------------- #
 # Object files & Dependencies
 # ---------------------------------------------------------------------------- #
+
 OBJS_PATH		:= objects/
 OBJS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.o)
 DEPS			:= $(SRCS:${SRCS_PATH}%.c=${OBJS_PATH}%.d)
 OBJS_BONUS		:= $(SRCS_BONUS:${SRCS_PATH}%.c=${OBJS_PATH}%.o)
 DEPS_BONUS		:= $(SRCS_BONUS:${SRCS_PATH}%.c=${OBJS_PATH}%.d)
+
 # ---------------------------------------------------------------------------- #
 # Compiler and flags
 # ---------------------------------------------------------------------------- #
+
 CC				= cc
 
 CFLAGS			= -Wall -Wextra -Werror -MMD -g3 -O3  #g at place of -g 
@@ -80,6 +84,7 @@ LDFLAGS			= -lmlx_Linux -lXext -lX11 -lm -lz
 LIB				= -L ./minilibx-linux -L /usr/lib
 
 INC				= -I ./includes  -I /usr/include  -I minilibx-linux
+
 # ---------------------------------------------------------------------------- #
 # Rules
 # ---------------------------------------------------------------------------- #
@@ -91,19 +96,15 @@ bonus:			$(BONUS)
 debug:			CFLAGS := -Werror -Wno-unused-variable 
 debug:			$(NAME) # make debug
 
-$(NAME):		$(OBJS) $(MLX)# $(LIBFT)#
+$(NAME):		$(OBJS) $(MLX)
 				$(CC) $(CFLAGS) -o $(NAME) $(MLX) $(OBJS) $(LIB) $(LDFLAGS)
-				
+
 $(BONUS):		$(OBJS_BONUS) $(MLX)
 				$(CC) $(CFLAGS) -o $(BONUS) $(MLX) $(OBJS_BONUS) $(LIB) $(LDFLAGS)
-
 
 $(MLX):
 				make -C $(S_MLX)
 
-#(LIBFT):
-#				@make -C libft/
-#-p if directory exists do not create new(no warning etc)
 $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
 				$(MKDIR) ${dir $@}
 				$(CC) $(CFLAGS) $(INC) -c $< -o $@
@@ -125,10 +126,3 @@ rebonus:		fclean bonus
 -include $(DEPS) $(DEPS_BONUS)
 
 .PHONY:			all re clean fclean
-
-# ---------------------------------------------------------------------------- #
-# 
-# ---------------------------------------------------------------------------- #
-# ---------------------------------------------------------------------------- #
-# Colors
-# ---------------------------------------------------------------------------- #

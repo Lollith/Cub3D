@@ -6,13 +6,12 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:59:59 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/08 10:32:33 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/12 09:25:17 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// point de pixels rouge
 // creer une string de pixel
 void	img_pix(t_img *img, int x, int y, int color)
 {

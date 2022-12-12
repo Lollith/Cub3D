@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/11 15:02:16 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/12 09:39:35 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	init_win(t_window *win)
 	win->mouse_position = 0;
 }
 
-static int	ft_init_parse_win(char *av, t_all *all, t_window *win)
+static int	ft_init_creation(char *av, t_all *all, t_window *win)
 {
 	if (W_HEIGHT <= 0 || W_WIDTH <= 0)
 		return (msg_err("Wrong size of window", NULL, 2));
@@ -31,6 +31,9 @@ static int	ft_init_parse_win(char *av, t_all *all, t_window *win)
 	if (all->map.line == NULL)
 		return (1);
 	if (create_window(all, win) == 1)
+		return (1);
+	orientation_p(all);
+	if (tex_creation(all) == 1)
 		return (1);
 	return (0);
 }
@@ -54,10 +57,8 @@ int	ft_init(char *av)
 	all.flag = 0;
 	all.map = map;
 	all.pos = pos;
-	if (ft_init_parse_win(av, &all, &all.win) == 1)
+	if (ft_init_creation(av, &all, &all.win) == 1)
 		return (1);
-	orientation_p(&all);
-	tex_creation(&all);
 	loop(&all);
 	the_end(&all);
 	free_all(&all);

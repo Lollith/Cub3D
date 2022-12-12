@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/11 14:27:41 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/12 09:23:30 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 //gestion colision =)
 // faire pour x et y => plus precis
-//-0.01 pour la marche arriere sinon traverse le mur 
 void	check_collision(t_all *all, double old_x, double old_y, int sign)
 {
 	int	actual_map_x;
@@ -29,9 +28,9 @@ void	check_collision(t_all *all, double old_x, double old_y, int sign)
 	if (all->map.line[index] == '1')
 		all->pos.p_y = old_y;
 }
+
 // move = ne change pas  ma carte, met a jour les pixels
 //cast de ma position => donne la case 
-
 //deplacement x= x+move_speed => on multiplie par le vecteur dorientation 
 //pour tenir compte des changement de rotattion
 void	move(double new_pos_x, double new_pos_y, t_all *all, int sign)

@@ -1,0 +1,12 @@
+NO ./texture/bark_big.xpm
+SO ./texture/brick_big.xpm
+WE ./texture/rock_big.xpm
+EA ./texture/tile_big.xpm
+EA 
+
+F 26,85,87
+C 0,0,0
+
+111111
+1E0001
+111111

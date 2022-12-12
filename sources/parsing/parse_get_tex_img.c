@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 15:44:15 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:18:44 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_get_img_path(char *line, char **path, int *flag)
 	i = 0;
 	fd = -1;
 	if (line[i] != ' ')
-		return (msg_err("ft_get_img_path: invalid path 1", *path, 2));
+		return (msg_err("ft_get_img_path: invalid path 1: space missing", *path, 2));
 	ft_skip(&line[i], &i);
 	if (line == NULL || line[i] == '\0')
 		return (msg_err("ft_get_img_path: invalid path 2", *path, 2));

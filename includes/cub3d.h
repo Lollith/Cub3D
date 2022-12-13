@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/13 11:51:10 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/13 13:59:00 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ int		check_file_name(char *name, char *base);
 
 /*----------------------------------OTHERS------------------------------------*/
 int		msg_err(char *s1, char *s2, int fd);
+int		msg_perr(char *s1, char *s2, int fd);
 int		free_all(t_all *all);
 int		the_end(t_all *all);
 /*----------------------------------------------------------------------------*/

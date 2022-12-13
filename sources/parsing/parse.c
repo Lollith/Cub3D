@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:44:56 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/12 14:25:30 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:53:48 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	ft_open_file(char *av, int *fd, char *file_extension)
 		if (*fd == 2 || *fd > FD_MAX)
 			close (*fd);
 		perror("Error\nft_open_file: ");
-		write(2, av, ft_strlen(av));
-		write(2, "\n", 1);
+		msg_perr(av, NULL, 2);
+		// write(2, av, ft_strlen(av));
+		// write(2, "\n", 1);
 		return (1);
 	}
 	if (check_file_name(av, file_extension) != 0)

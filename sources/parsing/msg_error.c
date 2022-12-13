@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 14:27:19 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 17:38:14 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:53:37 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ int	msg_err(char *s1, char *s2, int fd)
 
 	i = 0;
 	i = print_str("Error\n", fd);
+	i += print_str(s1, fd);
+	if (s2)
+	{
+		i += write(fd, ": ", 2);
+		i += print_str(s2, fd);
+		i += write(fd, "\n", 1);
+	}
+	else
+		i += write(fd, "\n", 1);
+	return (1);
+}
+
+int	msg_perr(char *s1, char *s2, int fd)
+{
+	int	i;
+
+	i = 0;
 	i += print_str(s1, fd);
 	if (s2)
 	{

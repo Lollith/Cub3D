@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/13 10:13:54 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/13 13:2 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_collision(t_all *all, double old_x, double old_y, int sign)
 	actual_map_y = (int)(all->pos.p_y);
 	index = actual_map_y * all->map.x + actual_map_x;
 	if (all->map.line[index] == '1')
-		all->pos.p_x = old_x;
+		all->pos.p_x = old_x + all->ray.orient_x * MOVE_SPEED;
 	if (all->map.line[index] == '1')
 		all->pos.p_y = old_y;
 }

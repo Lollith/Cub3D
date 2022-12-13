@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/12 09:39:35 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/13 10:33:59 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	init_win(t_window *win)
 {
 	win->pt_mlx = NULL;
 	win->pt_win = NULL;
-	win->mouse_position = 0;
+	win->mouse_position = W_WIDTH / 2;
 }
 
 static int	ft_init_creation(char *av, t_all *all, t_window *win)

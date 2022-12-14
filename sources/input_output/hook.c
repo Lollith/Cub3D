@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/14 10:49:48 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/14 09:45:41 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	keypress_wsad(int keysym, t_all *all)
 	if (keysym == XK_s || keysym == XK_Down)
 	{
 		if (all->pos.left_handed)
-			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED,
-				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, 0);
+			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED, //+ 0.02
+				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, 0);//sign
 		else
 			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED,
-				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, 0);
+				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, 0); //-1
 	}
 	if (keysym == XK_a)
 		move(all->pos.p_x + sign * all->ray.orient_y * MOVE_SPEED,

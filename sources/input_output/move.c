@@ -38,19 +38,15 @@ void	move(double new_pos_x, double new_pos_y, t_all *all, int sign)
 	int		next_index;
 	int		map_x;
 	int		map_y;
-	double	old_x;
-	double	old_y;
 
-	old_x = all->pos.p_x;
-	old_y = all->pos.p_y;
-	map_x = (int)(new_pos_x + all->ray.orient_x * MOVE_SPEED);
-	map_y = (int)(new_pos_y - all->ray.orient_y * MOVE_SPEED);
+	(void) sign;
+	map_x = (int)(new_pos_x);
+	map_y = (int)(new_pos_y);
 	next_index = map_y * all->map.x + map_x;
 	if (all->map.line[next_index] != '1')
 		all->pos.p_x = new_pos_x;
 	if (all->map.line[next_index] != '1')
 		all->pos.p_y = new_pos_y;
-	check_collision(all, old_x, old_y, sign);
 }
 
 void	rotate(t_all *all, int sign, double speed)

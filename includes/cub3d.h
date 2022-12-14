@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/14 08:12:08 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/14 14:45:18 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ int		create_window(t_all *all, t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 int		keypress_rotation(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
-void	move(double new_pos_x, double new_pos_y, t_all *all, int sign);
+void	move(double new_pos_x, double new_pos_y, t_all *all);
 int		init_mouse(int x, int y, t_all *all);
 void	rotate(t_all *all, int sign, double speed);
 int		esc_hook(int keysym, t_all *all);

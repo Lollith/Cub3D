@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/13 13:57:53 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/14 14:58:08 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@
 //depacement mon mouvement de x *
 int	move_mouse(int x, int y, t_all *all)
 {
+	int	sign;
+
 	(void) y;
+	sign = 1;
+	if (all->pos.left_handed)
+		sign = -1;
 	if (all->win.mouse_position > x)
 	{	
-		rotate(all, -1, x * MOUSE_SPEED / 500);
+		rotate(all, sign * -1, x * MOUSE_SPEED / 500);
 		mlx_mouse_move(all->win.pt_mlx, all->win.pt_win,
 			W_WIDTH / 2, W_HEIGHT / 2);
 	}
 	else if (all->win.mouse_position < x)
 	{
-		rotate(all, 1, x * MOUSE_SPEED / 500);
+		rotate(all, sign * 1, x * MOUSE_SPEED / 500);
 		mlx_mouse_move(all->win.pt_mlx, all->win.pt_win,
 			W_WIDTH / 2, W_HEIGHT / 2);
 	}

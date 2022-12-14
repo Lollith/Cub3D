@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/13 13:59:00 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/14 08:12:08 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define W_WIDTH 1200
-# define W_HEIGHT 800
+# define W_WIDTH 800
+# define W_HEIGHT 500
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 

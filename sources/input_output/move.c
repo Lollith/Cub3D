@@ -85,6 +85,7 @@ void	move(double new_pos_x, double new_pos_y, t_all *all, int sign)
 		all->pos.p_y = new_pos_y;
 	// check_collision(all, old_x, old_y, sign);
 	// check_collision2(all, old_x, old_y, sign);
+
 }
 
 void	rotate(t_all *all, int sign, double speed)

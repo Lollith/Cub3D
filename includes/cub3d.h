@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/14 08:12:08 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/15 09:56:35 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define W_WIDTH 800
-# define W_HEIGHT 500
+# define W_WIDTH 1200
+# define W_HEIGHT 800
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -180,8 +180,8 @@ int		create_window(t_all *all, t_window *win);
 int		keypress_wsad(int keysym, t_all *all);
 int		keypress_rotation(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
-void	move(double new_pos_x, double new_pos_y, t_all *all, int sign);
-int		init_mouse(int x, int y, t_all *all);
+void	move(double new_pos_x, double new_pos_y, t_all *all);
+// int		init_mouse(int x, int y, t_all *all);
 void	rotate(t_all *all, int sign, double speed);
 int		esc_hook(int keysym, t_all *all);
 int		ft_close(t_window *win);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+         #
+#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/12 13:19:36 by esmirnov         ###   ########.fr        #
+#    Updated: 2022/12/15 09:46:34 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ MKDIR			= mkdir -p
 # Mandatory source files
 # ---------------------------------------------------------------------------- #
 
-IO_SRCS			:= hook.c window.c move.c
+IO_SRCS			:= hook.c window.c
 
 PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
 					parse_get_tex_img.c parse_check_scan_map.c\
@@ -35,9 +35,9 @@ PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
 					
 RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c draw.c
 
-MANDATORY_SRCS  := draw_mandatory.c hook_mandatory.c
+MANDATORY_SRCS  := draw_mandatory.c hook_mandatory.c move_mandatory.c
 
-BONUS_SRCS		:= draw_bonus.c hook_bonus.c
+BONUS_SRCS		:= draw_bonus.c hook_bonus.c move_bonus.c
 
 GNL_SRCS		:= get_next_line.c\
 					get_next_line_utils.c 

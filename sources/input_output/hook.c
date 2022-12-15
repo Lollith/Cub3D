@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/14 09:45:41 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/14 14:49:10 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,23 @@ int	ft_close(t_window *win)
 	return (0);
 }
 
+void	rotate(t_all *all, int sign, double speed)
+{
+	double	old_orient_x;
+	double	old_plane_x;
+
+	old_orient_x = all->ray.orient_x;
+	old_plane_x = all->ray.plane_x;
+	all->ray.orient_x = all->ray.orient_x * cos(sign * speed)
+		- all->ray.orient_y * sin(sign * speed);
+	all->ray.plane_x = all->ray.plane_x * cos(sign * speed)
+		- all->ray.plane_y * sin (sign * speed);
+	all->ray.orient_y = old_orient_x * sin(sign * speed)
+		+ all->ray.orient_y * cos(sign * speed);
+	all->ray.plane_y = old_plane_x * sin(sign * speed)
+		+ all->ray.plane_y * cos (sign * speed);
+}
+
 // deplacement droite et gauche:ex si  dir_y = -1 et dir_x= 0 (ini), 
 //pour aller a droite et a gauche => mes dir doivent etre inversee dc pos_x 
 //doit aller vers -1 au lieu de 0 
@@ -45,22 +62,22 @@ int	keypress_wsad(int keysym, t_all *all)
 		sign = -1;
 	if (keysym == XK_w || keysym == XK_Up)
 		move(all->pos.p_x + all->ray.orient_x * MOVE_SPEED,
-			all->pos.p_y + all->ray.orient_y * MOVE_SPEED, all, 0);
+			all->pos.p_y + all->ray.orient_y * MOVE_SPEED, all);
 	if (keysym == XK_s || keysym == XK_Down)
 	{
 		if (all->pos.left_handed)
-			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED, //+ 0.02
-				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, 0);//sign
+			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED,
+				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all);
 		else
 			move(all->pos.p_x - all->ray.orient_x * MOVE_SPEED,
-				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all, 0); //-1
+				all->pos.p_y - all->ray.orient_y * MOVE_SPEED, all);
 	}
 	if (keysym == XK_a)
 		move(all->pos.p_x + sign * all->ray.orient_y * MOVE_SPEED,
-			all->pos.p_y - sign * all->ray.orient_x * MOVE_SPEED, all, 0);
+			all->pos.p_y - sign * all->ray.orient_x * MOVE_SPEED, all);
 	if (keysym == XK_d)
 		move(all->pos.p_x - sign * all->ray.orient_y * MOVE_SPEED,
-			all->pos.p_y + sign * all->ray.orient_x * MOVE_SPEED, all, 0);
+			all->pos.p_y + sign * all->ray.orient_x * MOVE_SPEED, all);
 	keypress_rotation(keysym, all);
 	return (0);
 }

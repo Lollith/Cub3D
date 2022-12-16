@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/13 11:50:56 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/16 12:52:16 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ static int	ft_init_creation(char *av, t_all *all, t_window *win)
 		return (1);
 	orientation_p(all);
 	if (tex_creation(all) == 1)
+	{
+		the_end(all);
+		free_all(all);
 		return (1);
+	}
 	return (0);
 }
 

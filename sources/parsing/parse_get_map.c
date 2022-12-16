@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:24:02 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/12 13:02:28 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:53:57 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_fill_map_line(char *line, t_map *map)
 	{
 		map->line = ft_strdup(line);
 		if (map->line == NULL)
-			return (msg_err("ft_get_map: ", "strdup failed", 2));
+			return (msg_err("ft_get_map: ", "strdup failed\n", 2));
 	}
 	else
 	{
@@ -28,7 +28,7 @@ static int	ft_fill_map_line(char *line, t_map *map)
 		map->line = ft_strjoin_no_free(tmp, line);
 		free(tmp);
 		if (map->line == NULL)
-			return (msg_err("ft_get_map: ", "strjoin failed", 2));
+			return (msg_err("ft_get_map: ", "strjoin failed\n", 2));
 	}
 	return (0);
 }
@@ -57,7 +57,7 @@ int	ft_get_map(char *line, t_map *map, t_all *all)
 		return (0);
 	}
 	else if (line[i] != '\0' && map->y != 0 && all->flag > 6)
-		return (msg_err("ft_get_map: ", "invalid file", 2));
+		return (msg_err("ft_get_map: ", "invalid file\n", 2));
 	else if (line[i] == '\0' && map->y != 0 && all->flag > 6)
 		return (0);
 	ft_map_x_max(line, &map->x);

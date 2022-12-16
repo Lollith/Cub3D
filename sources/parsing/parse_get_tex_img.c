@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:18:01 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/13 14:04:44 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:19:14 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int	ft_get_tex_img( char *line, t_all *all)
 	else if (line[i] == 'E' && line[h] == 'A' && all->tex[EAST].dir == NULL)
 		r = ft_get_img_path(&line[j], &all->tex[EAST].dir, &all->flag);
 	else
-		return (msg_err("ft_get_tex_img: invalid file", NULL, 2));
+		return (msg_err("ft_get_tex_img: invalid file", line, 2));
 	return (r);
 }

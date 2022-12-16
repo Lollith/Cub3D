@@ -57,16 +57,16 @@ void	move(double new_pos_x, double new_pos_y, t_all *all)
 	old_x = all->pos.p_x;
 	old_y = all->pos.p_y;
 	next_index = ft_next_index(new_pos_x, new_pos_y, all);
-	if (all->map.line[next_index] != '1')
+	if (all->map.line[next_index] == '0')
 	{
 		all->pos.p_x = new_pos_x;
 		all->pos.p_y = new_pos_y;
 	}
 	else
 	{
-		all->pos.p_x = all->pos.p_x;
 		all->pos.p_y = new_pos_y;
-	}	
+		all->pos.p_x = all->pos.p_x;
+	}
 	if (check_collision(all, old_x, old_y))
 	{
 		all->pos.p_x = new_pos_x;

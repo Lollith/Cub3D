@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/16 15:08:27 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/16 15:44:12 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	update_move(t_all *all)
 	if (all->key.right == 1)
 		move(all->pos.p_x - sign * all->ray.orient_y * MOVE_SPEED,
 			all->pos.p_y + sign * all->ray.orient_x * MOVE_SPEED, all);
-	// update_rotation(keysym, all);
 	return (0);
 }
 

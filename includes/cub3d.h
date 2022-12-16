@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/16 15:10:00 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/16 15:50:05 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define MINI_CUB 10
 # define MINI_P 0.3
 # define MOVE_SPEED 0.01
-# define MOUSE_SPEED 0.015
+# define MOUSE_SPEED 0.005
 
 # ifndef FD_MAX
 #  define FD_MAX 1024

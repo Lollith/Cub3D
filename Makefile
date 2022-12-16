@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
+#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/14 14:51:17 by lollith          ###   ########.fr        #
+#    Updated: 2022/12/16 09:13:24 by agouet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
 					
 RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c draw.c
 
-MANDATORY_SRCS  := draw_mandatory.c hook_mandatory.c move.c
+MANDATORY_SRCS  := draw_mandatory.c hook_mandatory.c move_mandatory.c
 
 BONUS_SRCS		:= draw_bonus.c hook_bonus.c move_bonus.c
 

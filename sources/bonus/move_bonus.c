@@ -64,8 +64,8 @@ void	move(double new_pos_x, double new_pos_y, t_all *all)
 	}
 	else
 	{
-		all->pos.p_y = new_pos_y;
 		all->pos.p_x = all->pos.p_x;
+		all->pos.p_y = new_pos_y;
 	}	
 	if (check_collision(all, old_x, old_y))
 	{

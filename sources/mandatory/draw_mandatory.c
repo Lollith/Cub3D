@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mandatory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:15:43 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/11 14:38:10 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/16 15:07:32 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int	render(t_all *all)
 {
 	if (all->win.pt_win == NULL)
 		return (1);
+	update_move(all);
+	update_rotation(all);
+	esc_hook(all);
 	img_creation(all);
 	put_background(&all->img_px, all);
 	raycasting(all);

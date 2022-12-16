@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:03:20 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/13 13:21:52 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/16 15:14:46 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ void	orientation_p(t_all *all)
 
 void	loop(t_all *all)
 {
-	ft_key_loop_hook(all);
+	// ft_key_loop_hook(all);
+	mlx_hook(all->win.pt_win, KEYPRESS, 1L << 0, keypress, all);
+	mlx_hook(all->win.pt_win, KEYRELEASE, 1L << 1, keyrelease, all);
+	mlx_hook(all->win.pt_win, DISTROY, 0, ft_close, &all->win);
 	mlx_loop_hook(all->win.pt_mlx, &render, all);
 	mlx_loop(all->win.pt_mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/16 10:23:34 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:10:00 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 # define MINI_CUB 10
 # define MINI_P 0.3
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.01
 # define MOUSE_SPEED 0.015
 
 # ifndef FD_MAX
@@ -57,11 +57,12 @@ typedef enum e_dir{
 	WEST,
 }			t_dir;
 
-typedef enum e_key{
+typedef enum e_key_def{
 	KEYPRESS = 2,
+	KEYRELEASE = 3,
 	MOUSEMOVE = 6,
 	DISTROY = 17,
-}			t_key;
+}			t_key_def;
 
 typedef struct s_window{
 	void			*pt_mlx;
@@ -139,6 +140,17 @@ typedef struct s_ray
 	int		gaucher;
 }			t_ray;
 
+typedef struct s_key
+{
+	int		up;
+	int		down;
+	int		left;
+	int		right;
+	int		rot_left;
+	int		rot_right;
+	int		esc;
+}			t_key;
+
 typedef struct s_all
 {
 	char			**doc;
@@ -149,6 +161,7 @@ typedef struct s_all
 	t_texture		*tex;
 	t_pos			pos;
 	t_ray			ray;
+	t_key			key;
 }					t_all;
 
 /*-----------------------------------INIT------------------------------------*/
@@ -177,14 +190,18 @@ int		ft_scan_map(t_map *map, t_all *all);
 
 /*----------------------------------IO----------------------------------------*/
 int		create_window(t_all *all, t_window *win);
-int		keypress_wsad(int keysym, t_all *all);
-int		keypress_rotation(int keysym, t_all *all);
+// int		keypress_wsad(int keysym, t_all *all);
+// int		keypress_rotation(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 void	move(double new_pos_x, double new_pos_y, t_all *all);
-int		init_mouse(int x, int y, t_all *all);
+// int		init_mouse(int x, int y, t_all *all);
 void	rotate(t_all *all, int sign, double speed);
-int		esc_hook(int keysym, t_all *all);
 int		ft_close(t_window *win);
+int		keypress(int keysym, t_all *all);
+int		keyrelease(int keysym, t_all *all);
+int		update_move(t_all *all);
+int		update_rotation(t_all *all);
+int		esc_hook(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/

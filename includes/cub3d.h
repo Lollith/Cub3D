@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/16 15:50:05 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/17 10:47:53 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define W_WIDTH 1200
-# define W_HEIGHT 800
+# define W_WIDTH 800
+# define W_HEIGHT 500
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -190,11 +190,8 @@ int		ft_scan_map(t_map *map, t_all *all);
 
 /*----------------------------------IO----------------------------------------*/
 int		create_window(t_all *all, t_window *win);
-// int		keypress_wsad(int keysym, t_all *all);
-// int		keypress_rotation(int keysym, t_all *all);
 void	ft_key_loop_hook(t_all *all);
 void	move(double new_pos_x, double new_pos_y, t_all *all);
-// int		init_mouse(int x, int y, t_all *all);
 void	rotate(t_all *all, int sign, double speed);
 int		ft_close(t_window *win);
 int		keypress(int keysym, t_all *all);
@@ -202,18 +199,17 @@ int		keyrelease(int keysym, t_all *all);
 int		update_move(t_all *all);
 int		update_rotation(t_all *all);
 int		esc_hook(t_all *all);
+int		move_mouse(int x, int y, t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/
-//img_px
 void	img_pix(t_img *img, int x, int y, int color);
 void	img_creation(t_all *all);
 void	draw_mini_wall(int *pt_i, t_img *img, t_all *all, int color);
 void	draw_heroe(t_img *img, t_all *all);
 void	put_background(t_img *img, t_all *all);
-//draw
 int		render(t_all *all);
-//raycasting+dda
+void	put_minimap(t_img *img, t_all *all);
 void	ray_direction(t_all *all, int *pt_x);
 void	digital_differential_analysis(t_all *a, int *mapx, int *mapy);
 void	dda_init(t_all *all, int *map_x, int *map_y);
@@ -221,7 +217,6 @@ void	dir_tex(t_all *all);
 double	calcul_view(t_all *all);
 void	ray_size_in_square(t_all *all);
 void	raycasting(t_all *all);
-//img_tex
 void	ft_distroy_tex(t_all *all);
 /*----------------------------------------------------------------------------*/
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agouet <agouet@student.42.fr>              +#+  +:+       +#+         #
+#    By: lollith <lollith@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:05:42 by agouet            #+#    #+#              #
-#    Updated: 2022/12/16 09:13:24 by agouet           ###   ########.fr        #
+#    Updated: 2022/12/17 10:41:40 by lollith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ MKDIR			= mkdir -p
 # Mandatory source files
 # ---------------------------------------------------------------------------- #
 
-IO_SRCS			:= hook.c window.c
+IO_SRCS			:= hook.c window.c move.c
 
 PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
 					parse_get_tex_img.c parse_check_scan_map.c\
@@ -35,7 +35,7 @@ PARSING_SRCS	:= init.c init_render.c init_struct.c parse.c\
 					
 RENDER_SRCS		:= img_px.c img_tex.c raycasting.c dda.c draw.c
 
-MANDATORY_SRCS  := draw_mandatory.c hook_mandatory.c move_mandatory.c
+MANDATORY_SRCS  := hook_mandatory.c move_mandatory.c
 
 BONUS_SRCS		:= draw_bonus.c hook_bonus.c move_bonus.c
 
@@ -111,7 +111,7 @@ $(OBJS_PATH)%.o:	$(SRCS_PATH)%.c
 
 clean:	
 				make -C $(S_MLX) clean
-				$(RM) $(OBJS) $(DEPS) $(OBJS_BONUS) $(DEPS_BONUS)
+				$(RM) objects
 
 fclean:			clean
 				$(RM) $(NAME)

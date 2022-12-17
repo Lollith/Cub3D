@@ -3,37 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   hook_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/16 15:41:04 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/17 10:28:16 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// mls_mouse_move permet de garder la souris a la bonne place, + 
-//depacement mon mouvement de x *
-int	move_mouse(int x, int y, t_all *all)
+//mlx put image = affiche limage
+//destroy :// permet de mettre a jour mon image, pas de superposition des pixels
+int	render(t_all *all)
 {
-	int	sign;
-
-	(void) y;
-	sign = 1;
-	if (all->pos.left_handed)
-		sign = -1;
-	if (all->win.mouse_position > x)
-	{	
-		rotate(all, sign * -1, x * MOUSE_SPEED / 500);
-		mlx_mouse_move(all->win.pt_mlx, all->win.pt_win,
-			W_WIDTH / 2, W_HEIGHT / 2);
-	}
-	else if (all->win.mouse_position < x)
+	if (all->win.pt_win == NULL)
+		return (1);
+	update_move(all);
+	update_rotation(all);
+	esc_hook(all);
+	img_creation(all);
+	put_background(&all->img_px, all);
+	raycasting(all);
+	if (all->map.x * MINI_CUB < W_WIDTH && all->map.y * MINI_CUB < W_HEIGHT)
 	{
-		rotate(all, sign * 1, x * MOUSE_SPEED / 500);
-		mlx_mouse_move(all->win.pt_mlx, all->win.pt_win,
-			W_WIDTH / 2, W_HEIGHT / 2);
+		put_minimap(&all->img_px, all);
+		draw_heroe(&all->img_px, all);
 	}
+	mlx_put_image_to_window(all->win.pt_mlx, all->win.pt_win,
+		all->img_px.mlx_img, 0, 0);
+	mlx_destroy_image(all->win.pt_mlx, all->img_px.mlx_img);
 	return (0);
 }
 

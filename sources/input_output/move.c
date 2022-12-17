@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 10:30:36 by lollith           #+#    #+#             */
-/*   Updated: 2022/12/17 10:31:26 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/17 11:27:43 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ void	rotate(t_all *all, int sign, double speed)
 		+ all->ray.orient_y * cos(sign * speed);
 	all->ray.plane_y = old_plane_x * sin(sign * speed)
 		+ all->ray.plane_y * cos (sign * speed);
+}
+
+int	update_rotation(t_all *all)
+{
+	int	sign;
+
+	sign = 1;
+	if (all->pos.left_handed)
+		sign = -1;
+	if (all->key.rot_right)
+		rotate(all, sign, MOVE_SPEED);
+	if (all->key.rot_left)
+		rotate(all, -sign, MOVE_SPEED);
+	return (0);
 }
 
 // deplacement droite et gauche:ex si  dir_y = -1 et dir_x= 0 (ini), 

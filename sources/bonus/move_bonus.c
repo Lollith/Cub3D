@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:23:02 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/13 13:2 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/13 13:2 by agouet           ###   ########.fr   	      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,22 @@ void	move(double new_pos_x, double new_pos_y, t_all *all)
 
 // mls_mouse_move permet de garder la souris a la bonne place, + 
 //depacement mon mouvement de x *
-int	move_mouse(int x, int y, t_all *all)
+int	update_mouse(t_all *all)
 {
 	int	sign;
 
-	(void) y;
 	sign = 1;
 	if (all->pos.left_handed)
 		sign = -1;
-	if (all->win.mouse_position > x)
+	if (all->key.mouse_right == 1)
 	{	
-		rotate(all, sign * -1, x * MOUSE_SPEED / 500);
+		rotate(all, sign * -1, all->key.m_x * MOUSE_SPEED / 500);
 		mlx_mouse_move(all->win.pt_mlx, all->win.pt_win,
 			W_WIDTH / 2, W_HEIGHT / 2);
 	}
-	else if (all->win.mouse_position < x)
+	else if (all->key.mouse_left == 1)
 	{
-		rotate(all, sign * 1, x * MOUSE_SPEED / 500);
+		rotate(all, sign * 1, all->key.m_x * MOUSE_SPEED / 500);
 		mlx_mouse_move(all->win.pt_mlx, all->win.pt_win,
 			W_WIDTH / 2, W_HEIGHT / 2);
 	}

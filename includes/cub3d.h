@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/17 10:47:53 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/17 11:24:17 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,9 @@ typedef struct s_key
 	int		right;
 	int		rot_left;
 	int		rot_right;
+	int		mouse_left;
+	int		mouse_right;
+	int		m_x;
 	int		esc;
 }			t_key;
 
@@ -200,6 +203,7 @@ int		update_move(t_all *all);
 int		update_rotation(t_all *all);
 int		esc_hook(t_all *all);
 int		move_mouse(int x, int y, t_all *all);
+int		update_mouse(t_all *all);
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------RENDER------------------------------------*/

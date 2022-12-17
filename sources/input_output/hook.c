@@ -6,25 +6,11 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/17 10:31:37 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/17 11:27:46 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	update_rotation(t_all *all)
-{
-	int	sign;
-
-	sign = 1;
-	if (all->pos.left_handed)
-		sign = -1;
-	if (all->key.rot_right)
-		rotate(all, sign, MOVE_SPEED);
-	if (all->key.rot_left)
-		rotate(all, -sign, MOVE_SPEED);
-	return (0);
-}
 
 int	esc_hook(t_all *all)
 {
@@ -78,5 +64,22 @@ int	keyrelease(int keysym, t_all *all)
 		all->key.rot_left = 0;
 	if (keysym == XK_Escape)
 		all->key.esc = 0;
+	return (0);
+}
+
+int	move_mouse(int x, int y, t_all *all)
+{
+	(void) y;
+	all->key.m_x = x;
+	if (all->win.mouse_position > x)
+	{
+		all->key.mouse_right = 1;
+		all->key.mouse_left = 0;
+	}
+	if (all->win.mouse_position < x)
+	{
+		all->key.mouse_right = 0;
+		all->key.mouse_left = 1;
+	}
 	return (0);
 }

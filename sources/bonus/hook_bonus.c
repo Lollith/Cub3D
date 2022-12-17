@@ -6,7 +6,7 @@
 /*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:52:10 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/17 10:28:16 by lollith          ###   ########.fr       */
+/*   Updated: 2022/12/17 11:11:07 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	render(t_all *all)
 		return (1);
 	update_move(all);
 	update_rotation(all);
+	update_mouse(all);
 	esc_hook(all);
 	img_creation(all);
 	put_background(&all->img_px, all);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lollith <lollith@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/16 15:04:32 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/17 11:20:05 by lollith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	init_key(t_all *all)
 	all->key.rot_left = 0;
 	all->key.rot_right = 0;
 	all->key.esc = 0;
+	all->key.mouse_left = 0;
+	all->key.mouse_right = 0;
+	all->key.m_x = 0;
 }
 
 int	ft_init(char *av)

@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:39:38 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/12 13:33:20 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:42:53 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_create_rect_map(t_map *map)
 
 	tmp_line = malloc(sizeof (char) * (map->x * map->y + 1));
 	if (tmp_line == NULL)
-		return (msg_err("ft_creat_rect_map", "malloc failed", 2));
+		return (msg_err("ft_creat_rect_map", "malloc failed\n", 2));
 	ft_memset(tmp_line, ' ', map->x * map->y);
 	tmp_line[map->x * map->y] = '\0';
 	i = 1;
@@ -59,7 +59,7 @@ static int	ft_create_rect_map(t_map *map)
 int	ft_check_map(t_map *map, t_all *all)
 {
 	if (map->x < 3 || map->y < 3)
-		return (msg_err("ft_check_map", "invalid map", 2));
+		return (msg_err("ft_check_map", "invalid map\n", 2));
 	if (ft_create_rect_map(map) == 1)
 		return (1);
 	if (ft_scan_map(map, all) == 1)

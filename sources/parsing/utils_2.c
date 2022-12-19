@@ -6,7 +6,7 @@
 /*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:48:40 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/09 16:06:21 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:55:45 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strdup_path(char *src)
 	dest = (char *)malloc(sizeof(char) * (j + 1));
 	if (dest == NULL)
 	{
-		msg_err("ft_strdup_path", "malloc failed", 2);
+		msg_err("ft_strdup_path", "malloc failed\n", 2);
 		return (NULL);
 	}
 	while (src[index] && src[index] != '\n' && index != j)
@@ -65,7 +65,7 @@ char	*ft_strdup(char *src)
 	dest = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
 	if (dest == NULL)
 	{
-		msg_err("ft_strdup: malloc failed", NULL, 2);
+		msg_err("ft_strdup", "malloc failed\n", 2);
 		return (NULL);
 	}
 	while (src[index])

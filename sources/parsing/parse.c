@@ -18,7 +18,7 @@ int	ft_open_file(char *av, int *fd, char *file_extension)
 	if (*fd != -1)
 	{
 		close (*fd);
-		return (msg_err(av, "is a directory", 2));
+		return (msg_err(av, "is a directory\n", 2));
 	}
 	*fd = open(av, O_RDONLY);
 	if (*fd < 0 || *fd == 2 || *fd > FD_MAX)
@@ -27,13 +27,12 @@ int	ft_open_file(char *av, int *fd, char *file_extension)
 			close (*fd);
 		perror("Error\nft_open_file: ");
 		msg_perr(av, NULL, 2);
-		write(2, "\n", 1);
 		return (1);
 	}
 	if (check_file_name(av, file_extension) != 0)
 	{
 		close (*fd);
-		return (msg_err("ft_open_file: invalid file extension", av, 2));
+		return (msg_err("ft_open_file: invalid file extension", NULL, 2));
 	}
 	return (0);
 }

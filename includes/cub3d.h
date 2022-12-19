@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/19 10:17:52 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/19 10:37:34 by esmirnov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define W_WIDTH 2001
-# define W_HEIGHT 100
+# define W_WIDTH 1200
+# define W_HEIGHT 1000
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
 
@@ -118,38 +118,38 @@ typedef struct s_img
 
 typedef struct s_ray
 {
-	double	orient_x;
-	double	orient_y;
-	double	plane_x;
-	double	plane_y;
-	double	r_dir_x;
-	double	r_dir_y;
-	double	dist_x;
-	double	dist_y;
-	int		step_x;
-	int		step_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	int		draw_start;
-	int		draw_end;
-	int		side;
-	int		dir_tex;
-	int		tex_x;
-	int		tex_y;
-	int		wall_height;
-	int		gaucher;
-}			t_ray;
+	double			orient_x;
+	double			orient_y;
+	double			plane_x;
+	double			plane_y;
+	double			r_dir_x;
+	double			r_dir_y;
+	double			dist_x;
+	double			dist_y;
+	int				step_x;
+	int				step_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	int				draw_start;
+	int				draw_end;
+	int				side;
+	int				dir_tex;
+	int				tex_x;
+	int				tex_y;
+	int				wall_height;
+	int				gaucher;
+}					t_ray;
 
 typedef struct s_key
 {
-	int		up;
-	int		down;
-	int		left;
-	int		right;
-	int		rot_left;
-	int		rot_right;
-	int		esc;
-}			t_key;
+	int				up;
+	int				down;
+	int				left;
+	int				right;
+	int				rot_left;
+	int				rot_right;
+	int				esc;
+}					t_key;
 
 typedef struct s_all
 {

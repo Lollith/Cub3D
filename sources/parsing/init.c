@@ -6,7 +6,7 @@
 /*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/16 15:04:32 by agouet           ###   ########.fr       */
+/*   Updated: 2022/12/19 10:17:16 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ static void	init_win(t_window *win)
 
 static int	ft_init_creation(char *av, t_all *all, t_window *win)
 {
-	if (W_HEIGHT <= 0 || W_WIDTH <= 0)
+	if (W_HEIGHT <= 0 || W_WIDTH <= 0 || W_HEIGHT > 2000 || W_WIDTH > 2000)
+	{
+		free_all(all);
 		return (msg_err("Wrong size of window", NULL, 2));
+	}
 	if (ft_parse(av, all) == 1)
 	{
 		free_all(all);

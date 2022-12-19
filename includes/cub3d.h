@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:56:57 by agouet            #+#    #+#             */
-/*   Updated: 2022/12/19 10:37:34 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:50:03 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define W_WIDTH 1200
+# define W_WIDTH 1500
 # define W_HEIGHT 1000
 
 # define MAP_CHARS "1 0NSEW\n" // const char in ft_checks_chars
@@ -32,7 +32,7 @@
 # define MINI_CUB 10
 # define MINI_P 0.3
 # define MOVE_SPEED 0.01
-# define MOUSE_SPEED 0.005
+# define MOUSE_SPEED 0.007
 
 # ifndef FD_MAX
 #  define FD_MAX 1024

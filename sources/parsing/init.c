@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esmirnov <esmirnov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agouet <agouet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:54:37 by esmirnov          #+#    #+#             */
-/*   Updated: 2022/12/16 12:52:16 by esmirnov         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:04:32 by agouet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ static int	ft_init_creation(char *av, t_all *all, t_window *win)
 	return (0);
 }
 
+void	init_key(t_all *all)
+{
+	all->key.up = 0;
+	all->key.down = 0;
+	all->key.left = 0;
+	all->key.right = 0;
+	all->key.rot_left = 0;
+	all->key.rot_right = 0;
+	all->key.esc = 0;
+}
+
 int	ft_init(char *av)
 {
 	t_all		all;
@@ -56,6 +67,7 @@ int	ft_init(char *av)
 		return (1);
 	init_px(&all);
 	init_ray(&all);
+	init_key(&all);
 	all.win = win;
 	all.doc = NULL;
 	all.flag = 0;
